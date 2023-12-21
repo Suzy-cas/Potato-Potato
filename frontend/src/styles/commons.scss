@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+:root {
+  font-family: I "Antonio";
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  margin: auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  
+}
+
+@mixin flexDesktop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexMobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+h2 {
+  font-family: "Sansita", sans-serif;
+  font-style: italic;
+  font-weight: 800;
+  color: black;
+  font-size: calc(2rem - 1vw);
+  line-height: 1.1;
+}
+
+h1 {
+  font-family: "Antonio";
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+
+p {
+  font-family: "Antonio";
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+button {
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: black;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.small_potato {
+  width: calc(100% - 40px);
+  margin: 1vh 0;
+}
+
+@media screen and (min-width: 360px) {
+}
+
+@media screen and (min-width: 360px) and (max-width: 768px) {
+  h2 {
+    font-size: calc(3.5rem - 3vw);
+  }
+  h1 {
+    font-size: calc(0.8rem + 1rem);
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  h2 {
+    font-size: calc(5rem - 2vw);
+  }
+  h1 {
+    font-size: calc(1rem + 1rem);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .arrow {
+    width: calc(23% - 150px);
+  }
+  h2 {
+    font-size: calc(6rem - 2vw);
+  }
+  h1 {
+    font-size: calc(1rem + 1rem);
+  }
+}

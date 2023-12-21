@@ -1,0 +1,56 @@
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .potato_heart {
+    width: calc(50vh - 100px);
+    margin: 6vh 0vw;
+  }
+  .patate_transition {
+    width: 95%;
+  }
+  .arrow {
+    width: 30px;
+    margin: 3vh 0;
+  }
+}
+
+@media screen and (min-width: 360px) and (max-width: 768px) {
+  header {
+    max-width: none;
+    .potato_heart {
+      width: calc(50vh - 200px);
+    }
+    .arrow {
+      width: 50px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  header {
+    max-width: none;
+    .potato_heart {
+      width: calc(15% + 100px);
+      margin: 7vh 0vw;
+    }
+    .arrow {
+      width: 80px;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  header {
+    max-width: none;
+    .potato_heart {
+      width: calc(10% + 100px);
+      margin: 6vh 0vw;
+    }
+    .arrow {
+      width: calc(40% - 150px);
+    margin: 10ch;
+    }
+  }
+}
