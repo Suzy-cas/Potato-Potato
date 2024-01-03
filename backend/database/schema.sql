@@ -1,7 +1,13 @@
-CREATE TABLE item (
-  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  title VARCHAR(255) NOT NULL
-);
+DROP TABLE IF EXISTS recipes_pulpits;
+DROP TABLE IF EXISTS ingredients_quantities_recipes;
+DROP TABLE IF EXISTS quantities;
+DROP TABLE IF EXISTS ingredients;
+DROP TABLE IF EXISTS recipes;
+DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS potatoes_varieties;
+DROP TABLE IF EXISTS pulpits;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS roles;
 
 CREATE TABLE roles (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -14,7 +20,7 @@ CREATE TABLE users (
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
   role_id INT NOT NULL,
-  FOREIGN KEY (role_id) REFERENCES roles(id) ON UPDATE CASCADE
+  FOREIGN KEY (role_id) REFERENCES roles(id) 
 );
 
 CREATE TABLE pulpits (
@@ -27,10 +33,9 @@ CREATE TABLE potatoes_varieties (
   name VARCHAR(80) NOT NULL,
   outside_color VARCHAR(80) NOT NULL,
   inside_color VARCHAR(80) NOT NULL,
-  variety VARCHAR(255) NOT NULL,
-  origin VARCHAR(255) NOT NULL,
+  origin VARCHAR(80) NOT NULL,
   pulpit_id INT NOT NULL,
-  FOREIGN KEY (pulpit_id) REFERENCES pulpits(id) ON UPDATE CASCADE
+  FOREIGN KEY (pulpit_id) REFERENCES pulpits(id)
 );
 
 CREATE TABLE categories (
@@ -40,17 +45,15 @@ CREATE TABLE categories (
 
 CREATE TABLE recipes (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  title VARCHAR(30) NOT NULL,
-  difficulty INT NOT NULL,
+  title VARCHAR(150) NOT NULL,
+  difficulty VARCHAR(30) NOT NULL,
   cooking_time VARCHAR(10) NOT NULL,
   steps TEXT NOT NULL,
   category_id INT NOT NULL,
-  pulpit_id INT NOT NULL,
   user_id INT NOT NULL,
   is_approved BOOLEAN NOT NULL,
-  FOREIGN KEY (category_id) REFERENCES categories(id) ON UPDATE CASCADE,
-  FOREIGN KEY (pulpit_id) REFERENCES pulpits(id) ON UPDATE CASCADE,
-  FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE
+  FOREIGN KEY (category_id) REFERENCES categories(id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 
@@ -70,26 +73,18 @@ CREATE TABLE ingredients_quantities_recipes (
   recipe_id INT NOT NULL,
   ingredient_id INT NOT NULL,
   quantity_id INT NOT NULL,
-  FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON UPDATE CASCADE,
-  FOREIGN KEY (ingredient_id) REFERENCES ingredients(id) ON UPDATE CASCADE,
-  FOREIGN KEY (quantity_id) REFERENCES quantities(id) ON UPDATE CASCADE
+  FOREIGN KEY (recipe_id) REFERENCES recipes(id),
+  FOREIGN KEY (ingredient_id) REFERENCES ingredients(id),
+  FOREIGN KEY (quantity_id) REFERENCES quantities(id)
 );
 
-ALTER TABLE users ADD FOREIGN KEY (id) REFERENCES recipes(user_id) ON UPDATE CASCADE;
 
 CREATE TABLE recipes_pulpits (
-  recipes_pulpit_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  pulpits_id INT,
-  FOREIGN KEY (recipes_pulpit_id) REFERENCES recipes(pulpit_id) ON UPDATE CASCADE,
-  FOREIGN KEY (pulpits_id) REFERENCES pulpits(id) ON UPDATE CASCADE
+  recipe_pulpit_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  recipe_id INT NOT NULL,
+  pulpit_id INT NOT NULL,
+  FOREIGN KEY (recipe_id) REFERENCES recipes(id),
+  FOREIGN KEY (pulpit_id) REFERENCES pulpits(id)
 );
 
-CREATE TABLE recipes_categories (
-  recipes_category_id INT,
-  categories_id INT,
-  PRIMARY KEY (recipes_category_id, categories_id),
-  FOREIGN KEY (recipes_category_id) REFERENCES recipes(category_id) ON UPDATE CASCADE,
-  FOREIGN KEY (categories_id) REFERENCES categories(id) ON UPDATE CASCADE
-);
 
-ALTER TABLE pulpits ADD FOREIGN KEY (id) REFERENCES potatoes_varieties(pulpit_id) ON UPDATE CASCADE;
