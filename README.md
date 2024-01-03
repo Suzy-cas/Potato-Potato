@@ -1,6 +1,4 @@
-![Logo](./frontend/src/assets/img/PW_intro-coeur.png)
-
-Welcome to Potato Potato 🥔
+## Welcome to Potato Potato 🥔
 
 Here you will find all you need to know about potatoes (except how you should prononce the word itself). If you love this extraordinary vegetable, this website is definitly for you ! And if you love potato-based cooking, especially french cuisine, you will love spending time here.
 And if you have already made a "gratin dauphinois" that transformed into mashed potatoes, you SHOULD hang around because you will learn valuable informations...
@@ -15,7 +13,7 @@ This site is in development but very soon it should :
 
 Add your own recipe ideas and I will include them into the database !
 
-**SET-UP**
+## SET-UP
 
 To set-up the current version of the website :
 
