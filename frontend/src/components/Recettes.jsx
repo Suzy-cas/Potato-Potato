@@ -24,7 +24,7 @@ function Recettes({ chooseRecipe, handleRecipeClick }) {
               <div className="div-img">
                 <img
                   className="img"
-                  src="./src/assets/img/PW_surpriso.png"
+                  src="./src/assets/img/PW_surpriso.jpg"
                   alt="potato_in_a_plate"
                 />
               </div>
