@@ -38,8 +38,8 @@ function Menu() {
                 onMouseLeave={() => setPotatoIncognito(false)}
                 src={
                   potatoIncognito
-                    ? "./src/assets/img/PW_recognito.png"
-                    : "./src/assets/img/PW_incognito.png"
+                    ? "./src/assets/img/PW_recognito.jpg"
+                    : "./src/assets/img/PW_incognito.jpg"
                 }
                 alt="unknown_potato"
               />
@@ -64,8 +64,8 @@ function Menu() {
                 onMouseLeave={() => setPotatoSurpriso(false)}
                 src={
                   potatoSurpriso
-                    ? "./src/assets/img/PW_surpriso.png"
-                    : "./src/assets/img/PW_dodo.png"
+                    ? "./src/assets/img/PW_surpriso.jpg"
+                    : "./src/assets/img/PW_dodo.jpg"
                 }
                 alt="potato_in_a_plate"
               />

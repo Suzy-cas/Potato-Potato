@@ -32,9 +32,10 @@ function Header() {
         onMouseLeave={() => setPotatoHeart(false)}
         src={
           potatoHeart
-            ? "./src/assets/img/PW_intro-coeur.png"
-            : "./src/assets/img/PW_intro.png"
+            ? "./src/assets/img/PW_intro-coeur.jpg"
+            : "./src/assets/img/PW_intro.jpg"
         }
+        alt="potato-love"
       />
       <h1>Bienvenue sur</h1>
       <h2>PoTAto PotaTO !?</h2>
@@ -45,6 +46,7 @@ function Header() {
           onMouseLeave={() => setPotatoHeart(false)}
           src="./src/assets/img/arrow.png"
           href="#menu"
+          alt="arrow-to-go-to-menu"
         />
       </a>
     </header>
