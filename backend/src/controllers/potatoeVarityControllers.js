@@ -4,11 +4,11 @@ const tables = require("../tables");
 // The B of BREAD - Browse (Read All) operation
 const browse = async (req, res, next) => {
   try {
-    // Fetch all users from the database
-    const users = await tables.users.readAll();
+    // Fetch all potatoes from the database
+    const potatoes = await tables.potatoes_varieties.readAll();
 
-    // Respond with the users in JSON format
-    res.json(users);
+    // Respond with the potatoes in JSON format
+    res.json(potatoes);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -37,7 +37,10 @@ const read = async (req, res, next) => {
 // The E of BREAD - Edit (Update) operation
 const edit = async (req, res, next) => {
   try {
-    const result = await tables.users.update(req.params.id, req.body);
+    const result = await tables.potatoes_varieties.update(
+      req.params.id,
+      req.body
+    );
     if (result.affectedRows === 0) {
       res.sendStatus(404);
     } else {
@@ -56,7 +59,7 @@ const add = async (req, res, next) => {
 
   try {
     // Insert the user into the database
-    const insertId = await tables.users.create(user);
+    const insertId = await tables.potatoes_varieties.create(user);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
     res.status(201).json({ insertId });
@@ -70,7 +73,7 @@ const add = async (req, res, next) => {
 const destroy = async (req, res, next) => {
   try {
     // Fetch a specific user from the database based on the provided ID
-    const result = await tables.users.delete(req.params.id);
+    const result = await tables.potatoes_varieties.delete(req.params.id);
 
     if (result.affectedRows === 0) {
       res.sendStatus(404);
