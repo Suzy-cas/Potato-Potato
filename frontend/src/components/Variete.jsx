@@ -14,7 +14,7 @@ function Variete({ chooseRecipe, handleRecipeClick }) {
           <div className="div-img">
             <img
               className="img"
-              src="./src/assets/img/PW_recognito.png"
+              src="./src/assets/img/PW_recognito.jpg"
               alt="unknown_potato"
             />
           </div>
