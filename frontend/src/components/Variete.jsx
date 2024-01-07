@@ -14,7 +14,7 @@ function Variete({ chooseRecipe, handleRecipeClick }) {
           <div className="div-img">
             <img
               className="img"
-              src="./src/assets/img/PW_recognito.jpg"
+              src="./src/assets/img/PW_recognito.png"
               alt="unknown_potato"
             />
           </div>
@@ -28,7 +28,7 @@ function Variete({ chooseRecipe, handleRecipeClick }) {
             <a href="/#choix">
               <img
                 className="arrow-top"
-                src="./src/assets/img/arrow_top.png"
+                src="./src/assets/img/arrow_top.svg"
                 alt="arrow-to-menu"
                 onClick={handleRecipeClick}
               />

@@ -32,8 +32,8 @@ function Header() {
         onMouseLeave={() => setPotatoHeart(false)}
         src={
           potatoHeart
-            ? "./src/assets/img/PW_intro-coeur.jpg"
-            : "./src/assets/img/PW_intro.jpg"
+            ? "./src/assets/img/PW_intro-coeur.png"
+            : "./src/assets/img/PW_intro.png"
         }
         alt="potato-love"
       />
@@ -44,7 +44,7 @@ function Header() {
           className="arrow"
           onMouseEnter={() => setPotatoHeart(true)}
           onMouseLeave={() => setPotatoHeart(false)}
-          src="./src/assets/img/arrow.png"
+          src="./src/assets/img/arrow.svg"
           href="#menu"
           alt="arrow-to-go-to-menu"
         />

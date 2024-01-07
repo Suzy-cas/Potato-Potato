@@ -38,8 +38,8 @@ function Menu() {
                 onMouseLeave={() => setPotatoIncognito(false)}
                 src={
                   potatoIncognito
-                    ? "./src/assets/img/PW_recognito.jpg"
-                    : "./src/assets/img/PW_incognito.jpg"
+                    ? "./src/assets/img/PW_recognito.png"
+                    : "./src/assets/img/PW_incognito.png"
                 }
                 alt="unknown_potato"
               />
@@ -50,7 +50,7 @@ function Menu() {
                   onClick={handleRecipeClick}
                   onKeyDown={handleRecipeClick}
                   className="arrow-side"
-                  src="./src/assets/img/PW_arrow-left.png"
+                  src="./src/assets/img/arrow-left.svg"
                   alt="arrow-to-variete"
                 />
               </a>
@@ -64,8 +64,8 @@ function Menu() {
                 onMouseLeave={() => setPotatoSurpriso(false)}
                 src={
                   potatoSurpriso
-                    ? "./src/assets/img/PW_surpriso.jpg"
-                    : "./src/assets/img/PW_dodo.jpg"
+                    ? "./src/assets/img/PW_surpriso.png"
+                    : "./src/assets/img/PW_dodo.png"
                 }
                 alt="potato_in_a_plate"
               />
@@ -76,7 +76,7 @@ function Menu() {
                   onClick={handleRecipeClick}
                   onKeyDown={handleRecipeClick}
                   className="arrow-side"
-                  src="./src/assets/img/PW_arrow-right.png"
+                  src="./src/assets/img/arrow-right.svg"
                   alt="arrow-to-recipe"
                 />
               </a>
