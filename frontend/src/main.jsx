@@ -8,11 +8,11 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    loader: async () => {
-      const res = await fetch(`http://localhost:3310/api/users`);
-      const data = await res.json();
-      return data;
-    },
+    // loader: async () => {
+    //   const res = await fetch(`http://localhost:3310/api/users`);
+    //   const data = await res.json();
+    //   return data;
+    // },
   },
 ]);
 

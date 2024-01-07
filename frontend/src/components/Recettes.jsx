@@ -24,7 +24,7 @@ function Recettes({ chooseRecipe, handleRecipeClick }) {
               <div className="div-img">
                 <img
                   className="img"
-                  src="./src/assets/img/PW_surpriso.jpg"
+                  src="./src/assets/img/PW_surpriso.png"
                   alt="potato_in_a_plate"
                 />
               </div>
@@ -32,7 +32,7 @@ function Recettes({ chooseRecipe, handleRecipeClick }) {
                 <a href="/#choix">
                   <img
                     className="arrow-top"
-                    src="./src/assets/img/arrow_top.png"
+                    src="./src/assets/img/arrow_top.svg"
                     alt="arrow-to-menu"
                     onClick={handleRecipeClick}
                   />

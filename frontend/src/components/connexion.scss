@@ -1,0 +1,54 @@
+.backdrop {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.modal-connexion {
+  position: fixed;
+  top: 12vh;
+  left: calc(8vw + 2%);
+  right: calc(8vw + 2%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 15px 15px 40px 15px;
+
+  border-radius: 0.5rem;
+  z-index: 11;
+  overflow: hidden;
+  h2 {
+    padding-bottom: 2vh;
+  }
+  .content {
+    display: flex;
+    justify-content: center;
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+    }
+    input {
+      font-style: oblique;
+      padding: 4px 8px;
+      border-radius: 2px;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      border-color: black;
+    }
+  }
+}
+
+.footer-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  justify-content: space-around;
+  .submit {
+    margin: 2vh 0vh;
+  }
+}
