@@ -1,7 +1,7 @@
 .menu {
   display: flex;
-  justify-content: row;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: space-between;
 
   .small_potato {
     align-self: center;
@@ -18,7 +18,7 @@
   .arrow-side {
     align-self: center;
     width: calc(40% - 30px);
-    margin-bottom: 8vh;
+    margin-bottom: 20px;
     margin-top: 2vh;
   }
 }

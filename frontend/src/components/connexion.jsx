@@ -1,10 +1,11 @@
 import "./connexion.scss";
+import "../styles/commons.scss";
 
 function Connexion() {
   return (
     <section className="backdrop">
       <div className="modal-connexion">
-        <h2> Connexion à mon espace </h2>
+        <h2> Connexion</h2>
         <div className="content">
           <form>
             <input

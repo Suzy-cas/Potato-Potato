@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 
 import "./recettes.scss";
 import "../styles/commons.scss";
+import VarietyCard from "./VarietyCard";
 
 function Variete({ chooseRecipe, handleRecipeClick }) {
   return (
     <motion.div
-      animate={{ x: chooseRecipe ? 0 : 100, opacity: chooseRecipe ? 1 : 0 }}
+      animate={{ x: chooseRecipe ? 20 : 100, opacity: chooseRecipe ? 1 : 0 }}
     >
       <section id="trouve-variete">
         <div className="recettes">
@@ -24,17 +25,20 @@ function Variete({ chooseRecipe, handleRecipeClick }) {
               <input value="" placeholder="Charlotte"></input>
             </form>
           </div>
-          <div className="return-menu-right">
-            <a href="/#choix">
-              <img
-                className="arrow-top"
-                src="./src/assets/img/arrow_top.svg"
-                alt="arrow-to-menu"
-                onClick={handleRecipeClick}
-              />
-              <p>Retour au menu</p>
-            </a>
-          </div>
+        </div>
+        {/* <div className="card">
+          <VarietyCard />
+        </div> */}
+        <div className="return-menu-right">
+          <a href="/#choix">
+            <img
+              className="arrow-top"
+              src="./src/assets/img/arrow_top.svg"
+              alt="arrow-to-menu"
+              onClick={handleRecipeClick}
+            />
+            <p>Retour au menu</p>
+          </a>
         </div>
       </section>
     </motion.div>
