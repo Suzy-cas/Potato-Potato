@@ -1,16 +1,17 @@
-import { BrowserRouter } from "react-router-dom";
-
+import { useLoaderData } from "react-router-dom";
 import Header from "./components/Header";
 import Menu from "./components/menu";
+import Connexion from "./components/connexion";
 
 function App() {
+  const users = useLoaderData();
+  console.info(users);
   return (
-    <BrowserRouter>
-      <main className="main">
-        <Header />
-        <Menu />
-      </main>
-    </BrowserRouter>
+    <main className="main">
+      <Header />
+      <Menu />
+      <Connexion />
+    </main>
   );
 }
 

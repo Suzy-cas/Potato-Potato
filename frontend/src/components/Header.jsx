@@ -35,6 +35,7 @@ function Header() {
             ? "./src/assets/img/PW_intro-coeur.png"
             : "./src/assets/img/PW_intro.png"
         }
+        alt="potato-love"
       />
       <h1>Bienvenue sur</h1>
       <h2>PoTAto PotaTO !?</h2>
@@ -43,8 +44,9 @@ function Header() {
           className="arrow"
           onMouseEnter={() => setPotatoHeart(true)}
           onMouseLeave={() => setPotatoHeart(false)}
-          src="./src/assets/img/arrow.png"
+          src="./src/assets/img/arrow.svg"
           href="#menu"
+          alt="arrow-to-go-to-menu"
         />
       </a>
     </header>

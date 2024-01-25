@@ -50,7 +50,7 @@ function Menu() {
                   onClick={handleRecipeClick}
                   onKeyDown={handleRecipeClick}
                   className="arrow-side"
-                  src="./src/assets/img/PW_arrow-left.png"
+                  src="./src/assets/img/arrow-left.svg"
                   alt="arrow-to-variete"
                 />
               </a>
@@ -76,7 +76,7 @@ function Menu() {
                   onClick={handleRecipeClick}
                   onKeyDown={handleRecipeClick}
                   className="arrow-side"
-                  src="./src/assets/img/PW_arrow-right.png"
+                  src="./src/assets/img/arrow-right.svg"
                   alt="arrow-to-recipe"
                 />
               </a>

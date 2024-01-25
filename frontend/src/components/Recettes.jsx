@@ -32,7 +32,7 @@ function Recettes({ chooseRecipe, handleRecipeClick }) {
                 <a href="/#choix">
                   <img
                     className="arrow-top"
-                    src="./src/assets/img/arrow_top.png"
+                    src="./src/assets/img/arrow_top.svg"
                     alt="arrow-to-menu"
                     onClick={handleRecipeClick}
                   />
