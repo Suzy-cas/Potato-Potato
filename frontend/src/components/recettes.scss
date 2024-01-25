@@ -6,6 +6,8 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
 }
 .recettes {
   display: flex;
@@ -50,39 +52,41 @@ input {
     flex-direction: column;
     height: 100%;
     margin-bottom: 5dvh;
-    
-    a{
+
+    a {
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-decoration: none;
       color: black;
     }
-  
+
     .arrow-top {
-       display: flex;
+      display: flex;
       width: calc(25% - 0px);
-    
     }
   }
+}
+
+.card {
+  border: solid black 3px;
+  padding: 10px 25px;
 }
 
 @media screen and (min-width: 360px) and (max-width: 768px) {
   .recettes {
-    .img{
-      width: calc(50vh - 10px);
+    .img {
+      width: calc(40vh - 100px);
     }
     .div-img {
       width: 20%;
+    }
   }
 }
-}
-
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .recettes {
-    .img{
+    .img {
       width: calc(30vh - 10px);
     }
   }
@@ -90,7 +94,7 @@ input {
 
 @media screen and (min-width: 1024px) {
   .recettes {
-    .img{
+    .img {
       width: calc(40vh - 10px);
     }
   }

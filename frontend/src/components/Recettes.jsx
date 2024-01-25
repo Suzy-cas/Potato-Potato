@@ -8,7 +8,12 @@ function Recettes({ chooseRecipe, handleRecipeClick }) {
   return (
     <AnimatePresence>
       {chooseRecipe && (
-        <motion.div animate={{ x: 100 }}>
+        <motion.div
+          animate={{
+            x: chooseRecipe ? 20 : 100,
+            opacity: chooseRecipe ? 1 : 0,
+          }}
+        >
           <section id="trouve-recettes">
             <div className="recettes">
               <div className="form_recettes">
