@@ -1,149 +1,191 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
-
 // Load environment variables from .env file
 require("dotenv").config();
 
 // Import Faker library for generating fake data
-const { faker } = require("@faker-js/faker");
+// const { faker } = require("@faker-js/faker");
 
 // Import database client
 const database = require("./database/client");
+const {
+  varieties,
+  cookingTechs,
+  recipes,
+  steps,
+  // eslint-disable-next-line no-unused-vars
+  ingredientQtRecipes,
+  ingredients,
+  quantities,
+  types,
+  // eslint-disable-next-line no-unused-vars
+  cookingTechVars,
+} = require("./database/datas");
 
 const seed = async () => {
   try {
     // Declare an array to store the query promises
-    // See why here: https://eslint.org/docs/latest/rules/no-await-in-loop
     const queries = [];
+    // See why here: https://eslint.org/docs/latest/rules/no-await-in-loop
 
     /* ************************************************************************* */
 
-    // Generating Seed Data
-
     // Optional: Truncate tables (remove existing data)
-    await database.query("delete from recipes_pulpits");
-    await database.query("delete from ingredients_quantities_recipes");
-    await database.query("delete from quantities");
-    await database.query("delete from ingredients");
-    await database.query("delete from recipes");
-    await database.query("delete from categories");
-    await database.query("delete from potatoes_varieties");
-    await database.query("delete from pulpits");
-    await database.query("delete from users");
-    await database.query("delete from roles");
+    await database.query("DELETE FROM cooking_tech_variety");
+    await database.query("DELETE FROM type");
+    // await database.query("ingredient_quantity_recipe");
+    await database.query("DELETE FROM quantity");
+    await database.query("DELETE FROM ingredient");
+    await database.query("DELETE FROM potatoe_variety");
+    await database.query("DELETE FROM step");
+    // await database.query("DELETE FROM cooking_tech");
+    await database.query("DELETE FROM recipe");
+    await database.query("DELETE FROM recipe");
 
-    // Insert fake data into the 'roles' table
-    for (let i = 0; i < 10; i += 1) {
-      queries.push(
-        database.query("insert into roles(name) values (?)", ["admin"])
+    // Creation of reusable admin and user account
+    const adminQueries = () =>
+      database.query(
+        "INSERT INTO user(username, email, password, is_admin) VALUES (?,?,?,?)",
+        [
+          "Yzus",
+          "suzy.cassar@gmail.com",
+          "$argon2id$v=19$m=65536,t=5,p=1$Nv4lsd4Q5rOntH2JalI2Pw$7GYdWLy9TemdyccKydNnLd9LdwPJO6T3JIr92ldZmok",
+          false,
+        ]
       );
-    }
+    queries.push(adminQueries());
 
-    // Insert fake data into the 'users' table
-    for (let i = 0; i < 10; i += 1) {
-      queries.push(
-        database.query(
-          "insert into users(username, email, password, role_id) values (?,?,?,?)",
-          [
-            faker.person.firstName(),
-            faker.internet.email(),
-            faker.internet.password(),
-            3,
-          ]
-        )
+    const userQueries = () =>
+      database.query(
+        "INSERT INTO user(username, email, password, is_admin) VALUES (?,?,?,?)",
+        [
+          "Rassac",
+          "suzy.cassar@gmail.com",
+          "$argon2id$v=19$m=65536,t=5,p=1$Nv4lsd4Q5rOntH2JalI2Pw$7GYdWLy9TemdyccKydNnLd9LdwPJO6T3JIr92ldZmok",
+          true,
+        ]
       );
-    }
+    queries.push(userQueries());
 
-    // Insert fake data into the 'pulpits' table
-    for (let i = 0; i < 2; i += 1) {
-      const type = i % 2 === 0 ? "farineuse" : "ferme";
-      queries.push(
-        database.query("insert into pulpits(type) values (?)", [type])
-      );
-    }
-
-    // Insert fake data into the 'potatoes_varieties' table
-    for (let i = 0; i < 1; i += 1) {
-      queries.push(
-        database.query(
-          "insert into potatoes_varieties(name, outside_color, inside_color, origin, pulpit_id) values (?, ?, ?, ?, ?)",
-          ["Charlotte", "jaune", "jaune", "France", 2]
-        )
-      );
-    }
-
-    // Insert fake data into the 'categories' table
-    queries.push(
-      database.query("insert into categories(name) values (?)", ["salade"])
+    // Insert data into the 'cooking_tech' table
+    const queriesCookingTech = cookingTechs.map((cookingTech) =>
+      database.query("insert into cooking_tech(id, name) values (?,?)", [
+        cookingTech.id,
+        cookingTech.name,
+      ])
     );
 
-    // Insert fake data into the 'recipes' table
-    queries.push(
+    queries.push(...queriesCookingTech);
+
+    // Insert data into the 'step' table
+    const queriesStep = steps.map((step) =>
       database.query(
-        "insert into recipes(title, difficulty, cooking_time, steps, category_id, user_id, is_approved) values (?, ?, ?, ?, ?, ?, ?)",
+        "insert into step(id, step_1, step_2, step_3, step_4, step_5, step_6, step_7, step_8, step_9, step_10) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         [
-          "Salade de pomme de terre à la française",
-          "facile",
-          "30",
-          "Lavez puis épluchez les pommes de terre./Faites-les cuire à la vapeur pendant environ 10 minutes puis réservez./Emincez les oignons puis faites-les revenir à la poele jusqu'à ce qu'ils prennent une belle couleur dorée./Ajoutez les lardons, faites-les revenir puis réservez./Immergez totalement les oeufs dans une casserole d'eau bouillante et laissez-les cuire 10 minutes puis plongez-les dans l'eau froide avant de les écailler. Coupez-les en morceau./Ajoutez l'ensemble des péparation et assaisonnez à l'huile d'olive et au vinaigre de cidre.",
-          1,
-          3,
-          1,
+          step.id,
+          step.step_1,
+          step.step_2,
+          step.step_3,
+          step.step_4,
+          step.step_5,
+          step.step_6,
+          step.step_7,
+          step.step_8,
+          step.step_9,
+          step.step_10,
         ]
       )
     );
 
-    // Insert fake data into the 'ingredients' table
-    const ingredientsToInsert = [
-      "oignon",
-      "oeufs",
-      "pomme de terre",
-      "huile d'olive",
-      "vinaigre de cidre",
-    ];
+    queries.push(...queriesStep);
 
-    for (const ingredient of ingredientsToInsert) {
-      queries.push(
-        database.execute("INSERT INTO ingredients (name) VALUES (?)", [
-          ingredient,
-        ])
-      );
-    }
-
-    // Insert fake data into the 'quantites' table
-    const quantitesToInsert = [
-      [150, "g"],
-      [4, "unit"],
-      [500, "g"],
-      [2, "cas"],
-      [2, "cas"],
-    ];
-
-    for (const [name, value] of quantitesToInsert) {
-      queries.push(
-        database.execute("INSERT INTO quantities(value, unit) VALUES (?, ?)", [
-          name,
-          value,
-        ])
-      );
-    }
-
-    // Insert fake data into the 'ingredients_quantities_recipes' table
-    queries.push(
-      database.execute(
-        "INSERT INTO ingredients_quantities_recipes(recipe_id, ingredient_id, quantity_id) VALUES (?, ?, ?)",
-        ["1", "1", "1"]
+    // Insert data into the 'recipe' table
+    const queriesRecipe = recipes.map((recipe) =>
+      database.query(
+        "insert into recipe(title, difficulty, cooking_time, step_id, user_id, cooking_tech_id, is_approved) values (?, ?, ?, ?, ?, ?, ?)",
+        [
+          recipe.title,
+          recipe.difficulty,
+          recipe.cooking_time,
+          recipe.step_id,
+          recipe.user_id,
+          recipe.cooking_tech_id,
+          recipe.is_approved,
+        ]
       )
     );
 
-    // Insert fake data into the 'recipes_pulpits' table
-    queries.push(
-      database.execute(
-        "INSERT INTO recipes_pulpits(recipe_id, pulpit_id) VALUES (?, ?)",
-        ["1", "2"]
+    queries.push(...queriesRecipe);
+
+    // Insert data into the 'step' table
+    const queriesPotatoeVariety = varieties.map((variety) =>
+      database.query(
+        "insert into potatoe_variety(id, name, outside_color, inside_color, origin, flesh, description) values (?, ?, ?, ?, ?, ?, ?)",
+        [
+          variety.id,
+          variety.name,
+          variety.outside_color,
+          variety.inside_color,
+          variety.origin,
+          variety.flesh,
+          variety.description,
+        ]
       )
     );
 
-    /* ************************************************************************* */
+    queries.push(...queriesPotatoeVariety);
+
+    // Insert data into the 'ingredient' table
+    const queriesIngredient = ingredients.map((ingredient) =>
+      database.query("insert into ingredient(name) values (?)", [
+        ingredient.name,
+      ])
+    );
+
+    queries.push(...queriesIngredient);
+
+    // Insert data into the 'type' table
+    const queriesType = types.map((type) =>
+      database.query("insert into type(id, name) values (?,?)", [
+        type.id,
+        type.name,
+      ])
+    );
+    queries.push(...queriesType);
+
+    // Insert data into the 'quantity' table
+    const queriesQuantity = quantities.map((quantity) =>
+      database.query("insert into quantity(value) values (?)", [quantity.value])
+    );
+    queries.push(...queriesQuantity);
+
+    // Insert data into the 'ingredient_quantity_recipe' table
+    // const queriesIngredientQtRecipe = ingredientQtRecipes.map(
+    //   (ingredientQtRecipe) =>
+    //     database.query(
+    //       "insert into ingredient_quantity_recipe(recipe_id,ingredient_id,quantity_id) values (?,?,?)",
+    //       [
+    //         ingredientQtRecipe.recipe_id,
+    //         ingredientQtRecipe.ingredient_id,
+    //         ingredientQtRecipe.quantity_id,
+    //       ]
+    //     )
+    // );
+
+    // queries.push(...queriesIngredientQtRecipe);
+
+    // Insert data into the 'cooking_tech_variety' table
+
+    // const queriesCookingTechVar = cookingTechVars.map((cookingTechVar) =>
+    //   database.query(
+    //     "insert into cooking_tech_variety(id, cooking_tech_id, potatoe_variety_id) values (?, ?, ?)",
+    //     [
+    //       cookingTechVar.id,
+    //       cookingTechVar.cooking_tech_id,
+    //       cookingTechVar.potatoe_variety_id,
+    //     ]
+    //   )
+    // );
+
+    // queries.push(...queriesCookingTechVar);
 
     // Wait for all the insertion queries to complete
     await Promise.all(queries);

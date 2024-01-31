@@ -2,21 +2,22 @@
 const Joi = require("joi");
 
 const userSchema = Joi.object({
+  id: Joi.number().presence("optional"),
   username: Joi.string().max(80).required(),
   email: Joi.string().email().max(255).required(),
   password: Joi.string().max(80).required(),
-  role_id: Joi.number().integer().required(),
+  is_admin: Joi.number().integer().required(),
 });
 
 const validateUser = (req, res, next) => {
-  const { username, email, password, role_id } = req.body;
+  const schema = userSchema();
 
-  const { error } = userSchema.validate({
-    username,
-    email,
-    password,
-    role_id,
-  });
+  const { error } = schema.validate(
+    {
+      ...req.body,
+    },
+    { abortEarly: false }
+  );
 
   if (error) {
     res.status(422).json({ validationErrors: error.details });
