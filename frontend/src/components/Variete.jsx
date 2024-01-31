@@ -1,11 +1,29 @@
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+import instance from "../services/instance";
 
 import "./recettes.scss";
 import "../styles/commons.scss";
 import VarietyCard from "./VarietyCard";
 
 function Variete({ chooseRecipe, handleRecipeClick }) {
+  const [arrayVarieties, setArrayVarieties] = useState([]);
+  const [varietySearch, setVarietySearch] = useState([]);
+  useEffect(() => {
+    instance
+      .get("/api/varieties")
+      .then((result) => {
+        setArrayVarieties(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+  const handleVarietyChange = (e) => {
+    setVarietySearch(e.target.value);
+  };
+
   return (
     <motion.div
       animate={{ x: chooseRecipe ? 20 : 100, opacity: chooseRecipe ? 1 : 0 }}
@@ -22,13 +40,18 @@ function Variete({ chooseRecipe, handleRecipeClick }) {
           <div className="form_recettes">
             <h1>T&apos;as quoi comme variété ?</h1>
             <form>
-              <input value="" placeholder="Charlotte"></input>
+              <input
+                type="text"
+                value={varietySearch}
+                placeholder="Charlotte, Agria, Pompadour..."
+                onChange={handleVarietyChange}
+              />
             </form>
           </div>
         </div>
-        {/* <div className="card">
-          <VarietyCard />
-        </div> */}
+
+        <VarietyCard arrayVarieties={arrayVarieties} />
+
         <div className="return-menu-right">
           <a href="/#choix">
             <img

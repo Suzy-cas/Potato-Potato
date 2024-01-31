@@ -41,8 +41,9 @@ function Recettes({ chooseRecipe, handleRecipeClick }) {
                     alt="arrow-to-menu"
                     onClick={handleRecipeClick}
                   />
+
+                  <p>Retour au menu</p>
                 </a>
-                <p>Retour au menu</p>
               </div>
             </div>
           </section>

@@ -1,8 +1,7 @@
-import "../styles/commons.scss";
+// import "../styles/commons.scss";
 
 function RecipeCard() {
-
-    return ();
+  return <p>Recettes</p>;
 }
 
 export default RecipeCard;
