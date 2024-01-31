@@ -4,11 +4,11 @@ const tables = require("../tables");
 // The B of BREAD - Browse (Read All) operation
 const browse = async (req, res, next) => {
   try {
-    // Fetch all users from the database
-    const users = await tables.user.readAll();
+    // Fetch all cooking_tech_varietys from the database
+    const cooking_tech_varietys = await tables.cooking_tech_variety.readAll();
 
-    // Respond with the users in JSON format
-    res.status(200).json(users);
+    // Respond with the cooking_tech_varietys in JSON format
+    res.status(200).json(cooking_tech_varietys);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -18,15 +18,15 @@ const browse = async (req, res, next) => {
 // The R of BREAD - Read operation
 const read = async (req, res, next) => {
   try {
-    // Fetch a specific user from the database based on the provided ID
-    const user = await tables.user.read(req.params.id);
+    // Fetch a specific cooking_tech_variety from the database based on the provided ID
+    const cooking_tech_variety = await tables.cooking_tech_variety.read(req.params.id);
 
-    // If the user is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the user in JSON format
-    if (user == null) {
+    // If the cooking_tech_variety is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the cooking_tech_variety in JSON format
+    if (cooking_tech_variety == null) {
       res.sendStatus(404);
     } else {
-      res.status(200).json(user);
+      res.status(200).json(cooking_tech_variety);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -37,12 +37,12 @@ const read = async (req, res, next) => {
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
 const edit = async (req, res, next) => {
-  // Extract the user data from the request body
-  const user = req.body;
+  // Extract the cooking_tech_variety data from the request body
+  const cooking_tech_variety = req.body;
 
   try {
-    // Insert the user into the database
-    await tables.user.update(user, req.params.id);
+    // Insert the cooking_tech_variety into the database
+    await tables.cooking_tech_variety.update(cooking_tech_variety, req.params.id);
 
     // Respond with HTTP 204 (No Content)
     res.sendStatus(204);
@@ -54,14 +54,14 @@ const edit = async (req, res, next) => {
 
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
-  // Extract the user data from the request body
-  const user = req.body;
+  // Extract the cooking_tech_variety data from the request body
+  const cooking_tech_variety = req.body;
 
   try {
-    // Insert the user into the database
-    const insertId = await tables.user.create(user);
+    // Insert the cooking_tech_variety into the database
+    const insertId = await tables.cooking_tech_variety.create(cooking_tech_variety);
 
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted user
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted cooking_tech_variety
     res.status(201).json({ ...req.body, id: insertId });
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -72,10 +72,10 @@ const add = async (req, res, next) => {
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 const destroy = async (req, res, next) => {
-  // Extract the user data from the request body
+  // Extract the cooking_tech_variety data from the request body
   try {
-    // Insert the user into the database
-    await tables.user.delete(req.params.id);
+    // Insert the cooking_tech_variety into the database
+    await tables.cooking_tech_variety.delete(req.params.id);
 
     // Respond with HTTP 204 (No Content)
     res.sendStatus(204);

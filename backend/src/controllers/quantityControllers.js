@@ -4,11 +4,11 @@ const tables = require("../tables");
 // The B of BREAD - Browse (Read All) operation
 const browse = async (req, res, next) => {
   try {
-    // Fetch all users from the database
-    const users = await tables.user.readAll();
+    // Fetch all quantitys from the database
+    const quantitys = await tables.quantity.readAll();
 
-    // Respond with the users in JSON format
-    res.status(200).json(users);
+    // Respond with the quantitys in JSON format
+    res.status(200).json(quantitys);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -18,15 +18,15 @@ const browse = async (req, res, next) => {
 // The R of BREAD - Read operation
 const read = async (req, res, next) => {
   try {
-    // Fetch a specific user from the database based on the provided ID
-    const user = await tables.user.read(req.params.id);
+    // Fetch a specific quantity from the database based on the provided ID
+    const quantity = await tables.quantity.read(req.params.id);
 
-    // If the user is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the user in JSON format
-    if (user == null) {
+    // If the quantity is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the quantity in JSON format
+    if (quantity == null) {
       res.sendStatus(404);
     } else {
-      res.status(200).json(user);
+      res.status(200).json(quantity);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -37,12 +37,12 @@ const read = async (req, res, next) => {
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
 const edit = async (req, res, next) => {
-  // Extract the user data from the request body
-  const user = req.body;
+  // Extract the quantity data from the request body
+  const quantity = req.body;
 
   try {
-    // Insert the user into the database
-    await tables.user.update(user, req.params.id);
+    // Insert the quantity into the database
+    await tables.quantity.update(quantity, req.params.id);
 
     // Respond with HTTP 204 (No Content)
     res.sendStatus(204);
@@ -54,14 +54,14 @@ const edit = async (req, res, next) => {
 
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
-  // Extract the user data from the request body
-  const user = req.body;
+  // Extract the quantity data from the request body
+  const quantity = req.body;
 
   try {
-    // Insert the user into the database
-    const insertId = await tables.user.create(user);
+    // Insert the quantity into the database
+    const insertId = await tables.quantity.create(quantity);
 
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted user
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted quantity
     res.status(201).json({ ...req.body, id: insertId });
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -72,10 +72,10 @@ const add = async (req, res, next) => {
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 const destroy = async (req, res, next) => {
-  // Extract the user data from the request body
+  // Extract the quantity data from the request body
   try {
-    // Insert the user into the database
-    await tables.user.delete(req.params.id);
+    // Insert the quantity into the database
+    await tables.quantity.delete(req.params.id);
 
     // Respond with HTTP 204 (No Content)
     res.sendStatus(204);
