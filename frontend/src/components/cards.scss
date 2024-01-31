@@ -1,20 +1,30 @@
-.card-container {
-  max-width: 90%;
-
-  .card-content {
-    display: flex;
-    text-align: start;
-  }
-  img {
-    max-width: 100%;
-  }
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  li::before {
-    content: "•";
-    padding-right: 8px;
+.variety-cards {
+  .card-container {
+    max-width: 90%;
+    border: solid black 3px;
+    padding: 10px 25px;
+    margin: 3vh 3vw;
+    .card-content {
+      display: flex;
+      text-align: start;
+    }
+    img {
+      max-width: 100%;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    li::before {
+      content: "•";
+      padding-right: 8px;
+    }
   }
 }
+
+// @media screen and (min-width: 768px) and (max-width: 1024px) {
+//   .variety-cards {
+//     display: flex;
+//   }
+// }
