@@ -11,10 +11,12 @@ const {
   cookingTechs,
   recipes,
   steps,
+  // eslint-disable-next-line no-unused-vars
   ingredientQtRecipes,
   ingredients,
   quantities,
   types,
+  // eslint-disable-next-line no-unused-vars
   cookingTechVars,
 } = require("./database/datas");
 

@@ -1,6 +1,7 @@
+/* eslint-disable camelcase */
 const AbstractManager = require("./AbstractManager");
 
-class Ingredient_quantity_recipeManager extends AbstractManager {
+class IngredientQtRecipeManager extends AbstractManager {
   constructor() {
     // Call the constructor of the parent class (AbstractManager)
     // and pass the table name "ingredient_quantity_recipe" as configuration
@@ -10,7 +11,8 @@ class Ingredient_quantity_recipeManager extends AbstractManager {
   // The C of CRUD - Create operation
 
   async create(ingredient_quantity_recipe) {
-    const { recipe_id, ingredient_id, quantity_id } = ingredient_quantity_recipe;
+    const { recipe_id, ingredient_id, quantity_id } =
+      ingredient_quantity_recipe;
     // Execute the SQL INSERT query to add a new ingredient_quantity_recipe to the "ingredient_quantity_recipe" table
     const [result] = await this.database.query(
       `insert into ${this.table} (recipe_id, ingredient_id, quantity_id) values (?, ?, ?)`,
@@ -67,4 +69,4 @@ class Ingredient_quantity_recipeManager extends AbstractManager {
   }
 }
 
-module.exports = Ingredient_quantity_recipeManager;
+module.exports = IngredientQtRecipeManager;

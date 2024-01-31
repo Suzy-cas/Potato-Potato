@@ -1,6 +1,7 @@
+/* eslint-disable camelcase */
 const AbstractManager = require("./AbstractManager");
 
-class Cooking_techManager extends AbstractManager {
+class CookingTechManager extends AbstractManager {
   constructor() {
     // Call the constructor of the parent class (AbstractManager)
     // and pass the table name "cooking_tech" as configuration
@@ -67,4 +68,4 @@ class Cooking_techManager extends AbstractManager {
   }
 }
 
-module.exports = Cooking_techManager;
+module.exports = CookingTechManager;

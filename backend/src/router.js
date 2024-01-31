@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const userControllers = require("./controllers/userControllers");
-const validateUser = require("./validators/validateUser");
+const { validateUser } = require("./validators/validateUser");
 
 router.get("/users", userControllers.browse);
 router.get("/user/:id", userControllers.read);
@@ -28,5 +28,10 @@ router.get("/recipes/:id", recipeControllers.read);
 router.post("/recipes", validateRecipe, recipeControllers.add);
 router.put("/recipes/:id", validateRecipe, recipeControllers.edit);
 router.delete("/recipes/:id", recipeControllers.destroy);
+
+const varietyControllers = require("./controllers/varietyControllers");
+
+router.get("/varieties", varietyControllers.browse);
+router.get("/variety/:id", varietyControllers.read);
 
 module.exports = router;

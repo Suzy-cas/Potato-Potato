@@ -3,51 +3,38 @@
 /* ************************************************************************* */
 
 // Import the manager modules responsible for handling data operations on the tables
-const UserManager = require("./models/UserManager");
-const RoleManager = require("./models/RoleManager");
-const PulpitManager = require("./models/PulpitManager");
 
 const RecipeManager = require("./models/RecipeManager");
 
-const Cooking_techManager = require("./models/Cooking_techManager");
+const CookingTechManager = require("./models/CookingTechManager");
 
 const UserManager = require("./models/UserManager");
-
-const RecipeManager = require("./models/RecipeManager");
 
 const StepManager = require("./models/StepManager");
 
-const Cooking_techManager = require("./models/Cooking_techManager");
+const VarietyManager = require("./models/VarietyManager");
 
-const Potatoe_varietyManager = require("./models/Potatoe_varietyManager");
-
-const Cooking_tech_varietyManager = require("./models/Cooking_tech_varietyManager");
+const CookingTechVarietyManager = require("./models/CookingTechVarietyManager");
 
 const IngredientManager = require("./models/IngredientManager");
 
 const QuantityManager = require("./models/QuantityManager");
 
-const Ingredient_quantity_recipeManager = require("./models/Ingredient_quantity_recipeManager");
+const IngredientQtRecipeManager = require("./models/IngredientQtRecipeManager");
 
 const TypeManager = require("./models/TypeManager");
 
 const managers = [
-  TypeManager,
-  Ingredient_quantity_recipeManager,
-  QuantityManager,
-  IngredientManager,
-  Cooking_tech_varietyManager,
-  Potatoe_varietyManager,
-  Cooking_techManager,
+  RecipeManager,
+  CookingTechManager,
+  UserManager,
   StepManager,
-  RecipeManager,
-  UserManager,
-  Cooking_techManager,
-  RecipeManager,
-  UserManager,
-  RoleManager,
-  PulpitManager,
-  // Add other managers here
+  VarietyManager,
+  CookingTechVarietyManager,
+  IngredientManager,
+  QuantityManager,
+  IngredientQtRecipeManager,
+  TypeManager,
 ];
 
 // Create an empty object to hold data managers for different tables
