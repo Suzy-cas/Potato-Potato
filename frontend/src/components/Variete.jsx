@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
@@ -9,7 +11,7 @@ import VarietyCard from "./VarietyCard";
 
 function Variete({ chooseRecipe, handleRecipeClick }) {
   const [arrayVarieties, setArrayVarieties] = useState([]);
-  const [varietySearch, setVarietySearch] = useState([]);
+  const [varietySearch, setVarietySearch] = useState();
   useEffect(() => {
     instance
       .get("/api/varieties")
@@ -20,7 +22,8 @@ function Variete({ chooseRecipe, handleRecipeClick }) {
         console.error(err);
       });
   }, []);
-  const handleVarietyChange = (e) => {
+
+  const handleVarietySearch = (e) => {
     setVarietySearch(e.target.value);
   };
 
@@ -44,13 +47,16 @@ function Variete({ chooseRecipe, handleRecipeClick }) {
                 type="text"
                 value={varietySearch}
                 placeholder="Charlotte, Agria, Pompadour..."
-                onChange={handleVarietyChange}
+                onChange={handleVarietySearch}
               />
             </form>
           </div>
         </div>
 
-        <VarietyCard arrayVarieties={arrayVarieties} />
+        <VarietyCard
+          arrayVarieties={arrayVarieties}
+          varietySearch={varietySearch}
+        />
 
         <div className="return-menu-right">
           <a href="/#choix">
@@ -59,6 +65,10 @@ function Variete({ chooseRecipe, handleRecipeClick }) {
               src="./src/assets/img/arrow_top.svg"
               alt="arrow-to-menu"
               onClick={handleRecipeClick}
+              onKeyDown={(event) =>
+                event.key === "Enter" && handleRecipeClick()
+              }
+              tabIndex={0}
             />
             <p>Retour au menu</p>
           </a>

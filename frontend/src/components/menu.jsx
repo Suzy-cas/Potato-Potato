@@ -17,8 +17,6 @@ function Menu() {
     setisVisible(!isVisible);
   };
 
-  console.info(chooseRecipe);
-
   return (
     <>
       <section id="choix" className="menu">
