@@ -1,10 +1,31 @@
 import { motion, AnimatePresence } from "framer-motion";
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+import instance from "../services/instance";
 
+import RecipeCard from "./RecipeCard";
 import "./recettes.scss";
 import "../styles/commons.scss";
 
 function Recettes({ chooseRecipe, handleRecipeClick }) {
+  const [arrayRecipesCookTechs, setArrayRecipesCookTechs] = useState([]);
+  const [recipeSearch, setRecipeSearch] = useState();
+
+  useEffect(() => {
+    instance
+      .get("/api/recipes/cooking-techs")
+      .then((result) => {
+        setArrayRecipesCookTechs(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
+  const handleRecipeSearch = (e) => {
+    setRecipeSearch(e.target.value);
+  };
+
   return (
     <AnimatePresence>
       {chooseRecipe && (
@@ -33,19 +54,22 @@ function Recettes({ chooseRecipe, handleRecipeClick }) {
                   alt="potato_in_a_plate"
                 />
               </div>
-              <div className="return-menu-right">
-                <a href="/#choix">
-                  <img
-                    className="arrow-top"
-                    src="./src/assets/img/arrow_top.svg"
-                    alt="arrow-to-menu"
-                    onClick={handleRecipeClick}
-                  />
-
-                  <p>Retour au menu</p>
-                </a>
-              </div>
             </div>
+            <div className="return-menu-right">
+              <a href="/#choix">
+                <img
+                  className="arrow-top"
+                  src="./src/assets/img/arrow_top.svg"
+                  alt="arrow-to-menu"
+                  onClick={handleRecipeClick}
+                />
+                <p>Retour au menu</p>
+              </a>
+            </div>
+            <RecipeCard
+              arrayRecipes={arrayRecipesCookTechs}
+              recipeSearch={recipeSearch}
+            />
           </section>
         </motion.div>
       )}

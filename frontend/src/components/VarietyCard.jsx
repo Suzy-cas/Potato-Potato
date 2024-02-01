@@ -9,7 +9,7 @@ function VarietyCard({ arrayVarieties, varietySearch }) {
     <section className="variety-cards">
       {arrayVarieties
         ?.filter((val) => {
-          return val.name.toLowerCase().includes(varietySearch.toLowerCase());
+          return val.name.includes(varietySearch);
         })
         .map((val) => (
           <div className="card-container">
