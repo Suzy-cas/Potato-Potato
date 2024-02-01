@@ -15,6 +15,20 @@ const browse = async (req, res, next) => {
   }
 };
 
+const browseByCookingTechs = async (req, res, next) => {
+  try {
+    // Fetch all recipes from the database
+    const recipe = await tables.recipe.readAllByCookingTech();
+
+    // Respond with the recipes in JSON format
+    res.status(200).json(recipe);
+  } catch (err) {
+    console.error(err);
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 // The R of BREAD - Read operation
 const read = async (req, res, next) => {
   try {
@@ -88,6 +102,7 @@ const destroy = async (req, res, next) => {
 // Ready to export the controller functions
 module.exports = {
   browse,
+  browseByCookingTechs,
   read,
   edit,
   add,

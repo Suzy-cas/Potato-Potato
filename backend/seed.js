@@ -31,14 +31,14 @@ const seed = async () => {
     // Optional: Truncate tables (remove existing data)
     await database.query("DELETE FROM cooking_tech_variety");
     await database.query("DELETE FROM type");
-    // await database.query("ingredient_quantity_recipe");
+    await database.query("DELETE FROM ingredient_quantity_recipe");
     await database.query("DELETE FROM quantity");
     await database.query("DELETE FROM ingredient");
     await database.query("DELETE FROM potatoe_variety");
     await database.query("DELETE FROM step");
-    // await database.query("DELETE FROM cooking_tech");
+    await database.query("DELETE FROM cooking_tech");
     await database.query("DELETE FROM recipe");
-    await database.query("DELETE FROM recipe");
+    await database.query("DELETE FROM user");
 
     // Creation of reusable admin and user account
     const adminQueries = () =>
@@ -100,8 +100,9 @@ const seed = async () => {
     // Insert data into the 'recipe' table
     const queriesRecipe = recipes.map((recipe) =>
       database.query(
-        "insert into recipe(title, difficulty, cooking_time, step_id, user_id, cooking_tech_id, is_approved) values (?, ?, ?, ?, ?, ?, ?)",
+        "insert into recipe(id, title, difficulty, cooking_time, step_id, user_id, cooking_tech_id, is_approved) values (?, ?, ?, ?, ?, ?, ?, ?)",
         [
+          recipe.id,
           recipe.title,
           recipe.difficulty,
           recipe.cooking_time,
@@ -135,7 +136,8 @@ const seed = async () => {
 
     // Insert data into the 'ingredient' table
     const queriesIngredient = ingredients.map((ingredient) =>
-      database.query("insert into ingredient(name) values (?)", [
+      database.query("insert into ingredient(id, name) values (?, ?)", [
+        ingredient.id,
         ingredient.name,
       ])
     );
@@ -153,39 +155,43 @@ const seed = async () => {
 
     // Insert data into the 'quantity' table
     const queriesQuantity = quantities.map((quantity) =>
-      database.query("insert into quantity(value) values (?)", [quantity.value])
+      database.query("insert into quantity(id, value) values (?, ?)", [
+        quantity.id,
+        quantity.value,
+      ])
     );
     queries.push(...queriesQuantity);
 
     // Insert data into the 'ingredient_quantity_recipe' table
-    // const queriesIngredientQtRecipe = ingredientQtRecipes.map(
-    //   (ingredientQtRecipe) =>
-    //     database.query(
-    //       "insert into ingredient_quantity_recipe(recipe_id,ingredient_id,quantity_id) values (?,?,?)",
-    //       [
-    //         ingredientQtRecipe.recipe_id,
-    //         ingredientQtRecipe.ingredient_id,
-    //         ingredientQtRecipe.quantity_id,
-    //       ]
-    //     )
-    // );
+    const queriesIngredientQtRecipe = ingredientQtRecipes.map(
+      (ingredientQtRecipe) =>
+        database.query(
+          "insert into ingredient_quantity_recipe(id, recipe_id, ingredient_id, quantity_id) values (?,?,?,?)",
+          [
+            ingredientQtRecipe.id,
+            ingredientQtRecipe.recipe_id,
+            ingredientQtRecipe.ingredient_id,
+            ingredientQtRecipe.quantity_id,
+          ]
+        )
+    );
 
-    // queries.push(...queriesIngredientQtRecipe);
+    queries.push(...queriesIngredientQtRecipe);
 
     // Insert data into the 'cooking_tech_variety' table
 
-    // const queriesCookingTechVar = cookingTechVars.map((cookingTechVar) =>
-    //   database.query(
-    //     "insert into cooking_tech_variety(id, cooking_tech_id, potatoe_variety_id) values (?, ?, ?)",
-    //     [
-    //       cookingTechVar.id,
-    //       cookingTechVar.cooking_tech_id,
-    //       cookingTechVar.potatoe_variety_id,
-    //     ]
-    //   )
-    // );
+    const queriesCookingTechVar = cookingTechVars.map((cookingTechVar) =>
+      database.query(
+        "insert into cooking_tech_variety(id, cooking_tech_id, potatoe_variety_id) values (?, ?, ?)",
+        [
+          cookingTechVar.id,
+          cookingTechVar.cooking_tech_id,
+          cookingTechVar.potatoe_variety_id,
+        ]
+      )
+    );
 
-    // queries.push(...queriesCookingTechVar);
+    queries.push(...queriesCookingTechVar);
 
     // Wait for all the insertion queries to complete
     await Promise.all(queries);
