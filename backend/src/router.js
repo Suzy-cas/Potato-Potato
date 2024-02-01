@@ -28,6 +28,8 @@ router.get("/recipes/:id", recipeControllers.read);
 router.post("/recipes", validateRecipe, recipeControllers.add);
 router.put("/recipes/:id", validateRecipe, recipeControllers.edit);
 router.delete("/recipes/:id", recipeControllers.destroy);
+// Routes spécifiques avec jointures
+router.get("/recipes-cookingtechs", recipeControllers.browseByCookingTechs);
 
 const varietyControllers = require("./controllers/varietyControllers");
 
