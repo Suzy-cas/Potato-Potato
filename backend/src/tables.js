@@ -10,8 +10,6 @@ const CookingTechManager = require("./models/CookingTechManager");
 
 const UserManager = require("./models/UserManager");
 
-const StepManager = require("./models/StepManager");
-
 const VarietyManager = require("./models/VarietyManager");
 
 const CookingTechVarietyManager = require("./models/CookingTechVarietyManager");
@@ -28,7 +26,6 @@ const managers = [
   RecipeManager,
   CookingTechManager,
   UserManager,
-  StepManager,
   VarietyManager,
   CookingTechVarietyManager,
   IngredientManager,
