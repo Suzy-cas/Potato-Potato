@@ -3,8 +3,6 @@ const AbstractManager = require("./AbstractManager");
 
 class RecipeManager extends AbstractManager {
   constructor() {
-    // Call the constructor of the parent class (AbstractManager)
-    // and pass the table name "recipe" as configuration
     super({ table: "recipe" });
   }
 
@@ -13,61 +11,66 @@ class RecipeManager extends AbstractManager {
   async create(recipe) {
     const {
       title,
+      picture,
       difficulty,
+      prep_time,
       cooking_time,
-      step_id,
+      steps,
       user_id,
       cooking_tech_id,
       is_approved,
     } = recipe;
-    // Execute the SQL INSERT query to add a new recipe to the "recipe" table
+
     const [result] = await this.database.query(
-      `insert into ${this.table} (title, difficulty, cooking_time, step_id, user_id, cooking_tech_id, is_approved) values (?, ?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (  title,
+        picture,
+        difficulty,
+        prep_time,
+        cooking_time,
+        steps, user_id, cooking_tech_id, is_approved) values (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         title,
+        picture,
         difficulty,
+        prep_time,
         cooking_time,
-        step_id,
+        steps,
         user_id,
         cooking_tech_id,
         is_approved,
       ]
     );
-
-    // Return the ID of the newly inserted recipe
     return result.insertId;
   }
 
   // The Rs of CRUD - Read operations
 
   async read(id) {
-    // Execute the SQL SELECT query to retrieve a specific recipe by its ID
     const [rows] = await this.database.query(
       `select * from ${this.table} where id = ?`,
       [id]
     );
-
-    // Return the first row of the result, which represents the recipe
     return rows[0];
   }
 
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all recipes from the "recipe" table
     const [rows] = await this.database.query(`select * from ${this.table}`);
 
-    // Return the array of recipes
     return rows;
   }
 
+  // A faire : passer en requête préparée
   async readAllByCookingTech() {
     try {
       const [rows] = await this.database.query(
         `SELECT DISTINCT
         ${this.table}.id,
         title,
+        picture,
         difficulty,
+        prep_time,
         cooking_time,
-        step_id,
+        steps,
         cooking_tech.name AS cooking_tech,
         potatoe_variety.name AS potatoe_variety
     FROM 

@@ -1,13 +1,13 @@
-const mashedPotatoe = require("../public/assets/images/Joel_Robuchon_mashed_web.jpg");
-const hassbSalmon = require("../public/assets/images/Hasseback_salmon_web.jpg");
-const steamed = require("../public/assets/images/Steamed_potatoe_web.jpg");
-const baconSalad = require("../public/assets/images/Potatoe_salad_bacon_radish_web.jpg");
+// const mashedPotatoe = require("../public/assets/images/Joel_Robuchon_mashed_web.jpg");
+// const hassbSalmon = require("../public/assets/images/Hasseback_salmon_web.jpg");
+// const steamed = require("../public/assets/images/Steamed_potatoe_web.jpg");
+// const baconSalad = require("../public/assets/images/Potatoe_salad_bacon_radish_web.jpg");
 
 const recipes = [
   {
     id: 4001,
     title: "Pommes de terre roties à la suedoise",
-    picture: { hassbSalmon },
+    picture: "../public/assets/images/Hasseback_salmon_web.jpg",
     difficulty: "Facile",
     prep_time: "10 minutes",
     cooking_time: "45 minutes",
@@ -20,11 +20,11 @@ const recipes = [
   {
     id: 4002,
     title: "Purée à la Joël Robuchon",
-    picture: { mashedPotatoe },
+    picture: "../public/assets/images/Joel_Robuchon_mashed_web.jpg",
     difficulty: "Facile",
     prep_time: "15 minutes",
     cooking_time: "25 minutes",
-    step_id:
+    steps:
       "Lavez les pommes de terre, mettez-les dans une casserole. Recouvrez-les d’eau froide, 2 cm au-dessus des pommes de terre. //Salez à raison de 10 g de sel par litre d’eau et faites cuire sur le feu, à découvert pendant 20 à 25 minutes jusqu’à ce que la lame d’un couteau transperce facilement les pommes de terre. //Égouttez-les, pelez-les encore tièdes, passez-les au moulin à légumes grille fine. Remettez la purée obtenue dans la casserole sur feu doux en remuant pour la dessécher un peu. //Dans une casserole, faites bouillir 20 cl de lait. Ajoutez à la purée le beurre bien froid coupé en morceaux, en mélangeant vivement avec une spatule de bois. Puis versez le lait chaud, toujours en mélangeant. Rectifiez l’assaisonnement et servez aussitôt.",
     user_id: 1,
     cooking_tech_id: 2002,
@@ -33,11 +33,11 @@ const recipes = [
   {
     id: 4003,
     title: "Pommes de terre vapeur",
-    picture: { steamed },
+    picture: "../public/assets/images/Steamed_potatoe_web.jpg",
     difficulty: "Facile",
     prep_time: "10 minutes",
     cooking_time: "20 à 25 minutes en fonction de la taille de vos patates",
-    step_id:
+    steps:
       "Remplir une grande casserole d’un pouce d’eau et y placer une marguerite. //Déposez les pommes de terre dans la marguerite et amenez l’eau à ébullition. //Couvrir et cuire jusqu’à ce qu’elles soient tendres, 10 à 15 minutes. //Assaisonnez de poivre, de sel, d'herbes fraiches et d'une noix de beurre.",
     user_id: 1,
     cooking_tech_id: 2003,
@@ -46,11 +46,11 @@ const recipes = [
   {
     id: 4004,
     title: "Salade pomme de terre œufs et lardons",
-    picture: { baconSalad },
+    picture: "../public/assets/images/Potatoe_salad_bacon_radish_web.jpg",
     difficulty: "Facile",
     prep_time: "10 minutes",
     cooking_time: "10 à 15 minutes en fonction de la taille de vos patates",
-    step_id:
+    steps:
       "Remplir une grande casserole d’un pouce d’eau et y placer une marguerite.\nEpluchez et découpez les pommes de terre en dés moyens. Déposez-les dans la marguerite et amenez l’eau à ébullition. \nCouvrir et cuire jusqu’à ce qu’elles soient tendres, 10 à 15 minutes. //Remplir une seconde casserole et remplissez-la pour que l'eau soit suffisante pour recouvrir les œufs. Une fois l'eau à ébullition, placez-y délicatement les œufs à l'aide d'une cuillère à soupe. Laissez-les cuire pendant 10 minute puis plongez-les dans l'eau froide //Pendant ce temps, épluchez et coupez les oignons en lamelles d'un demi-centimètre environ. Faites-les revenir à la poêle pendant 5 min jusqu'à ce que les oignons soient fondants. Ajoutez les lardons et laissez cuire encore 5 minutes. //Laisssez refroidir toutes les préparations : pommes de terre vapeur, oignons, lardons puis mélangez-les. Ajouter les œufs écaillés et coupés en lamelles et les herbes fraiches émincées. //Mélangez l'huile et le vinaigre et assaisonnez votre salade.",
     user_id: 1,
     cooking_tech_id: 2004,

@@ -10,13 +10,10 @@ const {
   varieties,
   cookingTechs,
   recipes,
-  steps,
-  // eslint-disable-next-line no-unused-vars
   ingredientQtRecipes,
   ingredients,
   quantities,
   types,
-  // eslint-disable-next-line no-unused-vars
   cookingTechVars,
 } = require("./database/datas");
 
@@ -35,7 +32,6 @@ const seed = async () => {
     await database.query("DELETE FROM quantity");
     await database.query("DELETE FROM ingredient");
     await database.query("DELETE FROM potatoe_variety");
-    await database.query("DELETE FROM step");
     await database.query("DELETE FROM cooking_tech");
     await database.query("DELETE FROM recipe");
     await database.query("DELETE FROM user");
@@ -75,38 +71,18 @@ const seed = async () => {
 
     queries.push(...queriesCookingTech);
 
-    // Insert data into the 'step' table
-    const queriesStep = steps.map((step) =>
-      database.query(
-        "insert into step(id, step_1, step_2, step_3, step_4, step_5, step_6, step_7, step_8, step_9, step_10) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        [
-          step.id,
-          step.step_1,
-          step.step_2,
-          step.step_3,
-          step.step_4,
-          step.step_5,
-          step.step_6,
-          step.step_7,
-          step.step_8,
-          step.step_9,
-          step.step_10,
-        ]
-      )
-    );
-
-    queries.push(...queriesStep);
-
     // Insert data into the 'recipe' table
     const queriesRecipe = recipes.map((recipe) =>
       database.query(
-        "insert into recipe(id, title, difficulty, cooking_time, step_id, user_id, cooking_tech_id, is_approved) values (?, ?, ?, ?, ?, ?, ?, ?)",
+        "insert into recipe(id, title, picture, difficulty, prep_time, cooking_time, steps, user_id, cooking_tech_id, is_approved) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         [
           recipe.id,
           recipe.title,
+          recipe.picture,
           recipe.difficulty,
+          recipe.prep_time,
           recipe.cooking_time,
-          recipe.step_id,
+          recipe.steps,
           recipe.user_id,
           recipe.cooking_tech_id,
           recipe.is_approved,

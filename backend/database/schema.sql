@@ -24,9 +24,11 @@ create table cooking_tech (
 create table recipe (
   id int primary key not null,
   title VARCHAR(255) NOT NULL,
+  picture VARCHAR(255) NOT NULL,
   difficulty VARCHAR(255) NOT NULL,
-  cooking_time FLOAT NOT NULL,
-  step_id INT NOT NULL,
+  prep_time VARCHAR(80) NOT NULL,
+  cooking_time VARCHAR(80) NOT NULL,
+  steps TEXT NOT NULL,
   user_id INT NOT NULL,
   cooking_tech_id INT NOT NULL,
   is_approved TINYINT NOT NULL
@@ -86,7 +88,5 @@ CREATE TABLE cooking_tech_variety (
 -- ALTER TABLE cooking_tech_variety ADD FOREIGN KEY (potatoe_variety_id) REFERENCES potatoe_variety (id);
 
 -- ALTER TABLE cooking_tech_variety ADD FOREIGN KEY (cooking_tech_id) REFERENCES cooking_tech (id);
-
--- ALTER TABLE recipe ADD FOREIGN KEY (step_id) REFERENCES step (id);
 
 -- ALTER TABLE quantity ADD FOREIGN KEY (type_id) REFERENCES type (id);
