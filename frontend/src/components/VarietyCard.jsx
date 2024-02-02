@@ -2,18 +2,16 @@
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from "prop-types";
 
-import "../styles/commons.scss";
-import "./cards.scss";
-
 function VarietyCard({ arrayVarieties, varietySearch }) {
+  console.info(arrayVarieties);
   return (
-    <section className="variety-cards">
+    <section className="card-container">
       {arrayVarieties
         ?.filter((val) => {
-          return val.name.includes(varietySearch);
+          return val.name.toLowerCase().includes(varietySearch);
         })
         .map((val) => (
-          <div className="card-container">
+          <div className="variety-cards">
             <h3>{val.name}</h3>
             <img
               alt="pomme de terre charlotee"
@@ -34,8 +32,8 @@ function VarietyCard({ arrayVarieties, varietySearch }) {
                 <p>{val.origin}</p>
                 <h4>Adaptée pour cuisiner : </h4>
                 <ul>
-                  <li>Purée</li>
-                  <li>Frites</li>
+                  <li>{}</li>
+                  <li>{}</li>
                 </ul>
               </div>
             </div>

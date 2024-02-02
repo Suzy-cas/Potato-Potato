@@ -1,45 +1,54 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/forbid-prop-types */
-/* eslint-disable no-undef */
-import PropTypes from "prop-types";
-// import { useEffect } from "react";
-import "../styles/commons.scss";
 
-function RecipeCard({ recipeSearch, recipesCookTechs, steps }) {
+import PropTypes from "prop-types";
+
+import "../styles/commons.scss";
+import "./cards.scss";
+
+function RecipeCard({ recipeSearch, recipesCookTechs }) {
   const uniqueRecipes = recipesCookTechs.filter(
     (recipe, index, self) =>
       self.findIndex((r) => r.title === recipe.title) === index
   );
-  console.info(steps);
+
   return (
-    <section className="variety-cards">
+    <section className="card-container">
       {uniqueRecipes.lenght !== 0
         ? uniqueRecipes
             .filter((val) => val.cooking_tech.includes(recipeSearch))
             .map((val) => (
-              <div className="card-container" key={val.id}>
+              <div className="recipe-cards" key={val.id}>
                 <h3>{val.title}</h3>
-                <img
-                  alt="pomme de terre charlotte"
-                  src="https://upload.wikimedia.org/wikipedia/commons/7/72/Pommes_de_terre_%28CHARLOTTE%29-cliche_Jean_Weber_%2823594803261%29.jpg?uselang=fr"
-                />
+                <img alt="" src="" />
                 <div className="card-content">
                   <div>
                     <h4>Difficulté</h4>
                     <p>{val.difficulty}</p>
+                    <h4>Temps de préparation</h4>
+                    <p>{val.prep_time}</p>
+
+                    <h4>Temps de cuisson</h4>
+                    <p>{val.cooking_time}</p>
                     <h4>Préparation</h4>
-                    {/* {steps.map((step) => (
-                      <p key={step.id}>{step.steps_1}</p>
-                    ))} */}
-                    <h4>
-                      Les variétés de pommes de terre adaptées à cette recette :
-                    </h4>
                     <ul>
-                      {uniqueRecipes
-                        .filter((potato) => potato.title.includes(val.title))
-                        .map((potato) => (
-                          <li>{potato.potatoe_variety}</li>
-                        ))}
+                      {val.steps.split("//").map((step, index) => (
+                        <li key={index}>{step.trim()}</li>
+                      ))}
                     </ul>
+                    <h4>
+                      Toutes les variétés de pommes de terre adaptées à cette
+                      recette :
+                    </h4>
+                    <div>
+                      <div className="pot-var-grid">
+                        {recipesCookTechs
+                          .filter((potato) => potato.title.includes(val.title))
+                          .map((potato) => (
+                            <p>{potato.potatoe_variety}</p>
+                          ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -52,7 +61,6 @@ function RecipeCard({ recipeSearch, recipesCookTechs, steps }) {
 RecipeCard.propTypes = {
   recipeSearch: PropTypes.arrayOf(PropTypes.object).isRequired,
   recipesCookTechs: PropTypes.arrayOf(PropTypes.object).isRequired,
-  steps: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default RecipeCard;

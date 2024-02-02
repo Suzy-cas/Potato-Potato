@@ -10,21 +10,12 @@ import "../styles/commons.scss";
 function Recettes({ handleRecipeClick }) {
   const [recipesCookTechs, setRecipesCookTechs] = useState([]);
   const [recipeSearch, setRecipeSearch] = useState([]);
-  const [steps, setSteps] = useState([]);
 
   useEffect(() => {
     instance
       .get("/api/recipes-cookingtechs")
       .then((result) => {
         setRecipesCookTechs(result.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    instance
-      .get("/api/steps")
-      .then((result) => {
-        setSteps(result.data);
       })
       .catch((err) => {
         console.error(err);
@@ -53,7 +44,6 @@ function Recettes({ handleRecipeClick }) {
     setIsActive((prevIsActive) => !prevIsActive);
   };
 
-  console.info(steps);
   return (
     // <AnimatePresence>
     //   {chooseRecipe && (
@@ -110,7 +100,6 @@ function Recettes({ handleRecipeClick }) {
         <RecipeCard
           recipesCookTechs={recipesCookTechs}
           recipeSearch={recipeSearch}
-          steps={steps}
         />
       </div>
     </>
