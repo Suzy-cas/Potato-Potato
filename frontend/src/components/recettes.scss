@@ -2,24 +2,26 @@ input {
   border: solid black;
 }
 
-#trouve-variete {
+#trouve-variete,
+#trouve-recettes {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  width: 100%;
 }
 .recettes {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
 
   .div-img {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 30%;
+    align-items: flex-end;
   }
   .img {
     display: flex;
@@ -29,9 +31,11 @@ input {
   .form_recettes {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    width: 40%;
-
+    justify-content: flex-start;
+    form {
+      display: flex;
+      justify-content: space-between;
+    }
     h1 {
       text-align: start;
       margin-bottom: 10px;
@@ -49,49 +53,67 @@ input {
     justify-content: flex-end;
     flex-direction: column;
     height: 100%;
-    margin-bottom: 5dvh;
-    
-    a{
+    // margin-bottom: 5dvh;
+    width: 8vw;
+
+    a {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
       text-decoration: none;
       color: black;
     }
-  
-    .arrow-top {
-       display: flex;
-      width: calc(25% - 0px);
-    
-    }
+
+    // .arrow-top {
+    //   display: flex;
+    //   width: 100%;
+    // }
   }
 }
 
 @media screen and (min-width: 360px) and (max-width: 768px) {
   .recettes {
-    .img{
-      width: calc(50vh - 10px);
+    flex-direction: column;
+    .img {
+      width: calc(40vh - 100px);
     }
     .div-img {
       width: 20%;
-  }
-}
-}
-
-
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  .recettes {
-    .img{
-      width: calc(30vh - 10px);
     }
   }
 }
 
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  #trouve-variete,
+  #trouve-recettes {
+    flex-direction: row;
+    .recettes {
+      flex-direction: row;
+      .img {
+        width: calc(30vh - 10px);
+      }
+      .form_recettes {
+        width: 50vw;
+      }
+      .div-img {
+        flex-direction: column;
+        align-items: flex-end;
+      }
+    }
+  }
+}
 @media screen and (min-width: 1024px) {
-  .recettes {
-    .img{
-      width: calc(40vh - 10px);
+  #trouve-variete,
+  #trouve-recettes {
+    flex-direction: row;
+    .recettes {
+      flex-direction: row;
+      .img {
+        width: calc(40vh - 10px);
+      }
+      .div-img {
+        flex-direction: column;
+        align-items: flex-end;
+      }
     }
   }
 }

@@ -3,15 +3,35 @@
 /* ************************************************************************* */
 
 // Import the manager modules responsible for handling data operations on the tables
+
+const RecipeManager = require("./models/RecipeManager");
+
+const CookingTechManager = require("./models/CookingTechManager");
+
 const UserManager = require("./models/UserManager");
-const RoleManager = require("./models/RoleManager");
-const PulpitManager = require("./models/PulpitManager");
+
+const VarietyManager = require("./models/VarietyManager");
+
+const CookingTechVarietyManager = require("./models/CookingTechVarietyManager");
+
+const IngredientManager = require("./models/IngredientManager");
+
+const QuantityManager = require("./models/QuantityManager");
+
+const IngredientQtRecipeManager = require("./models/IngredientQtRecipeManager");
+
+const TypeManager = require("./models/TypeManager");
 
 const managers = [
+  RecipeManager,
+  CookingTechManager,
   UserManager,
-  RoleManager,
-  PulpitManager,
-  // Add other managers here
+  VarietyManager,
+  CookingTechVarietyManager,
+  IngredientManager,
+  QuantityManager,
+  IngredientQtRecipeManager,
+  TypeManager,
 ];
 
 // Create an empty object to hold data managers for different tables

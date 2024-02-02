@@ -1,25 +1,76 @@
 import { motion, AnimatePresence } from "framer-motion";
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+import instance from "../services/instance";
 
+import RecipeCard from "./RecipeCard";
 import "./recettes.scss";
 import "../styles/commons.scss";
 
 function Recettes({ chooseRecipe, handleRecipeClick }) {
+  const [recipesCookTechs, setRecipesCookTechs] = useState([]);
+  const [recipeSearch, setRecipeSearch] = useState([]);
+
+  useEffect(() => {
+    instance
+      .get("/api/recipes-cookingtechs")
+      .then((result) => {
+        setRecipesCookTechs(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
+  const uniqueCookingTechs = recipesCookTechs
+    .map((recipe) => recipe.cooking_tech)
+    .filter((value, index, self) => self.indexOf(value) === index);
+
+  const handleRecipeSearch = (e) => {
+    const selectedTech = e.target.value;
+
+    if (recipeSearch.includes(selectedTech)) {
+      setRecipeSearch((prevSearch) =>
+        prevSearch.filter((tech) => tech !== selectedTech)
+      );
+    } else {
+      setRecipeSearch((prevSearch) => [...prevSearch, selectedTech]);
+    }
+  };
+
+  const [isActive, setIsActive] = useState(false);
+
+  // const handleButtonClick = () => {
+  //   setIsActive((prevIsActive) => !prevIsActive);
+  // };
+
   return (
     <AnimatePresence>
       {chooseRecipe && (
-        <motion.div animate={{ x: 100 }}>
+        <motion.div
+          animate={{
+            x: chooseRecipe ? 0 : 100,
+            opacity: chooseRecipe ? 1 : 0,
+          }}
+        >
+          {/* <> */}
           <section id="trouve-recettes">
             <div className="recettes">
               <div className="form_recettes">
-                <h1>Tu cherches quelle type de recette ?</h1>
+                <h1>Comment veux-tu cuisiner tes patates ?</h1>
                 <form>
-                  <input type="checkbox" name="soup"></input>
-                  <label htmlFor="soup">Soupe</label>
+                  {uniqueCookingTechs.map((cookingTech) => (
+                    <button
+                      type="button"
+                      name="cookingT"
+                      value={cookingTech}
+                      onClick={handleRecipeSearch}
+                      className={isActive ? "active" : ""}
+                    >
+                      {cookingTech}
+                    </button>
+                  ))}
                 </form>
-                <div className="grid_recettes">
-                  <button type="button">Soupe</button>
-                </div>
               </div>
               <div className="div-img">
                 <img
@@ -28,19 +79,30 @@ function Recettes({ chooseRecipe, handleRecipeClick }) {
                   alt="potato_in_a_plate"
                 />
               </div>
-              <div className="return-menu-right">
-                <a href="/#choix">
-                  <img
-                    className="arrow-top"
-                    src="./src/assets/img/arrow_top.svg"
-                    alt="arrow-to-menu"
-                    onClick={handleRecipeClick}
-                  />
-                </a>
+            </div>
+            <div className="return-menu-right">
+              <a href="/#choix">
+                <img
+                  className="arrow-top"
+                  src="./src/assets/img/arrow_top.svg"
+                  alt="arrow-to-menu"
+                  onClick={handleRecipeClick}
+                  onKeyDown={(event) =>
+                    event.key === "Enter" && handleRecipeClick()
+                  }
+                  tabIndex={0}
+                />
                 <p>Retour au menu</p>
-              </div>
+              </a>
             </div>
           </section>
+          <div>
+            <RecipeCard
+              recipesCookTechs={recipesCookTechs}
+              recipeSearch={recipeSearch}
+            />
+          </div>
+          {/* </> */}
         </motion.div>
       )}
     </AnimatePresence>

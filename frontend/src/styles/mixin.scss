@@ -1,0 +1,11 @@
+@mixin flexDesktop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexMobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

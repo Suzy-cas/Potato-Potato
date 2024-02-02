@@ -1,17 +1,14 @@
-import { useLoaderData } from "react-router-dom";
 import Header from "./components/Header";
 import Menu from "./components/menu";
-import Connexion from "./components/connexion";
+
+import "./styles/base.scss";
 
 function App() {
-  const users = useLoaderData();
-  console.info(users);
   return (
-    <main className="main">
+    <>
       <Header />
       <Menu />
-      <Connexion />
-    </main>
+    </>
   );
 }
 
