@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from "prop-types";
 
@@ -48,7 +49,7 @@ function VarietyCard({ arrayVarieties, varietySearch }) {
 }
 VarietyCard.propTypes = {
   arrayVarieties: PropTypes.arrayOf(PropTypes.object).isRequired,
-  varietySearch: PropTypes.arrayOf(PropTypes.object).isRequired,
+  varietySearch: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default VarietyCard;

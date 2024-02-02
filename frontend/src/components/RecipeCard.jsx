@@ -1,46 +1,54 @@
-// import "../styles/commons.scss";
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable no-undef */
+import PropTypes from "prop-types";
+// import { useEffect } from "react";
+import "../styles/commons.scss";
 
-function RecipeCard() {
+function RecipeCard({ recipeSearch, recipesCookTechs }) {
+  const uniqueRecipes = recipesCookTechs.filter(
+    (recipe, index, self) =>
+      self.findIndex((r) => r.title === recipe.title) === index
+  );
+
   return (
     <section className="variety-cards">
-      {arrayRecipe
-        ?.filter((val) => {
-          return val.name.toLowerCase().includes(varietySearch.toLowerCase());
-        })
-        .map((val) => (
-          <div className="card-container">
-            <h3>{val.name}</h3>
-            <img
-              alt="pomme de terre charlotee"
-              src="https://upload.wikimedia.org/wikipedia/commons/7/72/Pommes_de_terre_%28CHARLOTTE%29-cliche_Jean_Weber_%2823594803261%29.jpg?uselang=fr"
-            />
-            <div className="card-content">
-              <div>
-                <h4>Description</h4>
-                <p>{val.description}</p>
-                <h4>Caractéristiques physiques</h4>
-                <p>
-                  La {val.name} possède une couleur de peau {val.outside_color}{" "}
-                  et une chaire {val.inside_color}
-                </p>
-                <h4>Type de chaire</h4>
-                <p>{val.flesh}</p>
-                <h4>Origin</h4>
-                <p>{val.origin}</p>
-                <h4>Adaptée pour cuisiner : </h4>
-                <ul>
-                  <li>Purée</li>
-                  <li>Frites</li>
-                </ul>
+      {uniqueRecipes.lenght !== 0
+        ? uniqueRecipes
+            .filter((val) => val.cooking_tech.includes(recipeSearch))
+            .map((val) => (
+              <div className="card-container" key={val.id}>
+                <h3>{val.title}</h3>
+                <img
+                  alt="pomme de terre charlotte"
+                  src="https://upload.wikimedia.org/wikipedia/commons/7/72/Pommes_de_terre_%28CHARLOTTE%29-cliche_Jean_Weber_%2823594803261%29.jpg?uselang=fr"
+                />
+                <div className="card-content">
+                  <div>
+                    <h4>Difficulté</h4>
+                    <p>{val.difficulty}</p>
+                    <h4>Difficulté</h4>
+                    <h4>
+                      Les variétés de pommes de terre adaptées à cette recette :
+                    </h4>
+                    <ul>
+                      {uniqueRecipes
+                        .filter((value) => value.title.includes(val.title))
+                        .map((value) => (
+                          <li>{value.potatoe_variety}</li>
+                        ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
-            </div>
-            <section>
-              <button type="button">Les recettes</button>
-            </section>
-          </div>
-        ))}
+            ))
+        : null}
     </section>
   );
 }
+
+RecipeCard.propTypes = {
+  recipeSearch: PropTypes.arrayOf(PropTypes.object).isRequired,
+  recipesCookTechs: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default RecipeCard;

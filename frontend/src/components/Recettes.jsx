@@ -7,73 +7,115 @@ import RecipeCard from "./RecipeCard";
 import "./recettes.scss";
 import "../styles/commons.scss";
 
-function Recettes({ chooseRecipe, handleRecipeClick }) {
-  const [arrayRecipesCookTechs, setArrayRecipesCookTechs] = useState([]);
-  const [recipeSearch, setRecipeSearch] = useState();
+function Recettes({ handleRecipeClick }) {
+  const [recipesCookTechs, setRecipesCookTechs] = useState([]);
+  const [recipeSearch, setRecipeSearch] = useState([]);
+  const [steps, setSteps] = useState([]);
 
   useEffect(() => {
     instance
-      .get("/api/recipes/cooking-techs")
+      .get("/api/recipes-cookingtechs")
       .then((result) => {
-        setArrayRecipesCookTechs(result.data);
+        setRecipesCookTechs(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    instance
+      .get("/api/steps")
+      .then((result) => {
+        setSteps(result.data);
       })
       .catch((err) => {
         console.error(err);
       });
   }, []);
 
+  const uniqueCookingTechs = recipesCookTechs
+    .map((recipe) => recipe.cooking_tech)
+    .filter((value, index, self) => self.indexOf(value) === index);
+
   const handleRecipeSearch = (e) => {
-    setRecipeSearch(e.target.value);
+    const selectedTech = e.target.value;
+
+    if (recipeSearch.includes(selectedTech)) {
+      setRecipeSearch((prevSearch) =>
+        prevSearch.filter((tech) => tech !== selectedTech)
+      );
+    } else {
+      setRecipeSearch((prevSearch) => [...prevSearch, selectedTech]);
+    }
   };
 
+  const [isActive, setIsActive] = useState(false);
+
+  const handleButtonClick = () => {
+    setIsActive((prevIsActive) => !prevIsActive);
+  };
+
+  console.info(steps);
   return (
-    <AnimatePresence>
-      {chooseRecipe && (
-        <motion.div
-          animate={{
-            x: chooseRecipe ? 20 : 100,
-            opacity: chooseRecipe ? 1 : 0,
-          }}
-        >
-          <section id="trouve-recettes">
-            <div className="recettes">
-              <div className="form_recettes">
-                <h1>Tu cherches quelle type de recette ?</h1>
-                <form>
-                  <input type="checkbox" name="soup"></input>
-                  <label htmlFor="soup">Soupe</label>
-                </form>
-                <div className="grid_recettes">
-                  <button type="button">Soupe</button>
-                </div>
-              </div>
-              <div className="div-img">
-                <img
-                  className="img"
-                  src="./src/assets/img/PW_surpriso.png"
-                  alt="potato_in_a_plate"
-                />
-              </div>
-            </div>
-            <div className="return-menu-right">
-              <a href="/#choix">
-                <img
-                  className="arrow-top"
-                  src="./src/assets/img/arrow_top.svg"
-                  alt="arrow-to-menu"
-                  onClick={handleRecipeClick}
-                />
-                <p>Retour au menu</p>
-              </a>
-            </div>
-            <RecipeCard
-              arrayRecipes={arrayRecipesCookTechs}
-              recipeSearch={recipeSearch}
+    // <AnimatePresence>
+    //   {chooseRecipe && (
+    //     <motion.div
+    //       animate={{
+    //         x: chooseRecipe ? 20 : 100,
+    //         opacity: chooseRecipe ? 1 : 0,
+    //       }}
+    //     >
+    <>
+      <section id="trouve-recettes">
+        <div className="recettes">
+          <div className="form_recettes">
+            <h1>Comment veux-tu cuisiner tes patates ?</h1>
+            <form>
+              {uniqueCookingTechs.map((cookingTech) => (
+                <button
+                  type="button"
+                  name="cookingT"
+                  value={cookingTech}
+                  onClick={handleRecipeSearch}
+                  className={isActive ? "active" : ""}
+                >
+                  {cookingTech}
+                </button>
+              ))}
+            </form>
+          </div>
+          <div className="div-img">
+            <img
+              className="img"
+              src="./src/assets/img/PW_surpriso.png"
+              alt="potato_in_a_plate"
             />
-          </section>
-        </motion.div>
-      )}
-    </AnimatePresence>
+          </div>
+        </div>
+        <div className="return-menu-right">
+          <a href="/#choix">
+            <img
+              className="arrow-top"
+              src="./src/assets/img/arrow_top.svg"
+              alt="arrow-to-menu"
+              onClick={handleRecipeClick}
+              onKeyDown={(event) =>
+                event.key === "Enter" && handleRecipeClick()
+              }
+              tabIndex={0}
+            />
+            <p>Retour au menu</p>
+          </a>
+        </div>
+      </section>
+      <div>
+        <RecipeCard
+          recipesCookTechs={recipesCookTechs}
+          recipeSearch={recipeSearch}
+        />
+      </div>
+    </>
+    //     </motion.div>
+    //   )}
+    // </AnimatePresence>
   );
 }
 

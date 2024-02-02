@@ -16,7 +16,8 @@
       padding: 0;
       margin: 0;
     }
-    li::before {
+    li::before,
+    label {
       content: "•";
       padding-right: 8px;
     }

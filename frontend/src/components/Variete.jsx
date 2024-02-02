@@ -21,60 +21,58 @@ function Variete({ chooseRecipe, handleRecipeClick }) {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [varietySearch, setVarietySearch]);
 
   const handleVarietySearch = (e) => {
     setVarietySearch(e.target.value);
   };
 
   return (
-    <motion.div
-      animate={{ x: chooseRecipe ? 20 : 100, opacity: chooseRecipe ? 1 : 0 }}
-    >
-      <section id="trouve-variete">
-        <div className="recettes">
-          <div className="div-img">
-            <img
-              className="img"
-              src="./src/assets/img/PW_recognito.png"
-              alt="unknown_potato"
-            />
-          </div>
-          <div className="form_recettes">
-            <h1>T&apos;as quoi comme variété ?</h1>
-            <form>
-              <input
-                type="text"
-                value={varietySearch}
-                placeholder="Charlotte, Agria, Pompadour..."
-                onChange={handleVarietySearch}
-              />
-            </form>
-          </div>
+    // <motion.div
+    //   animate={{ x: chooseRecipe ? 20 : 100, opacity: chooseRecipe ? 1 : 0 }}
+    // >
+    <section id="trouve-variete">
+      <div className="recettes">
+        <div className="div-img">
+          <img
+            className="img"
+            src="./src/assets/img/PW_recognito.png"
+            alt="unknown_potato"
+          />
         </div>
-
-        <VarietyCard
-          arrayVarieties={arrayVarieties}
-          varietySearch={varietySearch}
-        />
-
-        <div className="return-menu-right">
-          <a href="/#choix">
-            <img
-              className="arrow-top"
-              src="./src/assets/img/arrow_top.svg"
-              alt="arrow-to-menu"
-              onClick={handleRecipeClick}
-              onKeyDown={(event) =>
-                event.key === "Enter" && handleRecipeClick()
-              }
-              tabIndex={0}
+        <div className="form_recettes">
+          <h1>T&apos;as quoi comme variété ?</h1>
+          <form>
+            <input
+              type="text"
+              value={varietySearch}
+              placeholder="Charlotte, Agria, Pompadour..."
+              onChange={handleVarietySearch}
             />
-            <p>Retour au menu</p>
-          </a>
+          </form>
         </div>
-      </section>
-    </motion.div>
+      </div>
+
+      <VarietyCard
+        arrayVarieties={arrayVarieties}
+        varietySearch={varietySearch}
+      />
+
+      <div className="return-menu-right">
+        <a href="/#choix">
+          <img
+            className="arrow-top"
+            src="./src/assets/img/arrow_top.svg"
+            alt="arrow-to-menu"
+            onClick={handleRecipeClick}
+            onKeyDown={(event) => event.key === "Enter" && handleRecipeClick()}
+            tabIndex={0}
+          />
+          <p>Retour au menu</p>
+        </a>
+      </div>
+    </section>
+    // </motion.div>
   );
 }
 
