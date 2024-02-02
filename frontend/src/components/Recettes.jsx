@@ -110,6 +110,7 @@ function Recettes({ handleRecipeClick }) {
         <RecipeCard
           recipesCookTechs={recipesCookTechs}
           recipeSearch={recipeSearch}
+          steps={steps}
         />
       </div>
     </>
