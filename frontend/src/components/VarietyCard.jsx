@@ -2,11 +2,10 @@
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from "prop-types";
 
-function VarietyCard({ arrayVarieties, varietySearch }) {
-  console.info(arrayVarieties);
+function VarietyCard({ uniqueVarieties, varietySearch }) {
   return (
     <section className="card-container">
-      {arrayVarieties
+      {uniqueVarieties
         ?.filter((val) => {
           return val.name.toLowerCase().includes(varietySearch);
         })
@@ -31,10 +30,18 @@ function VarietyCard({ arrayVarieties, varietySearch }) {
                 <h4>Origin</h4>
                 <p>{val.origin}</p>
                 <h4>Adaptée pour cuisiner : </h4>
-                <ul>
-                  <li>{}</li>
-                  <li>{}</li>
-                </ul>
+
+                <div className="pot-var-grid">
+                  {[
+                    ...new Set(
+                      uniqueVarieties
+                        .filter((variety) => variety.flesh.includes(val.flesh))
+                        .map((variety) => variety.cooking_tech)
+                    ),
+                  ].map((cookingTech) => (
+                    <p>{cookingTech}</p>
+                  ))}
+                </div>
               </div>
             </div>
             <section>
@@ -46,7 +53,7 @@ function VarietyCard({ arrayVarieties, varietySearch }) {
   );
 }
 VarietyCard.propTypes = {
-  arrayVarieties: PropTypes.arrayOf(PropTypes.object).isRequired,
+  uniqueVarieties: PropTypes.arrayOf(PropTypes.object).isRequired,
   varietySearch: PropTypes.arrayOf(PropTypes.object),
 };
 
