@@ -2,17 +2,18 @@ input {
   border: solid black;
 }
 
-#trouve-variete {
+#trouve-variete,
+#trouve-recettes {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
 }
 .recettes {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   height: 100vh;
   width: 100vw;
 
@@ -29,8 +30,11 @@ input {
   .form_recettes {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-
+    justify-content: flex-start;
+    form {
+      display: flex;
+      justify-content: space-between;
+    }
     h1 {
       text-align: start;
       margin-bottom: 10px;
@@ -48,7 +52,7 @@ input {
     justify-content: flex-end;
     flex-direction: column;
     height: 100%;
-    margin-bottom: 5dvh;
+    // margin-bottom: 5dvh;
     width: 8vw;
 
     a {
@@ -58,10 +62,10 @@ input {
       color: black;
     }
 
-    .arrow-top {
-      display: flex;
-      width: 100%;
-    }
+    // .arrow-top {
+    //   display: flex;
+    //   width: 100%;
+    // }
   }
 }
 

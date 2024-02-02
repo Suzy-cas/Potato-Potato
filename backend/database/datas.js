@@ -1,3 +1,62 @@
+// const mashedPotatoe = require("../public/assets/images/Joel_Robuchon_mashed_web.jpg");
+// const hassbSalmon = require("../public/assets/images/Hasseback_salmon_web.jpg");
+// const steamed = require("../public/assets/images/Steamed_potatoe_web.jpg");
+// const baconSalad = require("../public/assets/images/Potatoe_salad_bacon_radish_web.jpg");
+
+const recipes = [
+  {
+    id: 4001,
+    title: "Pommes de terre roties à la suedoise",
+    picture: "../public/assets/images/Hasseback_salmon_web.jpg",
+    difficulty: "Facile",
+    prep_time: "10 minutes",
+    cooking_time: "45 minutes",
+    steps:
+      "Préchauffer le four à 180° (th.6). //Couper les pomme de terre en lamelles (de 0,5 cm environ) mais sans les détacher de la base. La pomme de terre doit rester unie. //Couper le beurre en tranches et insérez les entre chaque tranche de pomme de terre. //Soupoudrez de Paprika puis salez et poivrez.//Paresemez de romarin et de thym frais. //Enfournez à 180° pour 45 à 60 min. Le temps de cuisson dépendra du calibre et de la variété de la pomme de terre. Une chair ferme nécessitera davantage de temps de cuisson. //Sortez les pommes de terre du four, ajoutez le percil et dégustez avec le saumon fumé.",
+    user_id: 1,
+    cooking_tech_id: 2005,
+    is_approved: 1,
+  },
+  {
+    id: 4002,
+    title: "Purée à la Joël Robuchon",
+    picture: "../public/assets/images/Joel_Robuchon_mashed_web.jpg",
+    difficulty: "Facile",
+    prep_time: "15 minutes",
+    cooking_time: "25 minutes",
+    steps:
+      "Lavez les pommes de terre, mettez-les dans une casserole. Recouvrez-les d’eau froide, 2 cm au-dessus des pommes de terre. //Salez à raison de 10 g de sel par litre d’eau et faites cuire sur le feu, à découvert pendant 20 à 25 minutes jusqu’à ce que la lame d’un couteau transperce facilement les pommes de terre. //Égouttez-les, pelez-les encore tièdes, passez-les au moulin à légumes grille fine. Remettez la purée obtenue dans la casserole sur feu doux en remuant pour la dessécher un peu. //Dans une casserole, faites bouillir 20 cl de lait. Ajoutez à la purée le beurre bien froid coupé en morceaux, en mélangeant vivement avec une spatule de bois. Puis versez le lait chaud, toujours en mélangeant. Rectifiez l’assaisonnement et servez aussitôt.",
+    user_id: 1,
+    cooking_tech_id: 2002,
+    is_approved: 1,
+  },
+  {
+    id: 4003,
+    title: "Pommes de terre vapeur",
+    picture: "../public/assets/images/Steamed_potatoe_web.jpg",
+    difficulty: "Facile",
+    prep_time: "10 minutes",
+    cooking_time: "20 à 25 minutes en fonction de la taille de vos patates",
+    steps:
+      "Remplir une grande casserole d’un pouce d’eau et y placer une marguerite. //Déposez les pommes de terre dans la marguerite et amenez l’eau à ébullition. //Couvrir et cuire jusqu’à ce qu’elles soient tendres, 10 à 15 minutes. //Assaisonnez de poivre, de sel, d'herbes fraiches et d'une noix de beurre.",
+    user_id: 1,
+    cooking_tech_id: 2003,
+    is_approved: 1,
+  },
+  {
+    id: 4004,
+    title: "Salade pomme de terre œufs et lardons",
+    picture: "../public/assets/images/Potatoe_salad_bacon_radish_web.jpg",
+    difficulty: "Facile",
+    prep_time: "10 minutes",
+    cooking_time: "10 à 15 minutes en fonction de la taille de vos patates",
+    steps:
+      "Remplir une grande casserole d’un pouce d’eau et y placer une marguerite.\nEpluchez et découpez les pommes de terre en dés moyens. Déposez-les dans la marguerite et amenez l’eau à ébullition. \nCouvrir et cuire jusqu’à ce qu’elles soient tendres, 10 à 15 minutes. //Remplir une seconde casserole et remplissez-la pour que l'eau soit suffisante pour recouvrir les œufs. Une fois l'eau à ébullition, placez-y délicatement les œufs à l'aide d'une cuillère à soupe. Laissez-les cuire pendant 10 minute puis plongez-les dans l'eau froide //Pendant ce temps, épluchez et coupez les oignons en lamelles d'un demi-centimètre environ. Faites-les revenir à la poêle pendant 5 min jusqu'à ce que les oignons soient fondants. Ajoutez les lardons et laissez cuire encore 5 minutes. //Laisssez refroidir toutes les préparations : pommes de terre vapeur, oignons, lardons puis mélangez-les. Ajouter les œufs écaillés et coupés en lamelles et les herbes fraiches émincées. //Mélangez l'huile et le vinaigre et assaisonnez votre salade.",
+    user_id: 1,
+    cooking_tech_id: 2004,
+    is_approved: 1,
+  },
+];
 const varieties = [
   {
     id: 1001,
@@ -364,120 +423,77 @@ const cookingTechs = [
   },
 ];
 
-const recipes = [
-  {
-    id: 4001,
-    title: "Pommes de terre roties à la suedoise",
-    difficulty: "Facile",
-    cooking_time: 1.5,
-    step_id: 55101,
-    user_id: 1,
-    cooking_tech_id: 2005,
-    is_approved: 1,
-  },
-  {
-    id: 4002,
-    title: "Purée à la Joël Robuchon",
-    difficulty: "Facile",
-    cooking_time: 0.6,
-    step_id: 55102,
-    user_id: 1,
-    cooking_tech_id: 2002,
-    is_approved: 1,
-  },
-  {
-    id: 4003,
-    title: "Pommes de terre vapeur",
-    difficulty: "Facile",
-    cooking_time: 0.75,
-    step_id: 55103,
-    user_id: 1,
-    cooking_tech_id: 2003,
-    is_approved: 1,
-  },
-  {
-    id: 4004,
-    title: "Salade pomme de terre œufs et lardons",
-    difficulty: "Facile",
-    cooking_time: 0.5,
-    step_id: 55104,
-    user_id: 1,
-    cooking_tech_id: 2004,
-    is_approved: 1,
-  },
-];
+// const steps = [
+//   {
+//     id: 55101,
+//     step_1: "Préchauffer le four à 180° (th.6)",
+//     step_2:
+//       "Couper les pomme de terre en lamelles (de 0,5 cm environ) mais sans les détacher de la base. La pomme de terre doit rester unie",
+//     step_3:
+//       "Couper le beurre en tranches et insérez les entre chaque tranche de pomme de terre.",
+//     step_4: "Soupoudrez de Paprika puis salez et poivrez",
+//     step_5: "Paresemez de romarin et de thym.",
+//     step_6:
+//       "Enfournez à 180° pour 45 à 60 min. Le temps de cuisson dépendra du calibre et de la variété de la pomme de terre. Une chair ferme nécessitera davantage de temps de cuisson.",
+//     step_7:
+//       "Sortez les pommes de terre du four, ajoutez le percil et dégustez avec le saumon fumé.",
+//     step_8: "",
+//     step_9: "",
+//     step_10: "",
+//   },
 
-const steps = [
-  {
-    id: 55101,
-    step_1: "Préchauffer le four à 180° (th.6)",
-    step_2:
-      "Couper les pomme de terre en lamelles (de 0,5 cm environ) mais sans les détacher de la base. La pomme de terre doit rester unie",
-    step_3:
-      "Couper le beurre en tranches et insérez les entre chaque tranche de pomme de terre.",
-    step_4: "Soupoudrez de Paprika puis salez et poivrez",
-    step_5: "Paresemez de romarin et de thym.",
-    step_6:
-      "Enfournée à 180° pour 45 à 60 min. Le temps de cuisson dépendra du calibre et de la variété de la pomme de terre. Une chair ferme nécessitera davantage de temps de cuisson.",
-    step_7:
-      "Sortez les pommes de terre du four, ajoutez le percil et dégustez avec le saumon fumé.",
-    step_8: "",
-    step_9: "",
-    step_10: "",
-  },
-
-  {
-    id: 55102,
-    step_1:
-      "Lavez les pommes de terre, mettez-les dans une casserole. Recouvrez-les d’eau froide, 2 cm au-dessus des pommes de terre.",
-    step_2:
-      "Salez à raison de 10 g de sel par litre d’eau et faites cuire sur le feu, à découvert pendant 20 à 25 minutes jusqu’à ce que la lame d’un couteau transperce facilement les pommes de terre.",
-    step_3:
-      "Égouttez-les, pelez-les encore tièdes, passez-les au moulin à légumes grille fine. Remettez la purée obtenue dans la casserole sur feu doux en remuant pour la dessécher un peu.",
-    step_4:
-      "Dans une casserole, faites bouillir 20 cl de lait. Ajoutez à la purée le beurre bien froid coupé en morceaux, en mélangeant vivement avec une spatule de bois. Puis versez le lait chaud, toujours en mélangeant. Rectifiez l’assaisonnement et servez aussitôt.",
-    step_5: "",
-    step_6: "",
-    step_7: "",
-    step_8: "",
-    step_9: "",
-    step_10: "",
-  },
-  {
-    id: 55103,
-    step_1:
-      "Remplir une grande casserole d’un pouce d’eau et y placer une marguerite.",
-    step_2:
-      "Déposez les pommes de terre dans la marguerite et amenez l’eau à ébullition.",
-    step_3:
-      "Couvrir et cuire jusqu’à ce qu’elles soient tendres, 10 à 15 minutes.",
-    step_4:
-      "Assaisonnez de poivre, de sel, d'herbes fraiches et d'une noix de beurre.",
-    step_5: "",
-    step_6: "",
-    step_7: "",
-    step_8: "",
-    step_9: "",
-    step_10: "",
-  },
-  {
-    id: 55104,
-    step_1:
-      "Remplir une grande casserole d’un pouce d’eau et y placer une marguerite.\nDéposez les pommes de terre dans la marguerite et amenez l’eau à ébullition. \nCouvrir et cuire jusqu’à ce qu’elles soient tendres, 10 à 15 minutes.",
-    step_2:
-      "Remplir une seconde casserole et remplissez-la pour que l'eau soit suffisante pour recouvrir les œufs. Une fois l'eau à ébullition, placez-y délicatement les œufs à l'aide d'une cuillère à soupe. Laissez-les cuire pendant 10 minute puis plongez-les dans l'eau froide",
-    step_3:
-      "Pendant ce temps, épluchez et coupez les oignons en lamelles d'un demi-centimètre environ. Faites-les revenir à la poêle pendant 5 min jusqu'à ce que les oignons soient fondants. Ajoutez les lardons et laissez cuire encore 5 minutes.",
-    step_4:
-      "Laisssez refroidir toutes les préparations : pommes de terre vapeur, oignons, lardons puis mélangez-les. Ajouter les œufs écaillés et coupés en lamelles et les herbes fraiches émincées.",
-    step_5: "Mélangez l'huile et le vinaigre et assaisonnez votre salade.",
-    step_6: "",
-    step_7: "",
-    step_8: "",
-    step_9: "",
-    step_10: "",
-  },
-];
+//   {
+//     id: 55102,
+//     step_1:
+//       "Lavez les pommes de terre, mettez-les dans une casserole. Recouvrez-les d’eau froide, 2 cm au-dessus des pommes de terre.",
+//     step_2:
+//       "Salez à raison de 10 g de sel par litre d’eau et faites cuire sur le feu, à découvert pendant 20 à 25 minutes jusqu’à ce que la lame d’un couteau transperce facilement les pommes de terre.",
+//     step_3:
+//       "Égouttez-les, pelez-les encore tièdes, passez-les au moulin à légumes grille fine. Remettez la purée obtenue dans la casserole sur feu doux en remuant pour la dessécher un peu.",
+//     step_4:
+//       "Dans une casserole, faites bouillir 20 cl de lait. Ajoutez à la purée le beurre bien froid coupé en morceaux, en mélangeant vivement avec une spatule de bois. Puis versez le lait chaud, toujours en mélangeant. Rectifiez l’assaisonnement et servez aussitôt.",
+//     step_5: "",
+//     step_6: "",
+//     step_7: "",
+//     step_8: "",
+//     step_9: "",
+//     step_10: "",
+//   },
+//   {
+//     id: 55103,
+//     step_1:
+//       "Remplir une grande casserole d’un pouce d’eau et y placer une marguerite.",
+//     step_2:
+//       "Déposez les pommes de terre dans la marguerite et amenez l’eau à ébullition.",
+//     step_3:
+//       "Couvrir et cuire jusqu’à ce qu’elles soient tendres, 10 à 15 minutes.",
+//     step_4:
+//       "Assaisonnez de poivre, de sel, d'herbes fraiches et d'une noix de beurre.",
+//     step_5: "",
+//     step_6: "",
+//     step_7: "",
+//     step_8: "",
+//     step_9: "",
+//     step_10: "",
+//   },
+//   {
+//     id: 55104,
+//     step_1:
+//       "Remplir une grande casserole d’un pouce d’eau et y placer une marguerite.\nDéposez les pommes de terre dans la marguerite et amenez l’eau à ébullition. \nCouvrir et cuire jusqu’à ce qu’elles soient tendres, 10 à 15 minutes.",
+//     step_2:
+//       "Remplir une seconde casserole et remplissez-la pour que l'eau soit suffisante pour recouvrir les œufs. Une fois l'eau à ébullition, placez-y délicatement les œufs à l'aide d'une cuillère à soupe. Laissez-les cuire pendant 10 minute puis plongez-les dans l'eau froide",
+//     step_3:
+//       "Pendant ce temps, épluchez et coupez les oignons en lamelles d'un demi-centimètre environ. Faites-les revenir à la poêle pendant 5 min jusqu'à ce que les oignons soient fondants. Ajoutez les lardons et laissez cuire encore 5 minutes.",
+//     step_4:
+//       "Laisssez refroidir toutes les préparations : pommes de terre vapeur, oignons, lardons puis mélangez-les. Ajouter les œufs écaillés et coupés en lamelles et les herbes fraiches émincées.",
+//     step_5: "Mélangez l'huile et le vinaigre et assaisonnez votre salade.",
+//     step_6: "",
+//     step_7: "",
+//     step_8: "",
+//     step_9: "",
+//     step_10: "",
+//   },
+// ];
 const ingredientQtRecipes = [
   {
     id: 66001,
@@ -1195,7 +1211,6 @@ module.exports = {
   varieties,
   cookingTechs,
   recipes,
-  steps,
   ingredientQtRecipes,
   ingredients,
   quantities,

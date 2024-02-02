@@ -1,30 +1,51 @@
-.variety-cards {
-  .card-container {
+.card-container {
+  .variety-cards,
+  .recipe-cards {
+    display: flex;
+    flex-direction: column;
     max-width: 90%;
     border: solid black 3px;
     padding: 10px 25px;
-    margin: 3vh 3vw;
+    margin: 3vh 12vw;
     .card-content {
       display: flex;
       text-align: start;
     }
     img {
+      height: auto;
       max-width: 100%;
+      object-fit: cover;
     }
     ul {
       list-style-type: none;
-      padding: 0;
+      padding-left: 1vw;
       margin: 0;
     }
-    li::before {
+    li::before,
+    label {
       content: "•";
       padding-right: 8px;
+    }
+    .pot-var-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 2vh;
     }
   }
 }
 
-// @media screen and (min-width: 768px) and (max-width: 1024px) {
-//   .variety-cards {
-//     display: flex;
-//   }
-// }
+@media screen and (min-width: 768px) {
+  .card-container {
+    width: 85%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2vh;
+    row-gap: 2vh;
+    .variety-cards,
+    .recipe-cards {
+      margin: 0 auto;
+    }
+  }
+}

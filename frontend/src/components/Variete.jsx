@@ -9,7 +9,7 @@ import "./recettes.scss";
 import "../styles/commons.scss";
 import VarietyCard from "./VarietyCard";
 
-function Variete({ chooseRecipe, handleRecipeClick }) {
+function Variete({ handleRecipeClick }) {
   const [arrayVarieties, setArrayVarieties] = useState([]);
   const [varietySearch, setVarietySearch] = useState();
   useEffect(() => {
@@ -21,16 +21,17 @@ function Variete({ chooseRecipe, handleRecipeClick }) {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [varietySearch, setVarietySearch]);
 
   const handleVarietySearch = (e) => {
     setVarietySearch(e.target.value);
   };
 
   return (
-    <motion.div
-      animate={{ x: chooseRecipe ? 20 : 100, opacity: chooseRecipe ? 1 : 0 }}
-    >
+    // <motion.div
+    //   animate={{ x: chooseRecipe ? 20 : 100, opacity: chooseRecipe ? 1 : 0 }}
+    // >
+    <>
       <section id="trouve-variete">
         <div className="recettes">
           <div className="div-img">
@@ -53,11 +54,6 @@ function Variete({ chooseRecipe, handleRecipeClick }) {
           </div>
         </div>
 
-        <VarietyCard
-          arrayVarieties={arrayVarieties}
-          varietySearch={varietySearch}
-        />
-
         <div className="return-menu-right">
           <a href="/#choix">
             <img
@@ -74,7 +70,13 @@ function Variete({ chooseRecipe, handleRecipeClick }) {
           </a>
         </div>
       </section>
-    </motion.div>
+
+      <VarietyCard
+        arrayVarieties={arrayVarieties}
+        varietySearch={varietySearch}
+      />
+    </>
+    // </motion.div>
   );
 }
 
