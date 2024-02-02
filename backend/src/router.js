@@ -11,15 +11,6 @@ router.post("/users", validateUser, userControllers.add);
 router.put("/user/:id", validateUser, userControllers.edit);
 router.delete("/user/:id", userControllers.destroy);
 
-const stepControllers = require("./controllers/stepControllers");
-const validateStep = require("./validators/validateStep");
-
-router.get("/steps", stepControllers.browse);
-router.get("/steps/:id", stepControllers.read);
-router.post("/steps", validateStep, stepControllers.add);
-router.put("/steps/:id", validateStep, stepControllers.edit);
-router.delete("/steps/:id", stepControllers.destroy);
-
 const recipeControllers = require("./controllers/recipeControllers");
 const validateRecipe = require("./validators/validateRecipe");
 

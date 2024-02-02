@@ -4,7 +4,6 @@ DROP TABLE IF EXISTS ingredient_quantity_recipe;
 DROP TABLE IF EXISTS quantity;
 DROP TABLE IF EXISTS ingredient;
 DROP TABLE IF EXISTS potatoe_variety;
-DROP TABLE IF EXISTS step;
 DROP TABLE IF EXISTS cooking_tech;
 DROP TABLE IF EXISTS recipe;
 DROP TABLE IF EXISTS user;
@@ -31,21 +30,6 @@ create table recipe (
   user_id INT NOT NULL,
   cooking_tech_id INT NOT NULL,
   is_approved TINYINT NOT NULL
-);
-
-
-create table step (
-  id int primary key not null,
-  step_1 TEXT NOT NULL,
-  step_2 TEXT,
-  step_3 TEXT,
-  step_4 TEXT,
-  step_5 TEXT,
-  step_6 TEXT NOT NULL,
-  step_7 TEXT,
-  step_8 TEXT,
-  step_9 TEXT,
-  step_10 TEXT
 );
 
 CREATE TABLE potatoe_variety (
