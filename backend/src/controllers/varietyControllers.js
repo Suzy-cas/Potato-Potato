@@ -16,6 +16,18 @@ const browse = async (req, res, next) => {
   }
 };
 
+const browseByCookTechs = async (req, res, next) => {
+  try {
+    // Fetch all potatoe_varietys from the database
+    const potatoe_variety = await tables.potatoe_variety.readByCookTechs();
+
+    // Respond with the potatoe_varietys in JSON format
+    res.status(200).json(potatoe_variety);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
 // The R of BREAD - Read operation
 const read = async (req, res, next) => {
   try {
@@ -89,6 +101,7 @@ const read = async (req, res, next) => {
 // Ready to export the controller functions
 module.exports = {
   browse,
+  browseByCookTechs,
   read,
   // edit,
   // add,

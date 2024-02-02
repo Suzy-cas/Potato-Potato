@@ -7,11 +7,12 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
 }
 .recettes {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
   height: 100vh;
@@ -71,6 +72,7 @@ input {
 
 @media screen and (min-width: 360px) and (max-width: 768px) {
   .recettes {
+    flex-direction: column;
     .img {
       width: calc(40vh - 100px);
     }
@@ -81,20 +83,37 @@ input {
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  .recettes {
-    .img {
-      width: calc(30vh - 10px);
-    }
-    .form_recettes {
-      width: 50vw;
+  #trouve-variete,
+  #trouve-recettes {
+    flex-direction: row;
+    .recettes {
+      flex-direction: row;
+      .img {
+        width: calc(30vh - 10px);
+      }
+      .form_recettes {
+        width: 50vw;
+      }
+      .div-img {
+        flex-direction: column;
+        align-items: flex-end;
+      }
     }
   }
 }
-
 @media screen and (min-width: 1024px) {
-  .recettes {
-    .img {
-      width: calc(40vh - 10px);
+  #trouve-variete,
+  #trouve-recettes {
+    flex-direction: row;
+    .recettes {
+      flex-direction: row;
+      .img {
+        width: calc(40vh - 10px);
+      }
+      .div-img {
+        flex-direction: column;
+        align-items: flex-end;
+      }
     }
   }
 }

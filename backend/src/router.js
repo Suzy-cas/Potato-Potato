@@ -26,5 +26,6 @@ const varietyControllers = require("./controllers/varietyControllers");
 
 router.get("/varieties", varietyControllers.browse);
 router.get("/variety/:id", varietyControllers.read);
+router.get("/varieties-cookingtechs", varietyControllers.browseByCookTechs);
 
 module.exports = router;

@@ -44,6 +44,14 @@ class Potatoe_varietyManager extends AbstractManager {
     return rows;
   }
 
+  async readByCookTechs() {
+    const [rows] = await this.database.query(
+      `SELECT DISTINCT potatoe_variety.id, potatoe_variety.name, outside_color, inside_color, origin, flesh, description, cooking_tech.name AS cooking_tech FROM potatoe_variety JOIN cooking_tech_variety ON potatoe_variety_id = potatoe_variety.id JOIN cooking_tech ON cooking_tech_id = cooking_tech.id`
+    );
+
+    // Return the array of potatoe_varietys
+    return rows;
+  }
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing potatoe_variety
 
