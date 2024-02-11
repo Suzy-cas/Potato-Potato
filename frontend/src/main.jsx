@@ -2,18 +2,26 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import App from "./App";
 import "./main.scss";
+
+import Error from "./pages/Error";
+import Home from "./components/Home";
+import App from "./App";
+import MainChoise from "./components/MainChoise";
+import Recipe from "./components/Recipe";
+import Variety from "./components/Variety";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    // loader: async () => {
-    //   const res = await fetch(`http://localhost:3310/api/users`);
-    //   const data = await res.json();
-    //   return data;
-    // },
+    errorElement: <Error />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "/mainchoise", element: <MainChoise /> },
+      { path: "/recettes", element: <Recipe /> },
+      { path: "/varietes", element: <Variety /> },
+    ],
   },
 ]);
 

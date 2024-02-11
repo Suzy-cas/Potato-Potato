@@ -1,14 +1,12 @@
-import Header from "./components/Header";
-import Menu from "./components/menu";
-
-import "./styles/base.scss";
+import { Outlet } from "react-router-dom";
+import BurgerMenu from "./components/BurgerMenu";
 
 function App() {
   return (
-    <>
-      <Header />
-      <Menu />
-    </>
+    <div>
+      <BurgerMenu />
+      <Outlet />
+    </div>
   );
 }
 
