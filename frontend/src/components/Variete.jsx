@@ -5,8 +5,6 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import instance from "../services/instance";
 
-import "./recettes.scss";
-import "../styles/commons.scss";
 import VarietyCard from "./VarietyCard";
 
 function Variete({ chooseRecipe, handleRecipeClick }) {

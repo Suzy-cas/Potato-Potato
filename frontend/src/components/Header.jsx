@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-import "./header.scss";
-import "../styles/commons.scss";
-
 function Header() {
   const [potatoHeart, setPotatoHeart] = useState(false);
 
