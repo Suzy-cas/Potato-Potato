@@ -3,9 +3,6 @@
 
 import PropTypes from "prop-types";
 
-import "../styles/commons.scss";
-import "./cards.scss";
-
 function RecipeCard({ recipeSearch, recipesCookTechs }) {
   const uniqueRecipes = recipesCookTechs.filter(
     (recipe, index, self) =>

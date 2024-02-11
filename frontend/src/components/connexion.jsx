@@ -1,6 +1,3 @@
-import "./connexion.scss";
-import "../styles/commons.scss";
-
 function Connexion() {
   return (
     <section className="backdrop">

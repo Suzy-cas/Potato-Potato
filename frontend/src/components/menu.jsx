@@ -1,8 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useState } from "react";
 
-import "./menu.scss";
-import "../styles/commons.scss";
 import Variete from "./Variete";
 import Recettes from "./Recettes";
 
@@ -26,8 +24,8 @@ function Menu() {
             animate={{ x: 100 }}
           > */}
         <div>
-          <h1>Indentifie une</h1>
-          <h2>PATATE</h2>
+          <h1>Découvre une</h1>
+          <h2>VARIÉTÉ</h2>
           <img
             className="small_potato"
             onMouseEnter={() => setPotatoIncognito(true)}

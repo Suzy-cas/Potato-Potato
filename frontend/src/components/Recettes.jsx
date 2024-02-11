@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import instance from "../services/instance";
 
 import RecipeCard from "./RecipeCard";
-import "./recettes.scss";
-import "../styles/commons.scss";
 
 function Recettes({ chooseRecipe, handleRecipeClick }) {
   const [recipesCookTechs, setRecipesCookTechs] = useState([]);
@@ -90,7 +88,6 @@ function Recettes({ chooseRecipe, handleRecipeClick }) {
                   onKeyDown={(event) =>
                     event.key === "Enter" && handleRecipeClick()
                   }
-                  tabIndex={0}
                 />
                 <p>Retour au menu</p>
               </a>
