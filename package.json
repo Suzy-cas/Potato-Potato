@@ -33,6 +33,7 @@
     "lint-staged": "^13.2.3"
   },
   "dependencies": {
-    "framer-motion": "^10.16.16"
+    "framer-motion": "^10.16.16",
+    "jwt-decode": "^4.0.0"
   }
 }

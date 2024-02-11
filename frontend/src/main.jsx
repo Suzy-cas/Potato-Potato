@@ -10,6 +10,8 @@ import App from "./App";
 import MainChoise from "./components/MainChoise";
 import Recipe from "./components/Recipe";
 import Variety from "./components/Variety";
+import Login from "./pages/Login";
+import Logout from "./pages/Logout";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,8 @@ const router = createBrowserRouter([
       { path: "/mainchoise", element: <MainChoise /> },
       { path: "/recettes", element: <Recipe /> },
       { path: "/varietes", element: <Variety /> },
+      { path: "/connexion", element: <Login /> },
+      { path: "/deconnexion", element: <Logout /> },
     ],
   },
 ]);
