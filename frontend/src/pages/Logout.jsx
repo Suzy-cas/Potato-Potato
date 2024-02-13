@@ -1,9 +1,9 @@
-// import { useContext } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-// import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 
 function Logout() {
-  //   const { handleLogout } = useContext(AuthContext);
+  const { handleLogout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   return (
@@ -13,7 +13,7 @@ function Logout() {
         <button
           type="button"
           onClick={() => {
-            // handleLogout();
+            handleLogout();
             navigate("/");
           }}
         >

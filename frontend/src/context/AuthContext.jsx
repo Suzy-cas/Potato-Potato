@@ -6,7 +6,7 @@ const AuthContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 function AuthContextProvider({ children }) {
-  const [user, setUser] = useState({ is_administrator: 3 });
+  const [user, setUser] = useState({ is_admin: 3 });
 
   const handleAuth = async () => {
     const getToken = localStorage.getItem("token");
@@ -17,7 +17,7 @@ function AuthContextProvider({ children }) {
 
       try {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/users/${userId}`
+          `${import.meta.env.VITE_BACKEND_URL}/api/user/${userId}`
         );
         setUser(data);
       } catch (error) {
@@ -30,20 +30,9 @@ function AuthContextProvider({ children }) {
     handleAuth();
   }, []);
 
-  // sert pour les className
-  function userMode() {
-    if (user.is_administrator === 0) {
-      return "player-mode";
-    }
-    if (user.is_administrator === 1) {
-      return "admin-mode";
-    }
-    return "";
-  }
-
   const handleLogout = () => {
     localStorage.removeItem("token");
-    setUser({ is_administrator: 3 });
+    setUser({ is_admin: 3 });
   };
 
   const userMemo = useMemo(
@@ -51,10 +40,9 @@ function AuthContextProvider({ children }) {
       user,
       setUser,
       handleAuth,
-      userMode,
       handleLogout,
     }),
-    [user, setUser, handleAuth, userMode, handleLogout]
+    [user, setUser, handleAuth, handleLogout]
   );
 
   return (

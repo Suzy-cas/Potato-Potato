@@ -2,10 +2,10 @@ import { useState, useContext } from "react";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-// import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 
 function Login() {
-  // const { handleAuth } = useContext(AuthContext);
+  const { handleAuth } = useContext(AuthContext);
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
@@ -13,26 +13,26 @@ function Login() {
 
   const navigate = useNavigate();
 
-  // const redirectTo = async () => {
-  //   const getToken = localStorage.getItem("token");
-  //   if (getToken) {
-  //     const decodeToken = jwtDecode(getToken);
-  //     const userId = decodeToken.user_id;
+  const redirectTo = async () => {
+    const getToken = localStorage.getItem("token");
+    if (getToken) {
+      const decodeToken = jwtDecode(getToken);
+      const userId = decodeToken.user_id;
 
-  //     try {
-  //       const { data } = await axios.get(
-  //         `${import.meta.env.VITE_BACKEND_URL}/api/users/${userId}`
-  //       );
+      try {
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/api/user/${userId}`
+        );
 
-  //       if (data.is_administrator === 1) {
-  //         return navigate("/user/admin");
-  //       }
-  //     } catch (error) {
-  //       console.warn("Une erreur est survenue!", error);
-  //     }
-  //   }
-  //   return navigate("/carte");
-  // };
+        if (data.isa_dmin === 1) {
+          return navigate("/user/admin");
+        }
+      } catch (error) {
+        console.warn("Une erreur est survenue!", error);
+      }
+    }
+    return navigate("/");
+  };
 
   const handleLoginRegister = (event) => {
     const { name, value } = event.target;
@@ -49,17 +49,13 @@ function Login() {
     }
 
     try {
-      // Appel à l'API pour demander une connexion
       const res = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/login`,
         loginInfo
       );
-      // Récupération du token
       await localStorage.setItem("token", res.data.token);
-      // Décodage du token et récupération des données
-      // await handleAuth();
-      // // Redirection en fonction du statut de l'utilisateur
-      // redirectTo();
+      await handleAuth();
+      redirectTo();
     } catch (err) {
       console.error(err);
     }

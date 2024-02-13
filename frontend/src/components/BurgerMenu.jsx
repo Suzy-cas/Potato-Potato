@@ -1,14 +1,19 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 function BurgerMenu() {
   const [showBurger, setShowBurger] = useState(false);
+  const { user } = useContext(AuthContext);
 
   const handleShowBurger = () => {
     setShowBurger(!showBurger);
   };
 
+  useEffect(() => {}, [user]);
+
+  console.info(user.is_admin);
   return (
     <nav className="menu-burger">
       <button
@@ -22,7 +27,9 @@ function BurgerMenu() {
         <Link to="/">Accueil</Link>
         <Link to="/varietes">Variétés</Link>
         <Link to="/recettes">Recettes</Link>
-        <Link to="/connexion">Connexion</Link>
+        <Link to={user.is_admin === 3 ? "/connexion" : "/deconnexion"}>
+          {user.is_admin === 3 ? "Connexion" : "Deconnexion"}
+        </Link>
         <Link to="/inscription">Inscription</Link>
       </ul>
     </nav>
