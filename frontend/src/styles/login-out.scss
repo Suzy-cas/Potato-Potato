@@ -1,0 +1,80 @@
+.login-out {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 15vh 15vw;
+  p {
+    margin-bottom: 5vh;
+  }
+  h2 {
+    margin-bottom: 6vh;
+  }
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
+
+  input {
+    font-style: oblique;
+    padding: 4px 8px;
+    border-radius: 2px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border-color: black;
+  }
+}
+.action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 30px;
+  .checkbox-RGPD {
+    margin-bottom: 2vh;
+  }
+}
+
+@media screen and (min-width: 360px) and (max-width: 768px) {
+  .login {
+    p {
+      font-size: calc(1.5rem - 1vw);
+    }
+    input {
+      font-size: calc(1.8rem - 1.5vw);
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .login {
+    form {
+      width: 70%;
+    }
+    p {
+      font-size: calc(1.8rem - 1vw);
+    }
+    input {
+      font-size: calc(1.8rem - 1.5vw);
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .login {
+    form {
+      width: 50%;
+    }
+    p {
+      font-size: calc(2.2rem - 1.1vw);
+    }
+    input {
+      font-size: calc(2.2rem - 1.1vw);
+    }
+  }
+}
