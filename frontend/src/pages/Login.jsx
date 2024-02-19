@@ -24,8 +24,11 @@ function Login() {
           `${import.meta.env.VITE_BACKEND_URL}/api/user/${userId}`
         );
 
-        if (data.isa_dmin === 1) {
-          return navigate("/user/admin");
+        if (data.is_admin === 1) {
+          return navigate("/admin");
+        }
+        if (data.is_admin === 0) {
+          return navigate("/mon-espace");
         }
       } catch (error) {
         console.warn("Une erreur est survenue!", error);
