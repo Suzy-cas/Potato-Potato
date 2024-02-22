@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 function BurgerMenu() {
-  const [showBurger, setShowBurger] = useState(false);
+  const [showBurger, setShowBurger] = useState(true);
   const { user } = useContext(AuthContext);
 
   const handleShowBurger = () => {
@@ -27,10 +27,14 @@ function BurgerMenu() {
         <Link to="/">Accueil</Link>
         <Link to="/varietes">Variétés</Link>
         <Link to="/recettes">Recettes</Link>
+        {user.is_admin === 3 ? (
+          <Link to="/inscription">Inscription</Link>
+        ) : (
+          <Link to="/mon-espace">Mon espace</Link>
+        )}
         <Link to={user.is_admin === 3 ? "/connexion" : "/deconnexion"}>
           {user.is_admin === 3 ? "Connexion" : "Deconnexion"}
         </Link>
-        <Link to="/inscription">Inscription</Link>
       </ul>
     </nav>
   );

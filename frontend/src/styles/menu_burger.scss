@@ -18,11 +18,9 @@
     visibility: visible;
     right: 0;
     a {
-      cursor: pointer;
       font-size: calc(2rem - 1vw);
       padding: 1rem 2rem;
       color: white;
-      text-decoration: none;
       &:hover {
         font-weight: 800;
         transform: scale(1.2);

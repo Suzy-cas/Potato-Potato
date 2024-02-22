@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
 import BurgerMenu from "./components/BurgerMenu";
 
-function App() {
+function MainLayout() {
   return (
-    <div>
+    <>
       <BurgerMenu />
       <Outlet />
-    </div>
+    </>
   );
 }
 
-export default App;
+export default MainLayout;
