@@ -34,7 +34,6 @@ function AuthContextProvider({ children }) {
     localStorage.removeItem("token");
     setUser({ is_admin: 3 });
   };
-
   const userMemo = useMemo(
     () => ({
       user,
