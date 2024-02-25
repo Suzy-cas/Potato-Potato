@@ -34,4 +34,23 @@ router.get("/varieties", varietyControllers.browse);
 router.get("/variety/:id", varietyControllers.read);
 router.get("/varieties-cookingtechs", varietyControllers.browseByCookTechs);
 
+const typeController = require("./controllers/typeControllers");
+router.get("/types", typeController.browse);
+
+const ingredientControllers = require("./controllers/ingredientControllers");
+router.get("/ingredients", ingredientControllers.browse);
+
+const ingredientQtRecipeControllers = require("./controllers/ingredientQtRecipeControllers");
+router.get(
+  "/ingredient-quantity-recipe/:id",
+  ingredientQtRecipeControllers.readByRecipe
+);
+
+router.post("/ingredient-quantity-recipe", ingredientQtRecipeControllers.add);
+
+router.put(
+  "/ingredient-quantity-recipe/:id",
+  ingredientQtRecipeControllers.edit
+);
+
 module.exports = router;
