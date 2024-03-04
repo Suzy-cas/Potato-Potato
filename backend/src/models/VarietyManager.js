@@ -66,9 +66,9 @@ class potato_varietyManager extends AbstractManager {
       ON recipe.cooking_tech_id = cooking_tech.id`
     );
 
-    // Return the array of potato_varietys
     return rows;
   }
+
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing potato_variety
 
