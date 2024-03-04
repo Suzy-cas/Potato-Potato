@@ -49,6 +49,7 @@ class potato_varietyManager extends AbstractManager {
       `SELECT
       potato_variety.id, 
       potato_variety.name, 
+      potato_variety.picture,
       outside_color, 
       inside_color, 
       origin, 

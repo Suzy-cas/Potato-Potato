@@ -37,6 +37,7 @@ create table recipe (
 CREATE TABLE potato_variety (
   id int primary key not null,
   name VARCHAR(80) NOT NULL,
+  picture VARCHAR(255) NOT NULL,
   outside_color VARCHAR(80) NOT NULL,
   inside_color VARCHAR(80) NOT NULL,
   origin VARCHAR(255) NOT NULL,

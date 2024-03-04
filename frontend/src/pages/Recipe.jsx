@@ -37,13 +37,6 @@ function Recipe() {
   };
 
   return (
-    // <AnimatePresence>
-    //   <motion.div
-    //     animate={{
-    //       x: chooseRecipe ? 0 : 100,
-    //       opacity: chooseRecipe ? 1 : 0,
-    //     }}
-    //   >
     <>
       <section id="trouve-recettes">
         <div className="recettes">
@@ -79,8 +72,6 @@ function Recipe() {
         />
       </div>
     </>
-    //   </motion.div>
-    // </AnimatePresence>
   );
 }
 
