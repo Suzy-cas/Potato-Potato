@@ -9,7 +9,6 @@ function UserMenu() {
       <nav>
         <ul>
           <Link to="profil">Mon profil</Link>
-          <Link to="favoris">Mes Favoris</Link>
           <Link to="nouvelle-recette">Ajouter une recette</Link>
         </ul>
       </nav>

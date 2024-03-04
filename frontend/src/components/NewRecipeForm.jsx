@@ -55,7 +55,9 @@ function NewRecipeForm() {
         </div>
         <div>
           <img alt="select" />
-          <button type="button">Sélectionner une photo</button>
+          <button type="button" className="secondary-button">
+            Sélectionner une photo
+          </button>
         </div>
         <div className="ingredients-container">
           <label htmlFor="nativeIngredient">
@@ -89,7 +91,9 @@ function NewRecipeForm() {
                 <option value="kg">kg</option>
               </select>
             </div>
-            <button type="button">+ Ajouter</button>
+            <button type="button" className="secondary-button">
+              + Ajouter
+            </button>
           </label>
         </div>
 
@@ -99,7 +103,9 @@ function NewRecipeForm() {
             Etape 1
             <textarea type="textarea" />
           </label>
-          <button type="button">+ Ajouter</button>
+          <button type="button" className="secondary-button">
+            + Ajouter
+          </button>
         </div>
       </form>
       <div className="new-recipe-display">
