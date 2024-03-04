@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-const AbstractManager = require("./AbstractManager");
+const AbstractManager = require("../models/AbstractManager");
 
 class UserManager extends AbstractManager {
   constructor() {

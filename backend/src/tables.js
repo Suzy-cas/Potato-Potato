@@ -4,23 +4,23 @@
 
 // Import the manager modules responsible for handling data operations on the tables
 
-const RecipeManager = require("./models/RecipeManager");
+const RecipeManager = require("./middlewares/RecipeManager");
 
-const CookingTechManager = require("./models/CookingTechManager");
+const CookingTechManager = require("./middlewares/CookingTechManager");
 
-const UserManager = require("./models/UserManager");
+const UserManager = require("./middlewares/UserManager");
 
-const VarietyManager = require("./models/VarietyManager");
+const VarietyManager = require("./middlewares/VarietyManager");
 
-const CookingTechVarietyManager = require("./models/CookingTechVarietyManager");
+const CookingTechVarietyManager = require("./middlewares/CookingTechVarietyManager");
 
-const IngredientManager = require("./models/IngredientManager");
+const IngredientManager = require("./middlewares/IngredientManager");
 
-const QuantityManager = require("./models/QuantityManager");
+const QuantityManager = require("./middlewares/QuantityManager");
 
-const IngredientQtRecipeManager = require("./models/IngredientQtRecipeManager");
+const IngredientQtRecipeManager = require("./middlewares/IngredientQtRecipeManager");
 
-const TypeManager = require("./models/TypeManager");
+const TypeManager = require("./middlewares/TypeManager");
 
 const managers = [
   RecipeManager,

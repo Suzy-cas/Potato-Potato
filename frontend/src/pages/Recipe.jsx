@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import instance from "../services/instance";
 
-import RecipeCard from "./RecipeCard";
+import RecipeCard from "../components/RecipeCard";
 
 function Recipe() {
   const [recipesCookTechs, setRecipesCookTechs] = useState([]);

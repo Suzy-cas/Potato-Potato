@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import instance from "../services/instance";
 
-import VarietyCard from "./VarietyCard";
+import VarietyCard from "../components/VarietyCard";
 
 function Variety({ chooseRecipe, handleRecipeClick }) {
   const [arrayVarieties, setArrayVarieties] = useState([]);
