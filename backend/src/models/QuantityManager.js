@@ -1,4 +1,4 @@
-const AbstractManager = require("../models/AbstractManager");
+const AbstractManager = require("./AbstractManager");
 
 class QuantityManager extends AbstractManager {
   constructor() {

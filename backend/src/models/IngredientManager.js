@@ -1,4 +1,4 @@
-const AbstractManager = require("../models/AbstractManager");
+const AbstractManager = require("./AbstractManager");
 
 class IngredientManager extends AbstractManager {
   constructor() {

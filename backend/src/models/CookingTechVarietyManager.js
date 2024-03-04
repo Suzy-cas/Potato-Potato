@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-const AbstractManager = require("../models/AbstractManager");
+const AbstractManager = require("./AbstractManager");
 
 class CookingTechVarietyManager extends AbstractManager {
   constructor() {
