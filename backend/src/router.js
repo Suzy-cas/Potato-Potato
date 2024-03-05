@@ -3,17 +3,16 @@ const express = require("express");
 const router = express.Router();
 
 const authControllers = require("./controllers/authControllers");
-
-router.post("/register", authControllers.add);
-router.post("/login", authControllers.login);
-
 const userControllers = require("./controllers/userControllers");
 const { validateUser } = require("./validators/validateUser");
+const { validateLogin } = require("./validators/validateLogin");
 const { hashPassword } = require("./services/auth");
+
+router.post("/register", validateUser, hashPassword, userControllers.add);
+router.post("/login", validateLogin, authControllers.login);
 
 router.get("/users", userControllers.browse);
 router.get("/user/:id", userControllers.read);
-router.post("/users", validateUser, userControllers.add);
 router.put("/user/:id", validateUser, userControllers.edit);
 router.delete("/user/:id", userControllers.destroy);
 
@@ -22,7 +21,7 @@ const validateRecipe = require("./validators/validateRecipe");
 
 router.get("/recipes", recipeControllers.browse);
 router.get("/recipes/:id", recipeControllers.read);
-router.post("/recipes", validateRecipe, hashPassword, recipeControllers.add);
+router.post("/recipes", validateRecipe, recipeControllers.add);
 router.put("/recipes/:id", validateRecipe, recipeControllers.edit);
 router.delete("/recipes/:id", recipeControllers.destroy);
 // Routes spécifiques avec jointures

@@ -17,6 +17,7 @@ import NewRecipe from "./pages/User/NewRecipe";
 import AdminLayout from "./components/Admin/AdminLayout";
 import Profile from "./pages/User/Profile";
 import RecipeReview from "./pages/Admin/RecipeReview";
+import Register from "./pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
       { path: "/varietes", element: <Variety /> },
       { path: "/connexion", element: <Login /> },
       { path: "/deconnexion", element: <Logout /> },
+      { path: "/inscription", element: <Register /> },
     ],
   },
   {

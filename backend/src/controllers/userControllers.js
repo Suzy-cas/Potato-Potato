@@ -5,7 +5,7 @@ const tables = require("../tables");
 const browse = async (req, res, next) => {
   try {
     // Fetch all users from the database
-    const users = await tables.user.readAll();
+    const users = await tables.user.readAllNoPassword();
 
     // Respond with the users in JSON format
     res.status(200).json(users);

@@ -44,11 +44,11 @@ const login = async (req, res, next) => {
       res.sendStatus(422);
       return;
     }
-    const verified = await verify(user.password, req.body.password);
-    console.info(verified);
+    const verified = await verify(user.hashed_password, req.body.password);
+
     if (verified) {
       // Respond with the user in JSON format (but without the hashed password)
-      delete user.password;
+      delete user.hashed_password;
       const token = jwt.sign({ user_id: user.id }, process.env.APP_SECRET, {
         expiresIn: "1h",
       });

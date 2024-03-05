@@ -1,13 +1,12 @@
-@mixin flexDesktop {
+@mixin flexCenter {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-@mixin flexMobile {
+@mixin flexColumn {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 }
 
 @mixin button-base {
@@ -17,7 +16,7 @@
   margin-bottom: 2vh;
   font-size: 1em;
   font-weight: 500;
-  font-family: "Antonio";
+  font-family: $font-title-h2;
   cursor: pointer;
   transition: border-color 0.25s;
 

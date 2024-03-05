@@ -40,7 +40,7 @@ const seed = async () => {
     // Creation of reusable admin and user account
     const adminQueries = () =>
       database.query(
-        "INSERT INTO user(username, email, password, is_admin) VALUES (?,?,?,?)",
+        "INSERT INTO user(username, email, hashed_password, is_admin) VALUES (?,?,?,?)",
         [
           "Yzus",
           "suzy.cassar@gmail.com",
@@ -52,7 +52,7 @@ const seed = async () => {
 
     const userQueries = () =>
       database.query(
-        "INSERT INTO user(username, email, password, is_admin) VALUES (?,?,?,?)",
+        "INSERT INTO user(username, email, hashed_password, is_admin) VALUES (?,?,?,?)",
         [
           "Rassac",
           "suzy.cassar2@gmail.com",
