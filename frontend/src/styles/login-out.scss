@@ -1,6 +1,5 @@
-.login-out {
-  display: flex;
-  flex-direction: column;
+.login-out-register {
+  @include flexColumn;
   justify-content: space-around;
   margin: 15vh 15vw;
   p {
@@ -12,12 +11,21 @@
 }
 
 .content {
-  display: flex;
-  justify-content: center;
+  @include flexCenter;
   form {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
+    @include flexColumn;
+
+    label {
+      @include flexColumn;
+      align-items: start;
+    }
+    span {
+      @include flexColumn;
+      align-items: center;
+      img {
+        width: 10%;
+      }
+    }
   }
 
   input {
@@ -26,7 +34,7 @@
     border-radius: 2px;
     margin-top: 5px;
     margin-bottom: 20px;
-    border-color: black;
+    border-color: $dark-grey;
   }
 }
 .action {

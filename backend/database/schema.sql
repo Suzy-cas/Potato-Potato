@@ -12,8 +12,8 @@ create table user (
   id int auto_increment primary key not null,
   username VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
-  password VARCHAR(255) NOT NULL,
-  is_admin TINYINT NOT NULL
+  hashed_password VARCHAR(255) NOT NULL,
+  is_admin TINYINT NOT NULL DEFAULT 0
 );
 
 create table cooking_tech (
