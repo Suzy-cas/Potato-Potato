@@ -1,16 +1,11 @@
 // Import access to database tables
 const tables = require("../tables");
 
-// The B of BREAD - Browse (Read All) operation
 const browse = async (req, res, next) => {
   try {
-    // Fetch all recipes from the database
     const recipes = await tables.recipe.readAll();
-
-    // Respond with the recipes in JSON format
     res.status(200).json(recipes);
   } catch (err) {
-    // Pass any errors to the error-handling middleware
     next(err);
   }
 };

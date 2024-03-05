@@ -30,7 +30,7 @@ function BurgerMenu() {
         {user.is_admin === 3 ? (
           <Link to="/inscription">Inscription</Link>
         ) : (
-          <Link to="/mon-espace">Mon espace</Link>
+          <Link to="/mon-espace/profil">Mon espace</Link>
         )}
         <Link to={user.is_admin === 3 ? "/connexion" : "/deconnexion"}>
           {user.is_admin === 3 ? "Connexion" : "Deconnexion"}

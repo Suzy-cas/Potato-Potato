@@ -97,7 +97,7 @@ function Login() {
         </form>
       </main>
       <div className="action">
-        <button type="button" onClick={handleLogin}>
+        <button type="button" className="primary-button" onClick={handleLogin}>
           Se connecter
         </button>
       </div>

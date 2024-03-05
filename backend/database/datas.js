@@ -61,6 +61,8 @@ const varieties = [
   {
     id: 1001,
     name: "Agata",
+    picture:
+      "https://upload.wikimedia.org/wikipedia/commons/7/72/Pommes_de_terre_%28CHARLOTTE%29-cliche_Jean_Weber_%2823594803261%29.jpg?uselang=fr",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "Pays-Bas - Culture : Europe du Sud",
@@ -71,6 +73,8 @@ const varieties = [
   {
     id: 1002,
     name: "Agria",
+    picture:
+      "https://images.pexels.com/photos/7129145/pexels-photo-7129145.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     outside_color: "Jaune",
     inside_color: "Jaune pâle",
     origin: "Pays-Bas - Culture : Europe du Sud",
@@ -81,6 +85,8 @@ const varieties = [
   {
     id: 1003,
     name: "Amandine",
+    picture:
+      "https://images.pexels.com/photos/2286776/pexels-photo-2286776.jpeg",
     outside_color: "Jaune Pale",
     inside_color: "Jaune pâle",
     origin: "France",
@@ -91,6 +97,8 @@ const varieties = [
   {
     id: 1004,
     name: "Annabelle",
+    picture:
+      "https://images.pexels.com/photos/144248/potatoes-vegetables-erdfrucht-bio-144248.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     outside_color: "Jaune",
     inside_color: "Jaune foncé",
     origin: "Pays-Bas - Culture : Europe du Sud",
@@ -100,6 +108,8 @@ const varieties = [
   {
     id: 1005,
     name: "Belle de Fontenay",
+    picture:
+      "https://upload.wikimedia.org/wikipedia/commons/7/72/Pommes_de_terre_%28CHARLOTTE%29-cliche_Jean_Weber_%2823594803261%29.jpg?uselang=fr",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "France (Fontenay sous-bois)",
@@ -110,6 +120,7 @@ const varieties = [
   {
     id: 1006,
     name: "BF15",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune Foncé",
     origin: "France",
@@ -120,6 +131,7 @@ const varieties = [
   {
     id: 1007,
     name: "Bintje",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "France / Belgique",
@@ -130,6 +142,7 @@ const varieties = [
   {
     id: 1009,
     name: "Bleue d'Artois",
+    picture: "",
     outside_color: "Bleue-violette",
     inside_color: "Bleue-violette",
     origin: "France",
@@ -140,6 +153,7 @@ const varieties = [
   {
     id: 1010,
     name: "Blue Belle",
+    picture: "",
     outside_color: "Jaune et violette",
     inside_color: "Jaune pâle",
     origin: "Irlande-BretagneB11A11:D11",
@@ -150,6 +164,8 @@ const varieties = [
   {
     id: 1011,
     name: "Caesar",
+    picture:
+      "https://images.pexels.com/photos/4110462/pexels-photo-4110462.jpeg",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "Pays-Bas",
@@ -160,6 +176,7 @@ const varieties = [
   {
     id: 1012,
     name: "Charlotte",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "Ile de Ré",
@@ -170,6 +187,8 @@ const varieties = [
   {
     id: 1013,
     name: "Chérie",
+    picture:
+      "https://images.pexels.com/photos/7129156/pexels-photo-7129156.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     outside_color: "Rouge",
     inside_color: "Jaune",
     origin: "France",
@@ -180,6 +199,7 @@ const varieties = [
   {
     id: 1014,
     name: "Corne de Gatte",
+    picture: "",
     outside_color: "Rose pâle",
     inside_color: "Jaune pâle",
     origin: "Incertaine",
@@ -190,6 +210,7 @@ const varieties = [
   {
     id: 1015,
     name: "Etincelle",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "",
@@ -199,6 +220,8 @@ const varieties = [
   {
     id: 1016,
     name: "Franceline",
+    picture:
+      "https://images.pexels.com/photos/7129156/pexels-photo-7129156.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     outside_color: "Rouge",
     inside_color: "Jaune",
     origin: "France",
@@ -208,6 +231,7 @@ const varieties = [
   {
     id: 1017,
     name: "Goldmarie",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "Allemagne",
@@ -218,6 +242,7 @@ const varieties = [
   {
     id: 1019,
     name: "Marabel",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune foncée",
     origin: "Allemagne",
@@ -228,6 +253,7 @@ const varieties = [
   {
     id: 1020,
     name: "Mona Lisa",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "Pays-Bas",
@@ -238,6 +264,7 @@ const varieties = [
   {
     id: 1021,
     name: "Nicola",
+    picture: "",
     outside_color: "Jaune Pâle",
     inside_color: "Jaune pâle",
     origin: "Allemagne",
@@ -248,6 +275,7 @@ const varieties = [
   {
     id: 1022,
     name: "Œil de Perdrix",
+    picture: "",
     outside_color: "Jaune mabré de rouge",
     inside_color: "Jaune Pâle",
     origin: "Ecosse",
@@ -257,6 +285,7 @@ const varieties = [
   {
     id: 1023,
     name: "Osiris",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "",
@@ -267,6 +296,8 @@ const varieties = [
   {
     id: 1024,
     name: "Penni",
+    picture:
+      "https://images.pexels.com/photos/775707/pexels-photo-775707.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     outside_color: "Jaune clair",
     inside_color: "Jaune",
     origin: "",
@@ -277,6 +308,7 @@ const varieties = [
   {
     id: 1025,
     name: "Pompadour",
+    picture: "",
     outside_color: "Jaune cuivrée",
     inside_color: "Jaune",
     origin: "France",
@@ -287,6 +319,7 @@ const varieties = [
   {
     id: 1026,
     name: "Ratte",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "France",
@@ -297,6 +330,7 @@ const varieties = [
   {
     id: 1027,
     name: "Roseval",
+    picture: "",
     outside_color: "Rouge",
     inside_color: "Jaune",
     origin: "France",
@@ -307,6 +341,7 @@ const varieties = [
   {
     id: 1028,
     name: "Rouge des flandres",
+    picture: "",
     outside_color: "Rouge",
     inside_color: "Rouge",
     origin: "France",
@@ -317,6 +352,7 @@ const varieties = [
   {
     id: 1029,
     name: "Samba",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "France",
@@ -327,6 +363,7 @@ const varieties = [
   {
     id: 1030,
     name: "Ulysse",
+    picture: "",
     outside_color: "Violette",
     inside_color: "Violette",
     origin: "Pérou",
@@ -337,6 +374,7 @@ const varieties = [
   {
     id: 1031,
     name: "Vitabella",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "Pays-Bas",
@@ -347,6 +385,7 @@ const varieties = [
   {
     id: 1032,
     name: "Viterolle",
+    picture: "",
     outside_color: "Violette foncée",
     inside_color: "Violette",
     origin: "France",
@@ -357,6 +396,7 @@ const varieties = [
   {
     id: 1033,
     name: "Jeannette",
+    picture: "",
     outside_color: "Rouge",
     inside_color: "Jaune pâle",
     origin: "France",
@@ -367,6 +407,7 @@ const varieties = [
   {
     id: 1034,
     name: "Rose de France",
+    picture: "",
     outside_color: "Rouge",
     inside_color: "Jaune pâle",
     origin: "France",

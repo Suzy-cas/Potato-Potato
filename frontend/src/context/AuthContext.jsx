@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import { createContext, useMemo, useState, useEffect } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
@@ -50,6 +49,7 @@ function AuthContextProvider({ children }) {
 }
 
 AuthContextProvider.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   children: PropTypes.object.isRequired,
 };
 

@@ -1,0 +1,59 @@
+@mixin flexDesktop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexMobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin button-base {
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: "Antonio";
+  cursor: pointer;
+  transition: border-color 0.25s;
+
+  &:focus,
+  &:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+}
+
+.primary-button {
+  @include button-base;
+  background-color: $light-grey;
+
+  &:hover {
+    background-color: $dark-grey;
+    color: white;
+  }
+
+  &.active {
+    background-color: $black;
+    color: white;
+  }
+}
+
+.secondary-button {
+  @include button-base;
+  background-color: white;
+  border: solid 1px $dark-grey;
+
+  &:hover {
+    background-color: $dark-grey;
+    color: white;
+  }
+
+  &.active {
+    background-color: $black;
+    color: white;
+  }
+}

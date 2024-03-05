@@ -49,6 +49,7 @@ class potato_varietyManager extends AbstractManager {
       `SELECT
       potato_variety.id, 
       potato_variety.name, 
+      potato_variety.picture,
       outside_color, 
       inside_color, 
       origin, 
@@ -65,9 +66,9 @@ class potato_varietyManager extends AbstractManager {
       ON recipe.cooking_tech_id = cooking_tech.id`
     );
 
-    // Return the array of potato_varietys
     return rows;
   }
+
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing potato_variety
 

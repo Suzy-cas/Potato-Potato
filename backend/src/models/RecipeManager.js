@@ -66,7 +66,7 @@ class RecipeManager extends AbstractManager {
         `SELECT DISTINCT
         ${this.table}.id,
         title,
-        picture,
+        ${this.table}.picture,
         difficulty,
         prep_time,
         cooking_time,

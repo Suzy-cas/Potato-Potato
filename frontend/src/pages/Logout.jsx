@@ -12,6 +12,7 @@ function Logout() {
       <div>
         <button
           type="button"
+          className="primary-button"
           onClick={() => {
             handleLogout();
             navigate("/");

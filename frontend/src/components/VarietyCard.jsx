@@ -10,11 +10,15 @@ function VarietyCard({ uniqueVarieties, varietySearch }) {
           return val.name.toLowerCase().includes(varietySearch);
         })
         .map((val) => (
-          <div className="variety-cards">
+          <div className="variety-cards" key={val.id}>
             <h3>{val.name}</h3>
             <img
-              alt="pomme de terre charlotee"
-              src="https://upload.wikimedia.org/wikipedia/commons/7/72/Pommes_de_terre_%28CHARLOTTE%29-cliche_Jean_Weber_%2823594803261%29.jpg?uselang=fr"
+              alt={val.name}
+              src={
+                val.picture
+                  ? val.picture
+                  : "https://upload.wikimedia.org/wikipedia/commons/7/72/Pommes_de_terre_%28CHARLOTTE%29-cliche_Jean_Weber_%2823594803261%29.jpg?uselang=fr"
+              }
             />
             <div className="card-content">
               <div>
@@ -22,8 +26,9 @@ function VarietyCard({ uniqueVarieties, varietySearch }) {
                 <p>{val.description}</p>
                 <h4>Caractéristiques physiques</h4>
                 <p>
-                  La {val.name} possède une couleur de peau {val.outside_color}{" "}
-                  et une chaire {val.inside_color}
+                  La {val.name} possède une couleur de peau{" "}
+                  {val.outside_color.toLowerCase()} et une chaire{" "}
+                  {val.inside_color.toLowerCase()}
                 </p>
                 <h4>Type de chaire</h4>
                 <p>{val.flesh}</p>
@@ -44,9 +49,6 @@ function VarietyCard({ uniqueVarieties, varietySearch }) {
                 </div>
               </div>
             </div>
-            <section>
-              <button type="button">Les recettes</button>
-            </section>
           </div>
         ))}
     </section>

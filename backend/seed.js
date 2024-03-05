@@ -96,10 +96,11 @@ const seed = async () => {
     // Insert data into the 'step' table
     const queriespotatoVariety = varieties.map((variety) =>
       database.query(
-        "insert into potato_variety(id, name, outside_color, inside_color, origin, flesh, description) values (?, ?, ?, ?, ?, ?, ?)",
+        "insert into potato_variety(id, name, picture, outside_color, inside_color, origin, flesh, description) values (?, ?, ?, ?, ?, ?, ?, ?)",
         [
           variety.id,
           variety.name,
+          variety.picture,
           variety.outside_color,
           variety.inside_color,
           variety.origin,
