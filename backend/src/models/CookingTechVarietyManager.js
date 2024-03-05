@@ -11,11 +11,11 @@ class CookingTechVarietyManager extends AbstractManager {
   // The C of CRUD - Create operation
 
   async create(cooking_tech_variety) {
-    const { cooking_tech_id, potatoe_variety_id } = cooking_tech_variety;
+    const { cooking_tech_id, potato_variety_id } = cooking_tech_variety;
     // Execute the SQL INSERT query to add a new cooking_tech_variety to the "cooking_tech_variety" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (cooking_tech_id, potatoe_variety_id) values (?, ?)`,
-      [cooking_tech_id, potatoe_variety_id]
+      `insert into ${this.table} (cooking_tech_id, potato_variety_id) values (?, ?)`,
+      [cooking_tech_id, potato_variety_id]
     );
 
     // Return the ID of the newly inserted cooking_tech_variety

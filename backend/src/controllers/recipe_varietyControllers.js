@@ -6,10 +6,10 @@ const tables = require("../tables");
 const browse = async (req, res, next) => {
   try {
     // Fetch all cooking_tech_varietys from the database
-    const cooking_tech_varieties = await tables.cooking_tech_variety.readAll();
+    const cooking_tech_varietys = await tables.cooking_tech_variety.readAll();
 
     // Respond with the cooking_tech_varietys in JSON format
-    res.status(200).json(cooking_tech_varieties);
+    res.status(200).json(cooking_tech_varietys);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);

@@ -1,9 +1,9 @@
 DROP TABLE IF EXISTS cooking_tech_variety;
 DROP TABLE IF EXISTS type;
-DROP TABLE IF EXISTS ingredient_quantity_recipe;
+DROP TABLE IF EXISTS ingredientQtRecipe;
 DROP TABLE IF EXISTS quantity;
 DROP TABLE IF EXISTS ingredient;
-DROP TABLE IF EXISTS potatoe_variety;
+DROP TABLE IF EXISTS potato_variety;
 DROP TABLE IF EXISTS cooking_tech;
 DROP TABLE IF EXISTS recipe;
 DROP TABLE IF EXISTS user;
@@ -34,7 +34,7 @@ create table recipe (
   is_approved TINYINT NOT NULL
 );
 
-CREATE TABLE potatoe_variety (
+CREATE TABLE potato_variety (
   id int primary key not null,
   name VARCHAR(80) NOT NULL,
   outside_color VARCHAR(80) NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE quantity (
   type_id INT
 );
 
-CREATE TABLE ingredient_quantity_recipe (
+CREATE TABLE ingredientQtRecipe (
   id int primary key auto_increment not null,
   recipe_id INT,
   ingredient_id INT NOT NULL,
@@ -74,18 +74,18 @@ CREATE TABLE ingredient_quantity_recipe (
 CREATE TABLE cooking_tech_variety (
   id int primary key not null,
   cooking_tech_id INT NOT NULL,
-  potatoe_variety_id INT NOT NULL
+  potato_variety_id INT NOT NULL
 );
 
--- ALTER TABLE ingredient_quantity_recipe ADD FOREIGN KEY (quantity_id) REFERENCES quantity (id) ON UPDATE CASCADE;
+-- ALTER TABLE ingredientQtRecipe ADD FOREIGN KEY (quantity_id) REFERENCES quantity (id) ON UPDATE CASCADE;
 
--- ALTER TABLE ingredient_quantity_recipe ADD FOREIGN KEY (ingredient_id) REFERENCES ingredient (id) ON UPDATE CASCADE;
+-- ALTER TABLE ingredientQtRecipe ADD FOREIGN KEY (ingredient_id) REFERENCES ingredient (id) ON UPDATE CASCADE;
 
--- ALTER TABLE ingredient_quantity_recipe ADD FOREIGN KEY (recipe_id) REFERENCES recipe (id);
+-- ALTER TABLE ingredientQtRecipe ADD FOREIGN KEY (recipe_id) REFERENCES recipe (id);
 
 -- ALTER TABLE recipe ADD FOREIGN KEY (user_id) REFERENCES user (id);
 
--- ALTER TABLE cooking_tech_variety ADD FOREIGN KEY (potatoe_variety_id) REFERENCES potatoe_variety (id);
+-- ALTER TABLE cooking_tech_variety ADD FOREIGN KEY (potato_variety_id) REFERENCES potato_variety (id);
 
 -- ALTER TABLE cooking_tech_variety ADD FOREIGN KEY (cooking_tech_id) REFERENCES cooking_tech (id);
 

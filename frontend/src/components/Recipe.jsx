@@ -5,7 +5,7 @@ import instance from "../services/instance";
 
 import RecipeCard from "./RecipeCard";
 
-function Recipe({ handleRecipeClick }) {
+function Recipe() {
   const [recipesCookTechs, setRecipesCookTechs] = useState([]);
   const [recipeSearch, setRecipeSearch] = useState([]);
 

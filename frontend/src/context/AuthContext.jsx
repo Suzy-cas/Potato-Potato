@@ -1,10 +1,10 @@
+/* eslint-disable react/forbid-prop-types */
 import { createContext, useMemo, useState, useEffect } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import PropTypes from "prop-types";
 
 const AuthContext = createContext();
-
-// eslint-disable-next-line react/prop-types
 function AuthContextProvider({ children }) {
   const [user, setUser] = useState({ is_admin: 3 });
 
@@ -34,7 +34,6 @@ function AuthContextProvider({ children }) {
     localStorage.removeItem("token");
     setUser({ is_admin: 3 });
   };
-
   const userMemo = useMemo(
     () => ({
       user,
@@ -49,5 +48,9 @@ function AuthContextProvider({ children }) {
     <AuthContext.Provider value={userMemo}>{children}</AuthContext.Provider>
   );
 }
+
+AuthContextProvider.propTypes = {
+  children: PropTypes.object.isRequired,
+};
 
 export { AuthContext, AuthContextProvider };
