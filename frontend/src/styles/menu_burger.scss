@@ -2,30 +2,39 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-
+  img {
+    width: 22vw;
+    padding: 1vh 1vw;
+  }
   .burger-ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+    @include flexColumn;
+    align-items: flex-start;
     list-style: none;
-    padding: 15vh 1rem 15vh;
     height: 100%;
-    width: 100%;
+    width: 80%;
     position: fixed;
     z-index: 1;
     background-color: black;
     visibility: visible;
     right: 0;
-    a {
-      font-size: calc(2rem - 1vw);
-      padding: 1rem 2rem;
+  }
+  a {
+    display: flex;
+    font-size: calc(2rem - 1vw);
+    padding-inline: 7vh;
+    color: white;
+    &:hover {
+      font-weight: 800;
+      transform: scale(1.2);
       color: white;
-      &:hover {
-        font-weight: 800;
-        transform: scale(1.2);
-        color: white;
-      }
+    }
+  }
+  .link {
+    @include flexRow;
+    justify-content: center;
+    h1 {
+      display: flex;
+      align-items: center;
     }
   }
   .burger-ulhidden {
@@ -81,25 +90,45 @@
 @media screen and (min-width: 360px) and (max-width: 768px) {
   .menu-burger {
     .burger-ul {
-      width: 50%;
-      padding: 15vh 1rem 30vh;
+      width: 80%;
+      padding: 15vh 0vw 30vh;
     }
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .menu-burger {
+    img {
+      width: 10vw;
+      padding: 3vh 1vw;
+    }
     .burger-ul {
-      width: 40%;
+      width: 50%;
       padding: 15vh 1rem 40vh;
     }
   }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1024px) and (max-width: 1355px) {
   .menu-burger {
+    img {
+      width: 8vw;
+      padding: 3vh 1vw;
+    }
     .burger-ul {
-      width: 20%;
-      padding: 15vh 1rem 30vh;
+      width: 35%;
+      padding: 10vh 1rem 20vh;
+    }
+  }
+}
+@media screen and (min-width: 1355px) {
+  .menu-burger {
+    img {
+      width: 7vw;
+      padding: 3vh 1vw;
+    }
+    .burger-ul {
+      width: 25%;
+      padding: 10vh 1rem 20vh;
     }
   }
 }
