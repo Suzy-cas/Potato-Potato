@@ -49,6 +49,7 @@ const router = createBrowserRouter([
     children: [
       { path: "nouvelle-recette", element: <NewRecipe /> },
       { path: "recettes-review", element: <RecipeReview /> },
+      { path: "profil", element: <Profile /> },
     ],
   },
 ]);

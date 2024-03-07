@@ -17,7 +17,7 @@ function RecipeCard({ recipeSearch, recipesCookTechs }) {
             .map((val) => (
               <div className="recipe-cards" key={val.id}>
                 <h3>{val.title}</h3>
-                <img alt="" src="" />
+                <img alt="" src={val.picture} />
                 <div className="card-content">
                   <div>
                     <h4>Difficulté</h4>
