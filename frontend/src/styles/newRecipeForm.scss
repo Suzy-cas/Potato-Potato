@@ -1,0 +1,41 @@
+.new-recipe {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5vh;
+  .recipe-form,
+  .new-recipe-display {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0vh 10vw;
+    label {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 2vh;
+    }
+    .ingredients-container,
+    .recipe-step-container,
+    .quantity-container {
+      display: flex;
+      flex-direction: column;
+    }
+    .ingredients-container,
+    .recipe-step-container {
+      margin-top: 5vh;
+    }
+    input {
+      width: 100%;
+      border: solid 1px;
+    }
+    textarea {
+      min-width: 20vw;
+      min-height: 10vh;
+    }
+    .quantity-input {
+      display: flex;
+      width: 60%;
+    }
+  }
+}

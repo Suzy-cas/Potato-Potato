@@ -1,0 +1,12 @@
+$black: #000000;
+$dark-grey: #686868;
+$light-grey: lighten(complement($dark-grey), 50%);
+
+@font-face {
+  font-family: "Sansita";
+  src: url(@assets/fonts/Sansita-ExtraBold.woff);
+}
+
+$font-title-h1: "Sansita";
+$font-title-h2: "Antonio";
+$font-texts: "Poppins";

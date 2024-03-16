@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 // Load environment variables from .env file
 require("dotenv").config();
 
@@ -28,10 +29,10 @@ const seed = async () => {
     // Optional: Truncate tables (remove existing data)
     await database.query("DELETE FROM cooking_tech_variety");
     await database.query("DELETE FROM type");
-    await database.query("DELETE FROM ingredient_quantity_recipe");
+    await database.query("DELETE FROM ingredientQtRecipe");
     await database.query("DELETE FROM quantity");
     await database.query("DELETE FROM ingredient");
-    await database.query("DELETE FROM potatoe_variety");
+    await database.query("DELETE FROM potato_variety");
     await database.query("DELETE FROM cooking_tech");
     await database.query("DELETE FROM recipe");
     await database.query("DELETE FROM user");
@@ -39,7 +40,7 @@ const seed = async () => {
     // Creation of reusable admin and user account
     const adminQueries = () =>
       database.query(
-        "INSERT INTO user(username, email, password, is_admin) VALUES (?,?,?,?)",
+        "INSERT INTO user(username, email, hashed_password, is_admin) VALUES (?,?,?,?)",
         [
           "Yzus",
           "suzy.cassar@gmail.com",
@@ -51,10 +52,10 @@ const seed = async () => {
 
     const userQueries = () =>
       database.query(
-        "INSERT INTO user(username, email, password, is_admin) VALUES (?,?,?,?)",
+        "INSERT INTO user(username, email, hashed_password, is_admin) VALUES (?,?,?,?)",
         [
           "Rassac",
-          "suzy.cassar@gmail.com",
+          "suzy.cassar2@gmail.com",
           "$argon2id$v=19$m=65536,t=5,p=1$QZ8jcG2CDQf2DoFzx4sYWw$GuyTq8SnnrO2WsgzLcfw43o0f9j09og11OrsuHwrESE",
           true,
         ]
@@ -93,12 +94,13 @@ const seed = async () => {
     queries.push(...queriesRecipe);
 
     // Insert data into the 'step' table
-    const queriesPotatoeVariety = varieties.map((variety) =>
+    const queriespotatoVariety = varieties.map((variety) =>
       database.query(
-        "insert into potatoe_variety(id, name, outside_color, inside_color, origin, flesh, description) values (?, ?, ?, ?, ?, ?, ?)",
+        "insert into potato_variety(id, name, picture, outside_color, inside_color, origin, flesh, description) values (?, ?, ?, ?, ?, ?, ?, ?)",
         [
           variety.id,
           variety.name,
+          variety.picture,
           variety.outside_color,
           variety.inside_color,
           variety.origin,
@@ -108,7 +110,7 @@ const seed = async () => {
       )
     );
 
-    queries.push(...queriesPotatoeVariety);
+    queries.push(...queriespotatoVariety);
 
     // Insert data into the 'ingredient' table
     const queriesIngredient = ingredients.map((ingredient) =>
@@ -131,18 +133,18 @@ const seed = async () => {
 
     // Insert data into the 'quantity' table
     const queriesQuantity = quantities.map((quantity) =>
-      database.query("insert into quantity(id, value) values (?, ?)", [
-        quantity.id,
-        quantity.value,
-      ])
+      database.query(
+        "insert into quantity(id, value, type_id) values (?, ?, ?)",
+        [quantity.id, quantity.value, quantity.type_id]
+      )
     );
     queries.push(...queriesQuantity);
 
-    // Insert data into the 'ingredient_quantity_recipe' table
+    // Insert data into the 'ingredientQtRecipe' table
     const queriesIngredientQtRecipe = ingredientQtRecipes.map(
       (ingredientQtRecipe) =>
         database.query(
-          "insert into ingredient_quantity_recipe(id, recipe_id, ingredient_id, quantity_id) values (?,?,?,?)",
+          "insert into ingredientQtRecipe(id, recipe_id, ingredient_id, quantity_id) values (?,?,?,?)",
           [
             ingredientQtRecipe.id,
             ingredientQtRecipe.recipe_id,
@@ -158,11 +160,11 @@ const seed = async () => {
 
     const queriesCookingTechVar = cookingTechVars.map((cookingTechVar) =>
       database.query(
-        "insert into cooking_tech_variety(id, cooking_tech_id, potatoe_variety_id) values (?, ?, ?)",
+        "insert into cooking_tech_variety(id, cooking_tech_id, potato_variety_id) values (?, ?, ?)",
         [
           cookingTechVar.id,
           cookingTechVar.cooking_tech_id,
-          cookingTechVar.potatoe_variety_id,
+          cookingTechVar.potato_variety_id,
         ]
       )
     );

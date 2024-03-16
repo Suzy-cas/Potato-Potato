@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-import MainChoise from "./MainChoise";
+import MainChoise from "../components/MainChoise";
 
 function Home() {
   const [potatoHeart, setPotatoHeart] = useState(false);

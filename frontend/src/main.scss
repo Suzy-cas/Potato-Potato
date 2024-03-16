@@ -1,13 +1,14 @@
-@import "./styles/base.scss";
+@import "./styles/_variables.scss";
+@import "./styles/_mixins_placeholders.scss";
+@import "./styles/_base.scss";
 
 @import "./styles/cards.scss";
-@import "./styles/commons.scss";
 @import "./styles/connexion.scss";
 @import "./styles/home.scss";
 @import "./styles/mainChoise.scss";
-@import "./styles/mixin.scss";
 @import "./styles/recipe.scss";
 @import "./styles/menu_burger.scss";
-@import "./styles/login-out.scss";
+@import "./styles/login-out-register.scss";
 @import "./styles/layout_menus.scss";
 @import "./styles/layouts.scss";
+@import "./styles/newRecipeForm.scss";

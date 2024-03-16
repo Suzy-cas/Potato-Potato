@@ -5,14 +5,12 @@ const userSchema = Joi.object({
   id: Joi.number().presence("optional"),
   username: Joi.string().max(80).required(),
   email: Joi.string().email().max(255).required(),
-  password: Joi.string().max(80).required(),
-  is_admin: Joi.number().integer().required(),
+  password: Joi.string().max(255).required(),
+  is_admin: Joi.number().required(),
 });
 
 const validateUser = (req, res, next) => {
-  const schema = userSchema();
-
-  const { error } = schema.validate(
+  const { error } = userSchema.validate(
     {
       ...req.body,
     },

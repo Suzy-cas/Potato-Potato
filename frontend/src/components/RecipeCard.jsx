@@ -42,7 +42,7 @@ function RecipeCard({ recipeSearch, recipesCookTechs }) {
                         {recipesCookTechs
                           .filter((potato) => potato.title.includes(val.title))
                           .map((potato) => (
-                            <p>{potato.potatoe_variety}</p>
+                            <p>{potato.potato_variety}</p>
                           ))}
                       </div>
                     </div>

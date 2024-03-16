@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 // Import access to database tables
 const tables = require("../tables");
 
@@ -5,10 +6,10 @@ const tables = require("../tables");
 const browse = async (req, res, next) => {
   try {
     // Fetch all cooking_tech_varietys from the database
-    const cooking_tech_varietys = await tables.cooking_tech_variety.readAll();
+    const cooking_tech_varieties = await tables.cooking_tech_variety.readAll();
 
     // Respond with the cooking_tech_varietys in JSON format
-    res.status(200).json(cooking_tech_varietys);
+    res.status(200).json(cooking_tech_varieties);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -19,7 +20,9 @@ const browse = async (req, res, next) => {
 const read = async (req, res, next) => {
   try {
     // Fetch a specific cooking_tech_variety from the database based on the provided ID
-    const cooking_tech_variety = await tables.cooking_tech_variety.read(req.params.id);
+    const cooking_tech_variety = await tables.cooking_tech_variety.read(
+      req.params.id
+    );
 
     // If the cooking_tech_variety is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the cooking_tech_variety in JSON format
@@ -42,7 +45,10 @@ const edit = async (req, res, next) => {
 
   try {
     // Insert the cooking_tech_variety into the database
-    await tables.cooking_tech_variety.update(cooking_tech_variety, req.params.id);
+    await tables.cooking_tech_variety.update(
+      cooking_tech_variety,
+      req.params.id
+    );
 
     // Respond with HTTP 204 (No Content)
     res.sendStatus(204);
@@ -59,7 +65,9 @@ const add = async (req, res, next) => {
 
   try {
     // Insert the cooking_tech_variety into the database
-    const insertId = await tables.cooking_tech_variety.create(cooking_tech_variety);
+    const insertId = await tables.cooking_tech_variety.create(
+      cooking_tech_variety
+    );
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted cooking_tech_variety
     res.status(201).json({ ...req.body, id: insertId });

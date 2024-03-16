@@ -66,13 +66,13 @@ class RecipeManager extends AbstractManager {
         `SELECT DISTINCT
         ${this.table}.id,
         title,
-        picture,
+        ${this.table}.picture,
         difficulty,
         prep_time,
         cooking_time,
         steps,
         cooking_tech.name AS cooking_tech,
-        potatoe_variety.name AS potatoe_variety
+        potato_variety.name AS potato_variety
     FROM 
     ${this.table}
     JOIN 
@@ -80,7 +80,7 @@ class RecipeManager extends AbstractManager {
     JOIN 
         cooking_tech_variety ON cooking_tech_variety.cooking_tech_id = cooking_tech.id
     JOIN 
-        potatoe_variety ON potatoe_variety.id = cooking_tech_variety.potatoe_variety_id`
+        potato_variety ON potato_variety.id = cooking_tech_variety.potato_variety_id`
       );
 
       return rows;

@@ -1,12 +1,12 @@
 ## Welcome to Potato Potato 🥔
 
-Here you will find all you need to know about potatoes (except how you should prononce the word itself). If you love this extraordinary vegetable, this website is definitly for you ! And if you love potato-based cooking, especially french cuisine, you will love spending time here.
-If you have ever made a "gratin dauphinois" that unexpectedly transformed into mashed potatoes, you SHOULD hang around because you will learn valuable information...
+Here you will find all you need to know about potatos (except how you should prononce the word itself). If you love this extraordinary vegetable, this website is definitly for you ! And if you love potato-based cooking, especially french cuisine, you will love spending time here.
+If you have ever made a "gratin dauphinois" that unexpectedly transformed into mashed potatos, you SHOULD hang around because you will learn valuable information...
 
 **In process...**
 This site is in development but very soon it should :
 
-- provide you with the main caracteristics of potatoes varieties
+- provide you with the main caracteristics of potatos varieties
 - offer a set of recipes matching thoses varieties
 
 **Upcoming**

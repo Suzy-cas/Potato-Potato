@@ -1,7 +1,7 @@
-// const mashedPotatoe = require("../public/assets/images/Joel_Robuchon_mashed_web.jpg");
+// const mashedpotato = require("../public/assets/images/Joel_Robuchon_mashed_web.jpg");
 // const hassbSalmon = require("../public/assets/images/Hasseback_salmon_web.jpg");
-// const steamed = require("../public/assets/images/Steamed_potatoe_web.jpg");
-// const baconSalad = require("../public/assets/images/Potatoe_salad_bacon_radish_web.jpg");
+// const steamed = require("../public/assets/images/Steamed_potato_web.jpg");
+// const baconSalad = require("../public/assets/images/potato_salad_bacon_radish_web.jpg");
 
 const recipes = [
   {
@@ -33,7 +33,7 @@ const recipes = [
   {
     id: 4003,
     title: "Pommes de terre vapeur",
-    picture: "../public/assets/images/Steamed_potatoe_web.jpg",
+    picture: "../public/assets/images/Steamed_potato_web.jpg",
     difficulty: "Facile",
     prep_time: "10 minutes",
     cooking_time: "20 à 25 minutes en fonction de la taille de vos patates",
@@ -46,7 +46,7 @@ const recipes = [
   {
     id: 4004,
     title: "Salade pomme de terre œufs et lardons",
-    picture: "../public/assets/images/Potatoe_salad_bacon_radish_web.jpg",
+    picture: "../public/assets/images/potato_salad_bacon_radish_web.jpg",
     difficulty: "Facile",
     prep_time: "10 minutes",
     cooking_time: "10 à 15 minutes en fonction de la taille de vos patates",
@@ -61,6 +61,8 @@ const varieties = [
   {
     id: 1001,
     name: "Agata",
+    picture:
+      "https://upload.wikimedia.org/wikipedia/commons/7/72/Pommes_de_terre_%28CHARLOTTE%29-cliche_Jean_Weber_%2823594803261%29.jpg?uselang=fr",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "Pays-Bas - Culture : Europe du Sud",
@@ -71,6 +73,8 @@ const varieties = [
   {
     id: 1002,
     name: "Agria",
+    picture:
+      "https://images.pexels.com/photos/7129145/pexels-photo-7129145.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     outside_color: "Jaune",
     inside_color: "Jaune pâle",
     origin: "Pays-Bas - Culture : Europe du Sud",
@@ -81,6 +85,8 @@ const varieties = [
   {
     id: 1003,
     name: "Amandine",
+    picture:
+      "https://images.pexels.com/photos/2286776/pexels-photo-2286776.jpeg",
     outside_color: "Jaune Pale",
     inside_color: "Jaune pâle",
     origin: "France",
@@ -91,6 +97,8 @@ const varieties = [
   {
     id: 1004,
     name: "Annabelle",
+    picture:
+      "https://images.pexels.com/photos/144248/potatoes-vegetables-erdfrucht-bio-144248.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     outside_color: "Jaune",
     inside_color: "Jaune foncé",
     origin: "Pays-Bas - Culture : Europe du Sud",
@@ -100,6 +108,8 @@ const varieties = [
   {
     id: 1005,
     name: "Belle de Fontenay",
+    picture:
+      "https://upload.wikimedia.org/wikipedia/commons/7/72/Pommes_de_terre_%28CHARLOTTE%29-cliche_Jean_Weber_%2823594803261%29.jpg?uselang=fr",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "France (Fontenay sous-bois)",
@@ -110,6 +120,7 @@ const varieties = [
   {
     id: 1006,
     name: "BF15",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune Foncé",
     origin: "France",
@@ -120,6 +131,7 @@ const varieties = [
   {
     id: 1007,
     name: "Bintje",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "France / Belgique",
@@ -130,6 +142,7 @@ const varieties = [
   {
     id: 1009,
     name: "Bleue d'Artois",
+    picture: "",
     outside_color: "Bleue-violette",
     inside_color: "Bleue-violette",
     origin: "France",
@@ -140,6 +153,7 @@ const varieties = [
   {
     id: 1010,
     name: "Blue Belle",
+    picture: "",
     outside_color: "Jaune et violette",
     inside_color: "Jaune pâle",
     origin: "Irlande-BretagneB11A11:D11",
@@ -150,6 +164,8 @@ const varieties = [
   {
     id: 1011,
     name: "Caesar",
+    picture:
+      "https://images.pexels.com/photos/4110462/pexels-photo-4110462.jpeg",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "Pays-Bas",
@@ -160,6 +176,7 @@ const varieties = [
   {
     id: 1012,
     name: "Charlotte",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "Ile de Ré",
@@ -170,6 +187,8 @@ const varieties = [
   {
     id: 1013,
     name: "Chérie",
+    picture:
+      "https://images.pexels.com/photos/7129156/pexels-photo-7129156.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     outside_color: "Rouge",
     inside_color: "Jaune",
     origin: "France",
@@ -180,6 +199,7 @@ const varieties = [
   {
     id: 1014,
     name: "Corne de Gatte",
+    picture: "",
     outside_color: "Rose pâle",
     inside_color: "Jaune pâle",
     origin: "Incertaine",
@@ -190,6 +210,7 @@ const varieties = [
   {
     id: 1015,
     name: "Etincelle",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "",
@@ -199,6 +220,8 @@ const varieties = [
   {
     id: 1016,
     name: "Franceline",
+    picture:
+      "https://images.pexels.com/photos/7129156/pexels-photo-7129156.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     outside_color: "Rouge",
     inside_color: "Jaune",
     origin: "France",
@@ -208,6 +231,7 @@ const varieties = [
   {
     id: 1017,
     name: "Goldmarie",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "Allemagne",
@@ -218,6 +242,7 @@ const varieties = [
   {
     id: 1019,
     name: "Marabel",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune foncée",
     origin: "Allemagne",
@@ -228,6 +253,7 @@ const varieties = [
   {
     id: 1020,
     name: "Mona Lisa",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "Pays-Bas",
@@ -238,6 +264,7 @@ const varieties = [
   {
     id: 1021,
     name: "Nicola",
+    picture: "",
     outside_color: "Jaune Pâle",
     inside_color: "Jaune pâle",
     origin: "Allemagne",
@@ -248,6 +275,7 @@ const varieties = [
   {
     id: 1022,
     name: "Œil de Perdrix",
+    picture: "",
     outside_color: "Jaune mabré de rouge",
     inside_color: "Jaune Pâle",
     origin: "Ecosse",
@@ -257,6 +285,7 @@ const varieties = [
   {
     id: 1023,
     name: "Osiris",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "",
@@ -267,6 +296,8 @@ const varieties = [
   {
     id: 1024,
     name: "Penni",
+    picture:
+      "https://images.pexels.com/photos/775707/pexels-photo-775707.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     outside_color: "Jaune clair",
     inside_color: "Jaune",
     origin: "",
@@ -277,6 +308,7 @@ const varieties = [
   {
     id: 1025,
     name: "Pompadour",
+    picture: "",
     outside_color: "Jaune cuivrée",
     inside_color: "Jaune",
     origin: "France",
@@ -287,6 +319,7 @@ const varieties = [
   {
     id: 1026,
     name: "Ratte",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "France",
@@ -297,6 +330,7 @@ const varieties = [
   {
     id: 1027,
     name: "Roseval",
+    picture: "",
     outside_color: "Rouge",
     inside_color: "Jaune",
     origin: "France",
@@ -307,6 +341,7 @@ const varieties = [
   {
     id: 1028,
     name: "Rouge des flandres",
+    picture: "",
     outside_color: "Rouge",
     inside_color: "Rouge",
     origin: "France",
@@ -317,6 +352,7 @@ const varieties = [
   {
     id: 1029,
     name: "Samba",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "France",
@@ -327,6 +363,7 @@ const varieties = [
   {
     id: 1030,
     name: "Ulysse",
+    picture: "",
     outside_color: "Violette",
     inside_color: "Violette",
     origin: "Pérou",
@@ -337,6 +374,7 @@ const varieties = [
   {
     id: 1031,
     name: "Vitabella",
+    picture: "",
     outside_color: "Jaune",
     inside_color: "Jaune",
     origin: "Pays-Bas",
@@ -347,6 +385,7 @@ const varieties = [
   {
     id: 1032,
     name: "Viterolle",
+    picture: "",
     outside_color: "Violette foncée",
     inside_color: "Violette",
     origin: "France",
@@ -357,6 +396,7 @@ const varieties = [
   {
     id: 1033,
     name: "Jeannette",
+    picture: "",
     outside_color: "Rouge",
     inside_color: "Jaune pâle",
     origin: "France",
@@ -367,6 +407,7 @@ const varieties = [
   {
     id: 1034,
     name: "Rose de France",
+    picture: "",
     outside_color: "Rouge",
     inside_color: "Jaune pâle",
     origin: "France",
@@ -693,517 +734,517 @@ const cookingTechVars = [
   {
     id: 10,
     cooking_tech_id: 2001,
-    potatoe_variety_id: 1002,
+    potato_variety_id: 1002,
   },
   {
     id: 11,
     cooking_tech_id: 2001,
-    potatoe_variety_id: 1007,
+    potato_variety_id: 1007,
   },
   {
     id: 12,
     cooking_tech_id: 2001,
-    potatoe_variety_id: 1010,
+    potato_variety_id: 1010,
   },
   {
     id: 13,
     cooking_tech_id: 2001,
-    potatoe_variety_id: 1011,
+    potato_variety_id: 1011,
   },
   {
     id: 14,
     cooking_tech_id: 2001,
-    potatoe_variety_id: 1015,
+    potato_variety_id: 1015,
   },
   {
     id: 15,
     cooking_tech_id: 2001,
-    potatoe_variety_id: 1019,
+    potato_variety_id: 1019,
   },
   {
     id: 16,
     cooking_tech_id: 2001,
-    potatoe_variety_id: 1023,
+    potato_variety_id: 1023,
   },
   {
     id: 17,
     cooking_tech_id: 2001,
-    potatoe_variety_id: 1028,
+    potato_variety_id: 1028,
   },
   {
     id: 18,
     cooking_tech_id: 2001,
-    potatoe_variety_id: 1029,
+    potato_variety_id: 1029,
   },
   {
     id: 19,
     cooking_tech_id: 2001,
-    potatoe_variety_id: 1030,
+    potato_variety_id: 1030,
   },
   {
     id: 20,
     cooking_tech_id: 2002,
-    potatoe_variety_id: 1001,
+    potato_variety_id: 1001,
   },
   {
     id: 21,
     cooking_tech_id: 2002,
-    potatoe_variety_id: 1002,
+    potato_variety_id: 1002,
   },
   {
     id: 22,
     cooking_tech_id: 2002,
-    potatoe_variety_id: 1007,
+    potato_variety_id: 1007,
   },
   {
     id: 23,
     cooking_tech_id: 2002,
-    potatoe_variety_id: 1009,
+    potato_variety_id: 1009,
   },
   {
     id: 24,
     cooking_tech_id: 2002,
-    potatoe_variety_id: 1010,
+    potato_variety_id: 1010,
   },
   {
     id: 25,
     cooking_tech_id: 2002,
-    potatoe_variety_id: 1011,
+    potato_variety_id: 1011,
   },
   {
     id: 26,
     cooking_tech_id: 2002,
-    potatoe_variety_id: 1015,
+    potato_variety_id: 1015,
   },
   {
     id: 27,
     cooking_tech_id: 2002,
-    potatoe_variety_id: 1033,
+    potato_variety_id: 1033,
   },
   {
     id: 28,
     cooking_tech_id: 2002,
-    potatoe_variety_id: 1019,
+    potato_variety_id: 1019,
   },
   {
     id: 29,
     cooking_tech_id: 2002,
-    potatoe_variety_id: 1023,
+    potato_variety_id: 1023,
   },
   {
     id: 30,
     cooking_tech_id: 2002,
-    potatoe_variety_id: 1026,
+    potato_variety_id: 1026,
   },
   {
     id: 31,
     cooking_tech_id: 2002,
-    potatoe_variety_id: 1034,
+    potato_variety_id: 1034,
   },
   {
     id: 32,
     cooking_tech_id: 2002,
-    potatoe_variety_id: 1029,
+    potato_variety_id: 1029,
   },
   {
     id: 33,
     cooking_tech_id: 2002,
-    potatoe_variety_id: 1030,
+    potato_variety_id: 1030,
   },
   {
     id: 34,
     cooking_tech_id: 2002,
-    potatoe_variety_id: 1031,
+    potato_variety_id: 1031,
   },
   {
     id: 35,
     cooking_tech_id: 2002,
-    potatoe_variety_id: 1032,
+    potato_variety_id: 1032,
   },
   {
     id: 36,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1002,
+    potato_variety_id: 1002,
   },
   {
     id: 37,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1003,
+    potato_variety_id: 1003,
   },
   {
     id: 38,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1004,
+    potato_variety_id: 1004,
   },
   {
     id: 39,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1005,
+    potato_variety_id: 1005,
   },
   {
     id: 40,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1006,
+    potato_variety_id: 1006,
   },
   {
     id: 41,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1012,
+    potato_variety_id: 1012,
   },
   {
     id: 42,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1013,
+    potato_variety_id: 1013,
   },
   {
     id: 43,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1014,
+    potato_variety_id: 1014,
   },
   {
     id: 44,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1016,
+    potato_variety_id: 1016,
   },
   {
     id: 45,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1017,
+    potato_variety_id: 1017,
   },
   {
     id: 46,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1033,
+    potato_variety_id: 1033,
   },
   {
     id: 47,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1020,
+    potato_variety_id: 1020,
   },
   {
     id: 48,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1021,
+    potato_variety_id: 1021,
   },
   {
     id: 49,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1022,
+    potato_variety_id: 1022,
   },
   {
     id: 50,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1023,
+    potato_variety_id: 1023,
   },
   {
     id: 51,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1024,
+    potato_variety_id: 1024,
   },
   {
     id: 52,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1025,
+    potato_variety_id: 1025,
   },
   {
     id: 53,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1026,
+    potato_variety_id: 1026,
   },
   {
     id: 54,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1034,
+    potato_variety_id: 1034,
   },
   {
     id: 55,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1027,
+    potato_variety_id: 1027,
   },
   {
     id: 56,
     cooking_tech_id: 2003,
-    potatoe_variety_id: 1031,
+    potato_variety_id: 1031,
   },
   {
     id: 57,
     cooking_tech_id: 2004,
-    potatoe_variety_id: 1003,
+    potato_variety_id: 1003,
   },
   {
     id: 58,
     cooking_tech_id: 2004,
-    potatoe_variety_id: 1004,
+    potato_variety_id: 1004,
   },
   {
     id: 59,
     cooking_tech_id: 2004,
-    potatoe_variety_id: 1005,
+    potato_variety_id: 1005,
   },
   {
     id: 60,
     cooking_tech_id: 2004,
-    potatoe_variety_id: 1006,
+    potato_variety_id: 1006,
   },
   {
     id: 61,
     cooking_tech_id: 2004,
-    potatoe_variety_id: 1016,
+    potato_variety_id: 1016,
   },
   {
     id: 62,
     cooking_tech_id: 2004,
-    potatoe_variety_id: 1017,
+    potato_variety_id: 1017,
   },
   {
     id: 63,
     cooking_tech_id: 2004,
-    potatoe_variety_id: 1033,
+    potato_variety_id: 1033,
   },
   {
     id: 64,
     cooking_tech_id: 2004,
-    potatoe_variety_id: 1020,
+    potato_variety_id: 1020,
   },
   {
     id: 65,
     cooking_tech_id: 2004,
-    potatoe_variety_id: 1021,
+    potato_variety_id: 1021,
   },
   {
     id: 66,
     cooking_tech_id: 2004,
-    potatoe_variety_id: 1024,
+    potato_variety_id: 1024,
   },
   {
     id: 67,
     cooking_tech_id: 2004,
-    potatoe_variety_id: 1025,
+    potato_variety_id: 1025,
   },
   {
     id: 68,
     cooking_tech_id: 2004,
-    potatoe_variety_id: 1034,
+    potato_variety_id: 1034,
   },
   {
     id: 69,
     cooking_tech_id: 2004,
-    potatoe_variety_id: 1028,
+    potato_variety_id: 1028,
   },
   {
     id: 70,
     cooking_tech_id: 2004,
-    potatoe_variety_id: 1031,
+    potato_variety_id: 1031,
   },
   {
     id: 71,
     cooking_tech_id: 2004,
-    potatoe_variety_id: 1032,
+    potato_variety_id: 1032,
   },
   {
     id: 72,
     cooking_tech_id: 2005,
-    potatoe_variety_id: 1001,
+    potato_variety_id: 1001,
   },
   {
     id: 73,
     cooking_tech_id: 2005,
-    potatoe_variety_id: 1002,
+    potato_variety_id: 1002,
   },
   {
     id: 74,
     cooking_tech_id: 2005,
-    potatoe_variety_id: 1010,
+    potato_variety_id: 1010,
   },
   {
     id: 75,
     cooking_tech_id: 2005,
-    potatoe_variety_id: 1033,
+    potato_variety_id: 1033,
   },
   {
     id: 76,
     cooking_tech_id: 2005,
-    potatoe_variety_id: 1022,
+    potato_variety_id: 1022,
   },
   {
     id: 77,
     cooking_tech_id: 2005,
-    potatoe_variety_id: 1023,
+    potato_variety_id: 1023,
   },
   {
     id: 78,
     cooking_tech_id: 2005,
-    potatoe_variety_id: 1026,
+    potato_variety_id: 1026,
   },
   {
     id: 79,
     cooking_tech_id: 2005,
-    potatoe_variety_id: 1029,
+    potato_variety_id: 1029,
   },
   {
     id: 80,
     cooking_tech_id: 2005,
-    potatoe_variety_id: 1031,
+    potato_variety_id: 1031,
   },
   {
     id: 81,
     cooking_tech_id: 2006,
-    potatoe_variety_id: 1001,
+    potato_variety_id: 1001,
   },
   {
     id: 82,
     cooking_tech_id: 2006,
-    potatoe_variety_id: 1006,
+    potato_variety_id: 1006,
   },
   {
     id: 83,
     cooking_tech_id: 2006,
-    potatoe_variety_id: 1012,
+    potato_variety_id: 1012,
   },
   {
     id: 84,
     cooking_tech_id: 2006,
-    potatoe_variety_id: 1028,
+    potato_variety_id: 1028,
   },
   {
     id: 85,
     cooking_tech_id: 2007,
-    potatoe_variety_id: 1016,
+    potato_variety_id: 1016,
   },
   {
     id: 86,
     cooking_tech_id: 2007,
-    potatoe_variety_id: 1026,
+    potato_variety_id: 1026,
   },
   {
     id: 87,
     cooking_tech_id: 2007,
-    potatoe_variety_id: 1001,
+    potato_variety_id: 1001,
   },
   {
     id: 88,
     cooking_tech_id: 2007,
-    potatoe_variety_id: 1003,
+    potato_variety_id: 1003,
   },
   {
     id: 89,
     cooking_tech_id: 2007,
-    potatoe_variety_id: 1030,
+    potato_variety_id: 1030,
   },
   {
     id: 90,
     cooking_tech_id: 2007,
-    potatoe_variety_id: 1029,
+    potato_variety_id: 1029,
   },
   {
     id: 91,
     cooking_tech_id: 2008,
-    potatoe_variety_id: 1004,
+    potato_variety_id: 1004,
   },
   {
     id: 92,
     cooking_tech_id: 2008,
-    potatoe_variety_id: 1005,
+    potato_variety_id: 1005,
   },
   {
     id: 93,
     cooking_tech_id: 2008,
-    potatoe_variety_id: 1006,
+    potato_variety_id: 1006,
   },
   {
     id: 94,
     cooking_tech_id: 2008,
-    potatoe_variety_id: 1012,
+    potato_variety_id: 1012,
   },
   {
     id: 95,
     cooking_tech_id: 2008,
-    potatoe_variety_id: 1016,
+    potato_variety_id: 1016,
   },
   {
     id: 96,
     cooking_tech_id: 2008,
-    potatoe_variety_id: 1033,
+    potato_variety_id: 1033,
   },
   {
     id: 97,
     cooking_tech_id: 2008,
-    potatoe_variety_id: 1022,
+    potato_variety_id: 1022,
   },
   {
     id: 98,
     cooking_tech_id: 2008,
-    potatoe_variety_id: 1025,
+    potato_variety_id: 1025,
   },
   {
     id: 99,
     cooking_tech_id: 2008,
-    potatoe_variety_id: 1026,
+    potato_variety_id: 1026,
   },
   {
     id: 100,
     cooking_tech_id: 2008,
-    potatoe_variety_id: 1030,
+    potato_variety_id: 1030,
   },
   {
     id: 101,
     cooking_tech_id: 2009,
-    potatoe_variety_id: 1001,
+    potato_variety_id: 1001,
   },
   {
     id: 102,
     cooking_tech_id: 2009,
-    potatoe_variety_id: 1010,
+    potato_variety_id: 1010,
   },
   {
     id: 103,
     cooking_tech_id: 2009,
-    potatoe_variety_id: 1011,
+    potato_variety_id: 1011,
   },
   {
     id: 104,
     cooking_tech_id: 2009,
-    potatoe_variety_id: 1028,
+    potato_variety_id: 1028,
   },
   {
     id: 105,
     cooking_tech_id: 2010,
-    potatoe_variety_id: 1012,
+    potato_variety_id: 1012,
   },
   {
     id: 106,
     cooking_tech_id: 2010,
-    potatoe_variety_id: 1015,
+    potato_variety_id: 1015,
   },
   {
     id: 107,
     cooking_tech_id: 2010,
-    potatoe_variety_id: 1019,
+    potato_variety_id: 1019,
   },
   {
     id: 108,
     cooking_tech_id: 2010,
-    potatoe_variety_id: 1020,
+    potato_variety_id: 1020,
   },
   {
     id: 109,
     cooking_tech_id: 2010,
-    potatoe_variety_id: 1029,
+    potato_variety_id: 1029,
   },
   {
     id: 110,
     cooking_tech_id: 2011,
-    potatoe_variety_id: 1022,
+    potato_variety_id: 1022,
   },
   {
     id: 111,
     cooking_tech_id: 2011,
-    potatoe_variety_id: 1028,
+    potato_variety_id: 1028,
   },
   {
     id: 112,
     cooking_tech_id: 2011,
-    potatoe_variety_id: 1030,
+    potato_variety_id: 1030,
   },
 ];
 

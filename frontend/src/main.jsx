@@ -6,20 +6,18 @@ import { AuthContextProvider } from "./context/AuthContext";
 import "./main.scss";
 
 import Error from "./pages/Error";
-import Home from "./components/Home";
+import Home from "./pages/Home";
 import MainLayout from "./MainLayout";
-import MainChoise from "./components/MainChoise";
-import Recipe from "./components/Recipe";
-import Variety from "./components/Variety";
+import Recipe from "./pages/Recipe";
+import Variety from "./pages/Variety";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 import UserLayout from "./components/User/UserLayout";
 import NewRecipe from "./pages/User/NewRecipe";
 import AdminLayout from "./components/Admin/AdminLayout";
 import Profile from "./pages/User/Profile";
-import Favorites from "./pages/User/Favorites";
-import UserList from "./pages/Admin/UserList";
 import RecipeReview from "./pages/Admin/RecipeReview";
+import Register from "./pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -28,11 +26,11 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/mainchoise", element: <MainChoise /> },
       { path: "/recettes", element: <Recipe /> },
       { path: "/varietes", element: <Variety /> },
       { path: "/connexion", element: <Login /> },
       { path: "/deconnexion", element: <Logout /> },
+      { path: "/inscription", element: <Register /> },
     ],
   },
   {
@@ -42,7 +40,6 @@ const router = createBrowserRouter([
     children: [
       { path: "nouvelle-recette", element: <NewRecipe /> },
       { path: "profil", element: <Profile /> },
-      { path: "favoris", element: <Favorites /> },
     ],
   },
   {
@@ -51,7 +48,6 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { path: "nouvelle-recette", element: <NewRecipe /> },
-      { path: "utilisateurs", element: <UserList /> },
       { path: "recettes-review", element: <RecipeReview /> },
     ],
   },

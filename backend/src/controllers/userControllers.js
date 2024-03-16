@@ -5,7 +5,7 @@ const tables = require("../tables");
 const browse = async (req, res, next) => {
   try {
     // Fetch all users from the database
-    const users = await tables.user.readAll();
+    const users = await tables.user.readAllNoPassword();
 
     // Respond with the users in JSON format
     res.status(200).json(users);
@@ -62,7 +62,7 @@ const add = async (req, res, next) => {
     const insertId = await tables.user.create(user);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted user
-    res.status(201).json({ ...req.body, id: insertId });
+    res.status(201).json({ id: insertId });
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
