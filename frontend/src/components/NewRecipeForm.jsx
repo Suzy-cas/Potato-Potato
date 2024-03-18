@@ -66,8 +66,8 @@ function NewRecipeForm() {
       <section className="new-recipe">
         <form className="recipe-form">
           <div>
-            <h3>Informations générales</h3>
             <label htmlFor="titre">
+              <h3>Informations générales</h3>
               Titre
               <input type="text" />
             </label>
@@ -166,24 +166,19 @@ function NewRecipeForm() {
                 <div>
                   <h3>Titre</h3>
                   <h4>Difficulté</h4>
-                  <p></p>
+                  <p>{}</p>
                   <h4>Temps de préparation</h4>
-                  <p></p>
+                  <p>{}</p>
                   <h4>Temps de cuisson</h4>
-                  <p></p>
+                  <p>{}</p>
                   <h4>Ingrédients</h4>
 
-                  <p></p>
+                  <p>{}</p>
 
                   <h4>Préparation</h4>
-                  <ul></ul>
-                  <h4>
-                    Toutes les variétés de pommes de terre adaptées à cette
-                    recette :
-                  </h4>
-                  <div>
-                    <div className="pot-var-grid"></div>
-                  </div>
+                  <ul>
+                    <li>{}</li>
+                  </ul>
                 </div>
               </div>
             </div>

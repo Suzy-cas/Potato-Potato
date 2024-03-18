@@ -19,6 +19,7 @@ function VarietyCard({ uniqueVarieties, varietySearch }) {
                   ? val.picture
                   : "https://upload.wikimedia.org/wikipedia/commons/7/72/Pommes_de_terre_%28CHARLOTTE%29-cliche_Jean_Weber_%2823594803261%29.jpg?uselang=fr"
               }
+              className="img-variety"
             />
             <div className="card-content">
               <div>
