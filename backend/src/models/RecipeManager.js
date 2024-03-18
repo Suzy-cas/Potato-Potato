@@ -90,6 +90,26 @@ class RecipeManager extends AbstractManager {
     }
   }
 
+  async readByRecipeIdVariety(id) {
+    const [rows] = await this.database.query(
+      `SELECT
+      ${this.table}.id,
+      potato_variety.name AS potato_variety
+  FROM 
+      ${this.table}
+  JOIN 
+      cooking_tech ON ${this.table}.cooking_tech_id = cooking_tech.id
+  JOIN 
+      cooking_tech_variety ON cooking_tech_variety.cooking_tech_id = cooking_tech.id
+  JOIN 
+      potato_variety ON potato_variety.id = cooking_tech_variety.potato_variety_id
+  WHERE 
+      ${this.table}.id = ?`,
+      [id]
+    );
+    return rows;
+  }
+
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing recipe
 

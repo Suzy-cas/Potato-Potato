@@ -36,6 +36,10 @@ class potato_varietyManager extends AbstractManager {
     return rows[0];
   }
 
+  // Return the first row of the result, which represents the potato_variety
+  //   return rows[0];
+  // }
+
   async readAll() {
     // Execute the SQL SELECT query to retrieve all potato_varietys from the "potato_variety" table
     const [rows] = await this.database.query(`select * from ${this.table}`);

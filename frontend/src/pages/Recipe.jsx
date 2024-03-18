@@ -31,7 +31,10 @@ function Recipe() {
     setActiveButton(selectedTech === activeButton ? null : selectedTech);
     updateRecipeSearch(selectedTech === activeButton ? [] : [selectedTech]);
   };
-
+  const uniqueRecipes = recipesCookTechs.filter(
+    (recipe, index, self) =>
+      self.findIndex((r) => r.title === recipe.title) === index
+  );
   return (
     <>
       <section id="trouve-recettes">
@@ -71,8 +74,9 @@ function Recipe() {
       </section>
       <div>
         <RecipeCard
-          recipesCookTechs={recipesCookTechs}
+          uniqueRecipes={uniqueRecipes}
           recipeSearch={recipeSearch}
+          recipesCookTechs={recipesCookTechs}
         />
       </div>
     </>
