@@ -4,7 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 
 function AdminMenu() {
   return (
-    <section className="menu-container">
+    <div className="menu-container">
       <h1>TAbleau de bord</h1>
       <nav>
         <ul>
@@ -17,7 +17,7 @@ function AdminMenu() {
       <main className="user-main">
         <Outlet />
       </main>
-    </section>
+    </div>
   );
 }
 export default AdminMenu;

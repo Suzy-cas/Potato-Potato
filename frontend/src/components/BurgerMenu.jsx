@@ -18,7 +18,6 @@ function BurgerMenu() {
 
   useEffect(() => {}, [user]);
 
-  console.info(user.is_admin);
   return (
     <nav className="menu-burger">
       <button

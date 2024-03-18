@@ -4,7 +4,7 @@ import addPic from "../../assets/picto/Picto_add.svg";
 
 function UserMenu() {
   return (
-    <section className="menu-container">
+    <div className="menu-container">
       <h2>Mon espace</h2>
       <nav>
         <ul>
@@ -20,7 +20,7 @@ function UserMenu() {
       <main className="user-main">
         <Outlet />
       </main>
-    </section>
+    </div>
   );
 }
 export default UserMenu;
