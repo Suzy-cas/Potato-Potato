@@ -4,11 +4,14 @@ import { AuthContext } from "../../context/AuthContext";
 import UserMenu from "./UserMenu";
 import BurgerMenu from "../BurgerMenu";
 import Unauthorised from "../Unauthorised";
+import Profile from "../../pages/User/Profile";
 
 function UserLayout() {
   const { handleAuth, handleLogout, user } = useContext(AuthContext);
 
-  useEffect(() => {}, [handleAuth, handleLogout]);
+  useEffect(() => {
+    handleAuth();
+  }, [handleAuth, handleLogout]);
 
   const handleReturnLog = () => {
     switch (user.is_admin) {
@@ -17,6 +20,7 @@ function UserLayout() {
           <>
             <BurgerMenu />
             <UserMenu />
+            <Profile />
           </>
         );
       }
