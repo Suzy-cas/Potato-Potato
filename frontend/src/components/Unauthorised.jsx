@@ -9,9 +9,11 @@ function Unauthorised() {
         src={Potato}
         alt="Pomme de terre qui sourit"
       />
-      <p>Désolé, vous n'avez pas accès à cette page</p>
+      <h3>Désolé, vous n'avez pas accès à cette page</h3>
       <Link to="/connexion">
-        <button type="button">Se connecter</button>
+        <button type="button" className="primary-button">
+          Se connecter
+        </button>
       </Link>
     </div>
   );

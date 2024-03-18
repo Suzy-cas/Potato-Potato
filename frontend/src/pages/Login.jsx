@@ -28,7 +28,7 @@ function Login() {
           return navigate("/admin");
         }
         if (data.is_admin === 0) {
-          return navigate("/mon-espace");
+          return navigate("/mon-espace/profil");
         }
       } catch (error) {
         console.warn("Une erreur est survenue!", error);
