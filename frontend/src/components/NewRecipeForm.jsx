@@ -5,6 +5,7 @@ import instance from "../services/instance";
 
 function NewRecipeForm() {
   const { handleAuth, handleLogout, user } = useContext(AuthContext);
+  const [recipeInfo, setRecipeInfo] = useState([]);
   const [types, setTypes] = useState([]);
   const [nativeIngredients, setNativeIngredients] = useState();
   const [ingredients, setIngredients] = useState([{ id: 0, name: "" }]);
@@ -18,10 +19,15 @@ function NewRecipeForm() {
   }, [handleAuth, handleLogout]);
 
   useEffect(() => {
-    Promise.all([instance.get("/api/types"), instance.get("/api/ingredients")])
-      .then(([typesResponse, ingredientsResponse]) => {
+    Promise.all([
+      instance.get("/api/types"),
+      instance.get("/api/ingredients"),
+      instance.get("api/recipes"),
+    ])
+      .then(([typesResponse, ingredientsResponse, recipesResponse]) => {
         setTypes(typesResponse.data);
         setNativeIngredients(ingredientsResponse.data);
+        setRecipeInfo(recipesResponse.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -44,14 +50,31 @@ function NewRecipeForm() {
     ]);
   };
 
-  console.info(ingredients);
-
   return (
     <section className="new-recipe">
       <form className="recipe-form">
         <div>
-          <h3>Nom de la recette :</h3>
-          <input type="text" />
+          <h3>Nouvelle recette :</h3>
+          <label htmlFor="titre">
+            Titre
+            <input type="text" />
+          </label>
+          <label htmlFor="prepTime">
+            Temps de préparation
+            <input type="text" placeholder="1h" />
+          </label>
+          <label htmlFor="cookingTime">
+            Temps de cuisson
+            <input type="text" placeholder="1h" />
+          </label>
+          <label htmlFor="diffidulty">
+            Niveau de difficulté
+            <select id="difficultyLevel" onChange="">
+              <option value="Facile">Facile</option>
+              <option value="Intermédiaire">Intermédiaire</option>
+              <option value="Difficile">Difficile</option>
+            </select>
+          </label>
         </div>
         <div>
           <img alt="select" />

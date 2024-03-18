@@ -22,6 +22,7 @@ const validateRecipe = require("./validators/validateRecipe");
 router.get("/recipes", recipeControllers.browse);
 router.get("/recipes/:id", recipeControllers.read);
 router.get("/recipes-cookingtechs", recipeControllers.browseByCookingTechs);
+router.get("/recipes-varieties/:id", recipeControllers.readByRecipeIdVariety);
 
 // VARIETY paths
 const varietyControllers = require("./controllers/varietyControllers");
