@@ -1,19 +1,18 @@
 .new-recipe {
   display: flex;
   justify-content: center;
-  margin-bottom: 5vh;
+  width: 100%;
   .recipe-form,
   .new-recipe-display {
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    margin: 0vh 10vw;
+    margin: 0vh 5vw;
     label {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      margin-top: 2vh;
+      margin-top: 1.5vh;
     }
     .ingredients-container,
     .recipe-step-container,
@@ -25,9 +24,13 @@
     .recipe-step-container {
       margin-top: 5vh;
     }
-    input {
+    input,
+    select,
+    textarea {
       width: 100%;
       border: solid 1px;
+      padding: 0.5vh;
+      margin-top: 0.3vh;
     }
     textarea {
       min-width: 20vw;
@@ -35,7 +38,11 @@
     }
     .quantity-input {
       display: flex;
+      align-items: center;
       width: 60%;
+      input {
+        margin-right: 0.5vw;
+      }
     }
   }
 }

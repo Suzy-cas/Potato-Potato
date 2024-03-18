@@ -7,7 +7,7 @@ const recipes = [
   {
     id: 4001,
     title: "Pommes de terre roties à la suedoise",
-    picture: "../public/assets/images/Hasseback_salmon_web.jpg",
+    picture: "/public/assets/images/4001.jpg",
     difficulty: "Facile",
     prep_time: "10 minutes",
     cooking_time: "45 minutes",
@@ -20,7 +20,7 @@ const recipes = [
   {
     id: 4002,
     title: "Purée à la Joël Robuchon",
-    picture: "../public/assets/images/Joel_Robuchon_mashed_web.jpg",
+    picture: "/public/assets/images/4002.jpg",
     difficulty: "Facile",
     prep_time: "15 minutes",
     cooking_time: "25 minutes",
