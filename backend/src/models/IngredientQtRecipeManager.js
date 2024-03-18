@@ -5,7 +5,7 @@ class IngredientQtRecipeManager extends AbstractManager {
   constructor() {
     // Call the constructor of the parent class (AbstractManager)
     // and pass the table name "ingredientQtRecipe" as configuration
-    super({ table: "ingredient_quantity_recipe" });
+    super({ table: "ingredientQtRecipe" });
   }
 
   // The C of CRUD - Create operation
