@@ -1,6 +1,8 @@
-.card-container {
+.card-container,
+.card-container-id {
   .variety-cards,
-  .recipe-cards {
+  .recipe-cards,
+  .recipe-cards-id {
     display: flex;
     flex-direction: column;
     max-width: 90%;
@@ -33,6 +35,11 @@
       column-gap: 1vh;
     }
   }
+
+  .recipe-cards-id {
+    margin: 15vh auto;
+    border: none;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -46,6 +53,12 @@
     .variety-cards,
     .recipe-cards {
       margin: 0 auto;
+    }
+  }
+  .card-container-id {
+    .recipe-cards-id {
+      margin: 10vh 25vw;
+      border: none;
     }
   }
 }

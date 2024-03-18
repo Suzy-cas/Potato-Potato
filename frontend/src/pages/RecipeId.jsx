@@ -35,7 +35,7 @@ function RecipeId() {
         console.error(err);
       });
   }, []);
-  console.info(varieties);
+
   return isLoading ? (
     "Loading"
   ) : (

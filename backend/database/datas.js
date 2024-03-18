@@ -655,7 +655,7 @@ const quantities = [
   {
     id: 88003,
     value: 2,
-    type_id: 99011,
+    type_id: 99012,
   },
   {
     id: 88004,
@@ -675,7 +675,7 @@ const quantities = [
   {
     id: 88007,
     value: 1,
-    type_id: 99012,
+    type_id: 99013,
   },
 ];
 
@@ -686,11 +686,11 @@ const types = [
   },
   {
     id: 99002,
-    name: "Cac",
+    name: "cac",
   },
   {
     id: 99003,
-    name: "Cas",
+    name: "cas",
   },
   {
     id: 99004,
@@ -718,15 +718,15 @@ const types = [
   },
   {
     id: 99011,
-    name: "Tour",
+    name: "tour",
   },
   {
     id: 99012,
-    name: "Pincée",
+    name: "pincées",
   },
   {
     id: 99013,
-    name: "Filet",
+    name: "filet",
   },
 ];
 
