@@ -17,7 +17,7 @@ function RecipeCard({
   // console.info(uniqueRecipes.id);
 
   return (
-    <div>
+    <>
       {uniqueRecipes && (
         <section className="card-container">
           {uniqueRecipes
@@ -106,7 +106,7 @@ function RecipeCard({
           </div>
         </section>
       )}
-    </div>
+    </>
   );
 }
 

@@ -18,11 +18,7 @@
       max-width: 100%;
       object-fit: cover;
     }
-    .img-variety {
-      min-height: 350px;
-      min-width: 350px;
-      object-fit: cover;
-    }
+
     ul {
       list-style-type: none;
       padding-left: 1vw;
@@ -58,9 +54,15 @@
     .variety-cards,
     .recipe-cards {
       margin: 0 auto;
+      width: 80%;
       img {
-        height: 300px;
-        max-width: 450px;
+        height: 350px;
+        max-width: 100%;
+      }
+    }
+    .variety-cards {
+      .card-content {
+        width: 100%;
       }
     }
   }

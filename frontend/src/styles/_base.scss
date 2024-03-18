@@ -99,13 +99,19 @@ a {
   .arrow {
     width: calc(23% - 150px);
   }
+  h4 {
+    font-size: calc(0.4rem + 0.7rem);
+  }
   h3 {
-    font-size: calc(2.5rem - 1vw);
+    font-size: calc(1rem + 1rem);
   }
   h2 {
     font-size: calc(6rem - 2vw);
   }
   h1 {
-    font-size: calc(1rem + 1rem);
+    font-size: calc(1.8rem + 1rem);
+  }
+  p {
+    font-size: calc(0.3rem + 0.6vw);
   }
 }
