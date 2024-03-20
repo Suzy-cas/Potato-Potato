@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import instance from "../services/instance";
+import soupe from "../assets/img/soupe.jpg";
 
 function NewRecipeForm() {
   const { handleAuth, handleLogout, user } = useContext(AuthContext);
@@ -300,6 +301,7 @@ function NewRecipeForm() {
         <section className="card-container-preview">
           <div className="preview-card">
             <h3>{recipeInfo.title}</h3>
+            <img alt="" src={soupe} />
             <div className="card-content">
               <div>
                 <h4>Difficulté</h4>

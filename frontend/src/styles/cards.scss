@@ -75,6 +75,11 @@
     .preview-card {
       margin: 0;
       background-color: white;
+      width: 80%;
+      img {
+        height: 100%;
+        max-width: 100%;
+      }
     }
   }
   .card-container-id {

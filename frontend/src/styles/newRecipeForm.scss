@@ -4,7 +4,7 @@
   margin: 0vh 5vw 10vh;
 
   .new-recipe-display {
-    width: 40%;
+    width: 50%;
     margin: 0vh 2vw;
   }
   .recipe-form {
@@ -40,6 +40,11 @@
           justify-content: center;
           align-items: flex-end;
           width: 90%;
+          input,
+          select,
+          option {
+            margin-bottom: 0;
+          }
           .quantity-label {
             input {
               width: 80%;
@@ -50,6 +55,7 @@
             margin-bottom: 0;
             text-align: left;
           }
+
           input {
             margin-right: 0.5vw;
             width: 100%;
@@ -58,7 +64,7 @@
           .add-remove-div {
             display: flex;
             justify-content: space-around;
-            align-items: flex-end;
+            align-items: center;
             margin-left: 0.5vw;
             .add-remove-button {
               margin: 0;
@@ -72,7 +78,6 @@
       select,
       textarea {
         width: 100%;
-        border: solid 1px;
         padding: 0.5vh;
         margin-top: 0.3vh;
       }

@@ -66,6 +66,16 @@ li {
   font-weight: 400;
   font-size: 0.9rem;
 }
+
+input,
+select,
+textarea {
+  padding: 4px 8px;
+  border-radius: 2px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border-color: black 1px;
+}
 a {
   cursor: pointer;
   text-decoration: none;
