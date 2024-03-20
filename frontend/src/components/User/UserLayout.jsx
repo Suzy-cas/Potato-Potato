@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 import UserMenu from "./UserMenu";
@@ -8,18 +8,24 @@ import Profile from "../../pages/User/Profile";
 
 function UserLayout() {
   const { handleAuth, handleLogout, user } = useContext(AuthContext);
-
+  const [activePage, setActivePage] = useState("home");
   useEffect(() => {
     handleAuth();
   }, [handleAuth, handleLogout]);
 
+  const handleChangePage = (page) => {
+    setActivePage(page);
+  };
   const handleReturnLog = () => {
     switch (user.is_admin) {
       case 0: {
         return (
           <>
             <BurgerMenu />
-            <UserMenu />
+            <UserMenu
+              activePage={activePage}
+              handleChangePage={handleChangePage}
+            />
             <Profile />
           </>
         );

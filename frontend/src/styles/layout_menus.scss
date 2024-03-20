@@ -6,6 +6,7 @@
   width: 100vw;
   z-index: 0;
   background-color: $light-grey;
+
   h2 {
     margin-top: 12vh;
     margin-bottom: 5vh;
@@ -13,9 +14,9 @@
   nav {
     display: flex;
     justify-content: center;
-    margin-bottom: 8vh;
+    margin-bottom: 10vh;
     h1 {
-      margin-bottom: 5vh;
+      margin-bottom: 3vh;
     }
     img {
       width: 15vw;
@@ -24,22 +25,32 @@
       width: 80%;
       display: flex;
 
-      a {
+      a,
+      li,
+      .link-profile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         width: 100%;
         font-size: calc(2rem - 1vw);
         padding: 1vh 1.5vw;
         color: black;
+        text-decoration: none;
+        list-style: none;
         &:hover {
           font-weight: 800;
           color: black;
           text-decoration: underline $black;
           text-decoration-thickness: 0.1rem;
           text-underline-offset: 0.5rem;
+          transform: scale(1.2);
         }
         &:active {
           text-decoration: underline $black;
-          text-decoration-thickness: 0.1rem;
+          text-decoration-thickness: 0.5rem;
           text-underline-offset: 0.5rem;
+          -webkit-text-fill-color: $black;
         }
       }
     }
