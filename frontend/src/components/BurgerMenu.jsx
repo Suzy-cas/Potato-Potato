@@ -7,6 +7,7 @@ import recipePic from "../assets/picto/Picto_recipe_white.svg";
 import profilePic from "../assets/picto/Picto_profile_white.svg";
 import registerPic from "../assets/picto/Picto_add_white.svg";
 import homePic from "../assets/picto/Picto_home_white.svg";
+import exitPic from "../assets/picto/Picto_exit_white.svg";
 
 function BurgerMenu() {
   const [showBurger, setShowBurger] = useState(true);
@@ -55,7 +56,7 @@ function BurgerMenu() {
           className="link"
           to={user.is_admin === 3 ? "/connexion" : "/deconnexion"}
         >
-          <img src={profilePic} alt="" />
+          <img src={user.is_admin === 3 ? profilePic : exitPic} alt="" />
           {user.is_admin === 3 ? <h1>Connexion</h1> : <h1>Deconnexion</h1>}
         </Link>
       </ul>

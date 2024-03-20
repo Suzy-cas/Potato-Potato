@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const express = require("express");
 
 const router = express.Router();
@@ -30,6 +31,11 @@ const varietyControllers = require("./controllers/varietyControllers");
 router.get("/varieties", varietyControllers.browse);
 router.get("/variety/:id", varietyControllers.read);
 router.get("/varieties-cookingtechs", varietyControllers.browseByCookTechs);
+
+// COOKING-TECH paths
+const cookingTechControllers = require("./controllers/cooking_techControllers");
+
+router.get("/cooking-techs", cookingTechControllers.browse);
 
 // TYPES paths
 const typeControllers = require("./controllers/typeControllers");
