@@ -59,7 +59,9 @@ p,
 input,
 textarea,
 option,
-select {
+select,
+ul,
+li {
   font-family: $font-texts;
   font-weight: 400;
   font-size: 0.9rem;
@@ -111,7 +113,13 @@ a {
   h1 {
     font-size: calc(1.8rem + 1rem);
   }
-  p {
+  p,
+  input,
+  textarea,
+  option,
+  select,
+  ul,
+  li {
     font-size: calc(0.3rem + 0.6vw);
   }
 }
