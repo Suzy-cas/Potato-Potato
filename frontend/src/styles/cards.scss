@@ -1,8 +1,10 @@
 .card-container,
+.card-container-preview,
 .card-container-id {
   .variety-cards,
   .recipe-cards,
-  .recipe-cards-id {
+  .recipe-cards-id,
+  .preview-card {
     display: flex;
     flex-direction: column;
     max-width: 90%;
@@ -63,6 +65,20 @@
     .variety-cards {
       .card-content {
         width: 100%;
+      }
+    }
+  }
+  .card-container-preview {
+    display: flex;
+    justify-content: center;
+
+    .preview-card {
+      margin: 0;
+      background-color: white;
+      width: 80%;
+      img {
+        height: 100%;
+        max-width: 100%;
       }
     }
   }

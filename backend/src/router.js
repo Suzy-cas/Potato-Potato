@@ -25,6 +25,8 @@ router.get("/recipes/:id", recipeControllers.read);
 router.get("/recipes-cookingtechs", recipeControllers.browseByCookingTechs);
 router.get("/recipes-varieties/:id", recipeControllers.readByRecipeIdVariety);
 
+router.post("/recipe", recipeControllers.add);
+
 // VARIETY paths
 const varietyControllers = require("./controllers/varietyControllers");
 

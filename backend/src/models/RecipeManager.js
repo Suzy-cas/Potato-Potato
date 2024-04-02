@@ -53,6 +53,18 @@ class RecipeManager extends AbstractManager {
     return rows[0];
   }
 
+  async readLastId() {
+    try {
+      const [rows] = await this.database.query(
+        `SELECT id FROM ${this.table} ORDER BY id DESC LIMIT 1`
+      );
+      return rows[0];
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
   async readAll() {
     const [rows] = await this.database.query(`select * from ${this.table}`);
 

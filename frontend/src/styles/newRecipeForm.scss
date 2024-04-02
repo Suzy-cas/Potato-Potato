@@ -1,47 +1,95 @@
 .new-recipe {
   display: flex;
   justify-content: center;
-  width: 100%;
-  .recipe-form,
+  margin: 0vh 5vw 10vh;
+
   .new-recipe-display {
-    width: 100%;
+    width: 50%;
+    margin: 0vh 2vw;
+  }
+  .recipe-form {
     display: flex;
     flex-direction: column;
-    margin: 0vh 5vw;
+    width: 100%;
+    border: solid black 3px;
+    padding: 4vh 2vw;
     label {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      margin-top: 1.5vh;
+      margin: 0.5vh 0px;
     }
-    .ingredients-container,
-    .recipe-step-container,
-    .quantity-container {
+    .recipe-infos {
       display: flex;
       flex-direction: column;
-    }
-    .ingredients-container,
-    .recipe-step-container {
-      margin-top: 5vh;
-    }
-    input,
-    select,
-    textarea {
-      width: 100%;
-      border: solid 1px;
-      padding: 0.5vh;
-      margin-top: 0.3vh;
-    }
-    textarea {
-      min-width: 20vw;
-      min-height: 10vh;
-    }
-    .quantity-input {
-      display: flex;
       align-items: center;
-      width: 60%;
-      input {
-        margin-right: 0.5vw;
+    }
+    .ingredient-steps-container {
+      display: flex;
+      flex-direction: row;
+      margin-top: 6vh;
+
+      .ingredient-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+
+        .ingredient-input {
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          width: 90%;
+          input,
+          select,
+          option {
+            margin-bottom: 0;
+          }
+          .quantity-label {
+            input {
+              width: 80%;
+            }
+          }
+          label {
+            margin-right: 0.1vw;
+            margin-bottom: 0;
+            text-align: left;
+          }
+
+          input {
+            margin-right: 0.5vw;
+            width: 100%;
+          }
+
+          .add-remove-div {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-left: 0.5vw;
+            .add-remove-button {
+              margin: 0;
+              margin-right: 0.1vw;
+            }
+          }
+        }
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.5vh;
+        margin-top: 0.3vh;
+      }
+      textarea {
+        min-width: 2vw;
+      }
+    }
+    .recipe-step-container {
+      width: 50%;
+      .add-remove-button {
+        margin-right: 0.5vh;
+        margin-top: 0.3vh;
       }
     }
   }

@@ -61,6 +61,24 @@ const readByRecipeIdVariety = async (req, res, next) => {
   }
 };
 
+const findNewRecipeId = async (req, res, next) => {
+  try {
+    // Fetch a specific recipe from the database based on the provided ID
+    const recipe = await tables.recipe.readLastId(req.params.id);
+
+    // If the recipe is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the recipe in JSON format
+    if (recipe == null) {
+      res.sendStatus(404);
+    } else {
+      res.status(200).json(recipe);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
 const edit = async (req, res, next) => {
@@ -118,6 +136,7 @@ module.exports = {
   browseByCookingTechs,
   read,
   readByRecipeIdVariety,
+  findNewRecipeId,
   edit,
   add,
   destroy,

@@ -61,3 +61,15 @@
     color: white;
   }
 }
+
+.add-remove-button {
+  @include button-base;
+  background-color: $light-grey;
+  padding: 0.1em 0.7em 0.3em 0.7em;
+  border: solid 1px $dark-grey;
+
+  &:hover {
+    background-color: $dark-grey;
+    color: white;
+  }
+}
