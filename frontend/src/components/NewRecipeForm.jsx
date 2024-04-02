@@ -1,36 +1,20 @@
-import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
 import instance from "../services/instance";
 import soupe from "../assets/img/soupe.jpg";
 
-function NewRecipeForm() {
-  const { handleAuth, handleLogout, user } = useContext(AuthContext);
-  const [recipeInfo, setRecipeInfo] = useState({
-    title: "Ta recette de pdt",
-    picture: "",
-    difficulty: "Facile",
-    prep_time: "10 min",
-    cooking_time: "40 min",
-    steps: "",
-    user_id: user.id,
-    cooking_tech_id: 0,
-    is_approved: 0,
-  });
+function NewRecipeForm({
+  recipeInfo,
+  setRecipeInfo,
+  ingredients,
+  setIngredients,
+  stepsArray,
+  setStepsArray,
+  handleSubmit,
+}) {
   const [types, setTypes] = useState([]);
   const [nativeIngredients, setNativeIngredients] = useState([]);
-  const [ingredients, setIngredients] = useState([
-    { name: "", value: "", type_id: 0 },
-  ]);
   const [cookingTechs, setCookingTechs] = useState([]);
-  const [stepsArray, setStepsArray] = useState([""]);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (user === 3) {
-      navigate("/login");
-    }
-  }, [handleAuth, handleLogout]);
 
   const editInfo = (e) => {
     const { name, value } = e.target;
@@ -342,7 +326,11 @@ function NewRecipeForm() {
         </section>
 
         <div>
-          <button type="button" className="secondary-button">
+          <button
+            type="button"
+            className="secondary-button"
+            onClick={handleSubmit}
+          >
             Proposer ma recette
           </button>
         </div>

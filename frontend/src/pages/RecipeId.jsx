@@ -16,7 +16,7 @@ function RecipeId() {
     Promise.all([
       instance.get(`/api/ingredient-quantity-recipe/${id}`),
       instance.get(`/api/recipes/${id}`),
-      instance.get(`/api/recipes-varieties/${id}`),
+      // instance.get(`/api/recipes-varieties/${id}`),
     ])
 
       .then(
@@ -27,7 +27,7 @@ function RecipeId() {
         ]) => {
           setRecipe(recipesCookingtechsResponse.data);
           setIngredients(ingredientQuantityRecipeResponse.data);
-          setVarieties(varietiesRecipeResponse.data);
+          // setVarieties(varietiesRecipeResponse.data);
           setIsLoading(false);
         }
       )

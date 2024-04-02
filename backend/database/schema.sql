@@ -32,7 +32,7 @@ create table recipe (
   user_id INT NOT NULL,
   cooking_tech_id INT NOT NULL,
   is_approved TINYINT NOT NULL
-);
+)  AUTO_INCREMENT = 4005;
 
 CREATE TABLE potato_variety (
   id int primary key not null AUTO_INCREMENT,
@@ -48,7 +48,7 @@ CREATE TABLE potato_variety (
 CREATE TABLE ingredient (
   id int primary key not null AUTO_INCREMENT,
   name VARCHAR(80) NOT NULL
-);
+) AUTO_INCREMENT = 77216 ;
 
 
 CREATE TABLE type (
@@ -61,14 +61,14 @@ CREATE TABLE quantity (
   id int primary key not null AUTO_INCREMENT,
   value FLOAT NOT NULL,
   type_id INT
-);
+) AUTO_INCREMENT = 88015 ;
 
 CREATE TABLE ingredientQtRecipe (
   id int primary key auto_increment not null,
   recipe_id INT,
   ingredient_id INT NOT NULL,
   quantity_id INT NOT NULL
-);
+) AUTO_INCREMENT = 66023 ;
 
 
 
