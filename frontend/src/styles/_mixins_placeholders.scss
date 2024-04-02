@@ -9,12 +9,17 @@
   flex-direction: column;
 }
 
+@mixin flexRow {
+  display: flex;
+  flex-direction: row;
+}
+
 @mixin button-base {
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   margin-top: 2vh;
   margin-bottom: 2vh;
-  font-size: 1em;
+  font-size: calc(0.9rem + 0.4vw);
   font-weight: 500;
   font-family: $font-title-h2;
   cursor: pointer;
@@ -31,7 +36,7 @@
   background-color: $light-grey;
 
   &:hover {
-    background-color: $dark-grey;
+    background-color: $black;
     color: white;
   }
 
@@ -53,6 +58,18 @@
 
   &.active {
     background-color: $black;
+    color: white;
+  }
+}
+
+.add-remove-button {
+  @include button-base;
+  background-color: $light-grey;
+  padding: 0.1em 0.7em 0.3em 0.7em;
+  border: solid 1px $dark-grey;
+
+  &:hover {
+    background-color: $dark-grey;
     color: white;
   }
 }

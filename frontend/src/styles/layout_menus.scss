@@ -6,26 +6,79 @@
   width: 100vw;
   z-index: 0;
   background-color: $light-grey;
-  h1 {
-    margin: 5vh 0vw;
+
+  h2 {
+    margin-top: 12vh;
+    margin-bottom: 5vh;
   }
   nav {
     display: flex;
     justify-content: center;
-
+    margin-bottom: 10vh;
+    h1 {
+      margin-bottom: 3vh;
+    }
+    img {
+      width: 15vw;
+    }
     ul {
       width: 80%;
       display: flex;
-      justify-content: space-around;
-      a {
+
+      a,
+      li,
+      .link-profile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
         font-size: calc(2rem - 1vw);
-        padding: 1rem 2rem;
+        padding: 1vh 1.5vw;
         color: black;
+        text-decoration: none;
+        list-style: none;
         &:hover {
           font-weight: 800;
-          transform: scale(1.2);
           color: black;
+          text-decoration: underline $black;
+          text-decoration-thickness: 0.1rem;
+          text-underline-offset: 0.5rem;
+          transform: scale(1.2);
         }
+        &:active {
+          text-decoration: underline $black;
+          text-decoration-thickness: 0.5rem;
+          text-underline-offset: 0.5rem;
+          -webkit-text-fill-color: $black;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 360px) and (max-width: 768px) {
+  .menu-container {
+    img {
+      width: 5vw;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .menu-container {
+    nav {
+      img {
+        width: 8vw;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .menu-container {
+    nav {
+      img {
+        width: 7vw;
       }
     }
   }

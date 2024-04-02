@@ -53,6 +53,18 @@ class RecipeManager extends AbstractManager {
     return rows[0];
   }
 
+  async readLastId() {
+    try {
+      const [rows] = await this.database.query(
+        `SELECT id FROM ${this.table} ORDER BY id DESC LIMIT 1`
+      );
+      return rows[0];
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
   async readAll() {
     const [rows] = await this.database.query(`select * from ${this.table}`);
 
@@ -88,6 +100,26 @@ class RecipeManager extends AbstractManager {
       console.error(error);
       throw error;
     }
+  }
+
+  async readByRecipeIdVariety(id) {
+    const [rows] = await this.database.query(
+      `SELECT
+      ${this.table}.id,
+      potato_variety.name AS potato_variety
+  FROM 
+      ${this.table}
+  JOIN 
+      cooking_tech ON ${this.table}.cooking_tech_id = cooking_tech.id
+  JOIN 
+      cooking_tech_variety ON cooking_tech_variety.cooking_tech_id = cooking_tech.id
+  JOIN 
+      potato_variety ON potato_variety.id = cooking_tech_variety.potato_variety_id
+  WHERE 
+      ${this.table}.id = ?`,
+      [id]
+    );
+    return rows;
   }
 
   // The U of CRUD - Update operation

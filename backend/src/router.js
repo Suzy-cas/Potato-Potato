@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const express = require("express");
 
 const router = express.Router();
@@ -22,6 +23,9 @@ const validateRecipe = require("./validators/validateRecipe");
 router.get("/recipes", recipeControllers.browse);
 router.get("/recipes/:id", recipeControllers.read);
 router.get("/recipes-cookingtechs", recipeControllers.browseByCookingTechs);
+router.get("/recipes-varieties/:id", recipeControllers.readByRecipeIdVariety);
+
+router.post("/recipe", recipeControllers.add);
 
 // VARIETY paths
 const varietyControllers = require("./controllers/varietyControllers");
@@ -29,6 +33,11 @@ const varietyControllers = require("./controllers/varietyControllers");
 router.get("/varieties", varietyControllers.browse);
 router.get("/variety/:id", varietyControllers.read);
 router.get("/varieties-cookingtechs", varietyControllers.browseByCookTechs);
+
+// COOKING-TECH paths
+const cookingTechControllers = require("./controllers/cooking_techControllers");
+
+router.get("/cooking-techs", cookingTechControllers.browse);
 
 // TYPES paths
 const typeControllers = require("./controllers/typeControllers");

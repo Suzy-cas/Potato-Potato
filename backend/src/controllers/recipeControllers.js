@@ -43,6 +43,42 @@ const read = async (req, res, next) => {
   }
 };
 
+const readByRecipeIdVariety = async (req, res, next) => {
+  try {
+    // Fetch all potato varieties corresponding to the provided recipe ID
+    const varieties = await tables.recipe.readByRecipeIdVariety(req.params.id);
+
+    // If no varieties are found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the varieties in JSON format
+    if (varieties.length === 0) {
+      res.sendStatus(404);
+    } else {
+      res.status(200).json(varieties);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
+const findNewRecipeId = async (req, res, next) => {
+  try {
+    // Fetch a specific recipe from the database based on the provided ID
+    const recipe = await tables.recipe.readLastId(req.params.id);
+
+    // If the recipe is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the recipe in JSON format
+    if (recipe == null) {
+      res.sendStatus(404);
+    } else {
+      res.status(200).json(recipe);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
 const edit = async (req, res, next) => {
@@ -99,6 +135,8 @@ module.exports = {
   browse,
   browseByCookingTechs,
   read,
+  readByRecipeIdVariety,
+  findNewRecipeId,
   edit,
   add,
   destroy,

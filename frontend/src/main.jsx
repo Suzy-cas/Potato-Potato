@@ -18,6 +18,7 @@ import AdminLayout from "./components/Admin/AdminLayout";
 import Profile from "./pages/User/Profile";
 import RecipeReview from "./pages/Admin/RecipeReview";
 import Register from "./pages/Register";
+import RecipeId from "./pages/RecipeId";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/recettes", element: <Recipe /> },
+      { path: "/recettes/:id", element: <RecipeId /> },
       { path: "/varietes", element: <Variety /> },
       { path: "/connexion", element: <Login /> },
       { path: "/deconnexion", element: <Logout /> },
@@ -49,6 +51,7 @@ const router = createBrowserRouter([
     children: [
       { path: "nouvelle-recette", element: <NewRecipe /> },
       { path: "recettes-review", element: <RecipeReview /> },
+      { path: "profil", element: <Profile /> },
     ],
   },
 ]);

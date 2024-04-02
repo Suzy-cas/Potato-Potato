@@ -1,21 +1,40 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-// import { useState } from "react";
+/* eslint-disable react/prop-types */
 import { Link, Outlet } from "react-router-dom";
+import profilePic from "../../assets/picto/Picto_profile.svg";
+import addPic from "../../assets/picto/Picto_add.svg";
 
-function UserMenu() {
+function UserMenu({ activePage, handleChangePage }) {
   return (
-    <section className="menu-container">
-      <h1>Mon espace</h1>
+    <div className="menu-container">
+      <h2>Mon espace</h2>
       <nav>
         <ul>
-          <Link to="profil">Mon profil</Link>
-          <Link to="nouvelle-recette">Ajouter une recette</Link>
+          <li>
+            <Link
+              className={`link-profile ${
+                activePage === "profil" ? "active" : ""
+              }`}
+              to="profil"
+              onClick={() => {
+                handleChangePage("profil");
+              }}
+            >
+              <img src={profilePic} alt="" /> <h1>Mon profil</h1>
+            </Link>
+          </li>
+          <li>
+            <Link className="link-profile" to="nouvelle-recette">
+              <img src={addPic} alt="" />
+              <h1>Ajouter une recette</h1>
+            </Link>
+          </li>
         </ul>
       </nav>
+
       <main className="user-main">
         <Outlet />
       </main>
-    </section>
+    </div>
   );
 }
 export default UserMenu;

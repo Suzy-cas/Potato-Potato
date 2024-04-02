@@ -5,8 +5,7 @@ const tables = require("../tables");
 const browse = async (req, res, next) => {
   try {
     // Fetch all ingredientQtRecipes from the database
-    const ingredientQtRecipes =
-      await tables.ingredient_quantity_recipe.readAll();
+    const ingredientQtRecipes = await tables.ingredientQtRecipe.readAll();
 
     // Respond with the ingredientQtRecipes in JSON format
     res.status(200).json(ingredientQtRecipes);
@@ -20,7 +19,7 @@ const browse = async (req, res, next) => {
 const read = async (req, res, next) => {
   try {
     // Fetch a specific ingredientQtRecipe from the database based on the provided ID
-    const ingredientQtRecipe = await tables.ingredient_quantity_recipe.read(
+    const ingredientQtRecipe = await tables.ingredientQtRecipe.read(
       req.params.id
     );
 
@@ -40,8 +39,9 @@ const read = async (req, res, next) => {
 const readByRecipe = async (req, res, next) => {
   try {
     // Fetch a specific ingredientQtRecipe from the database based on the provided ID
-    const ingredientQtRecipe =
-      await tables.ingredient_quantity_recipe.readByRecipe(req.params.id);
+    const ingredientQtRecipe = await tables.ingredientQtRecipe.readByRecipe(
+      req.params.id
+    );
 
     // If the ingredientQtRecipe is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the ingredientQtRecipe in JSON format
@@ -64,10 +64,7 @@ const edit = async (req, res, next) => {
 
   try {
     // Insert the ingredientQtRecipe into the database
-    await tables.ingredient_quantity_recipe.update(
-      ingredientQtRecipe,
-      req.params.id
-    );
+    await tables.ingredientQtRecipe.update(ingredientQtRecipe, req.params.id);
 
     // Respond with HTTP 204 (No Content)
     res.sendStatus(204);
@@ -84,9 +81,7 @@ const add = async (req, res, next) => {
 
   try {
     // Insert the ingredientQtRecipe into the database
-    const insertId = await tables.ingredient_quantity_recipe.create(
-      ingredientQtRecipe
-    );
+    const insertId = await tables.ingredientQtRecipe.create(ingredientQtRecipe);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted ingredientQtRecipe
     res.status(201).json({ ...req.body, id: insertId });

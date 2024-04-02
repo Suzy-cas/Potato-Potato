@@ -79,6 +79,8 @@ app.use(express.json());
 
 /* ************************************************************************* */
 
+const path = require("path");
+
 // Import the API routes from the router module
 const router = require("./router");
 
@@ -102,7 +104,6 @@ app.use("/api", router);
 // 1. Uncomment the lines related to serving static files and redirecting unhandled requests.
 // 2. Ensure that the `reactBuildPath` points to the correct directory where your frontend's build artifacts are located.
 
-/*
 const reactBuildPath = `${__dirname}/../../frontend/dist`;
 
 // Serve react resources
@@ -110,11 +111,26 @@ const reactBuildPath = `${__dirname}/../../frontend/dist`;
 app.use(express.static(reactBuildPath));
 
 // Redirect unhandled requests to the react index file
-
+/*
 app.get("*", (req, res) => {
   res.sendFile(`${reactBuildPath}/index.html`);
 });
 */
+
+app.use("*", (req, res) => {
+  if (req.originalUrl.includes("assets")) {
+    res.sendFile(
+      path.resolve(__dirname, `../../frontend/dist/${req.originalUrl}`)
+    );
+  }
+  if (req.originalUrl.includes("uploads")) {
+    res.sendFile(
+      path.resolve(__dirname, `../../backend/public/${req.originalUrl}`)
+    );
+  } else {
+    res.sendFile(path.resolve(__dirname, `../../frontend/dist/index.html`));
+  }
+});
 
 /* ************************************************************************* */
 
