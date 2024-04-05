@@ -34,6 +34,14 @@ class QuantityManager extends AbstractManager {
     return rows[0];
   }
 
+  async readByValueAndTypeId(quantity) {
+    const [rows] = await this.database.query(
+      `SELECT id from ${this.table} where value = ? and type_id = ?`,
+      [quantity.value, quantity.type_id]
+    );
+    return rows[0];
+  }
+
   async readAll() {
     // Execute the SQL SELECT query to retrieve all quantitys from the "quantity" table
     const [rows] = await this.database.query(`select * from ${this.table}`);

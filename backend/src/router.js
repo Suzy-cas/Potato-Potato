@@ -48,6 +48,15 @@ router.get("/types", typeControllers.browse);
 const ingredientControllers = require("./controllers/ingredientControllers");
 
 router.get("/ingredients", ingredientControllers.browse);
+router.get("/ingredient/:name", ingredientControllers.readByName);
+
+// QUATITY paths
+const quantityControllers = require("./controllers/quantityControllers");
+
+router.get(
+  "/quantity/:value/:typeId",
+  quantityControllers.readByValueAndTypeId
+);
 
 // INGREDIENT RECIPE paths
 const ingredientQtRecipeControllers = require("./controllers/ingredientQtRecipeControllers");

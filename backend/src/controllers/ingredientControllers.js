@@ -34,6 +34,24 @@ const read = async (req, res, next) => {
   }
 };
 
+const readByName = async (req, res, next) => {
+  try {
+    // Fetch a specific ingredient from the database based on the provided name
+    const ingredient = await tables.ingredient.readByName(req.params.name);
+
+    // If the ingredient is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the ingredient in JSON format
+    if (ingredient == null) {
+      res.send("No ingredient with this name.");
+    } else {
+      res.status(200).json(ingredient);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
 const edit = async (req, res, next) => {
@@ -89,6 +107,7 @@ const destroy = async (req, res, next) => {
 module.exports = {
   browse,
   read,
+  readByName,
   edit,
   add,
   destroy,
