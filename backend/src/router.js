@@ -49,21 +49,32 @@ const ingredientControllers = require("./controllers/ingredientControllers");
 
 router.get("/ingredients", ingredientControllers.browse);
 router.get("/ingredient/:name", ingredientControllers.readByName);
+router.post("/ingredients", ingredientControllers.add);
 
-// QUATITY paths
+// QUANTITY paths
 const quantityControllers = require("./controllers/quantityControllers");
 
+router.get("/quantity/", quantityControllers.browse);
 router.get(
   "/quantity/:value/:typeId",
   quantityControllers.readByValueAndTypeId
 );
+router.post("/quantity/", quantityControllers.add);
 
-// INGREDIENT RECIPE paths
+// INGREDIENT QUANTITY RECIPE paths
 const ingredientQtRecipeControllers = require("./controllers/ingredientQtRecipeControllers");
 
 router.get(
   "/ingredient-quantity-recipe/:id",
   ingredientQtRecipeControllers.readByRecipe
+);
+router.post(
+  "/ingredient-quantity-recipe/:id",
+  ingredientQtRecipeControllers.add
+);
+router.put(
+  "/ingredient-quantity-recipe/:id",
+  ingredientQtRecipeControllers.edit
 );
 
 // AUTH WALL : Paths for authentificated users only
