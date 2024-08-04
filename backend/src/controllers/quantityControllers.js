@@ -52,6 +52,7 @@ const readByValueAndTypeId = async (req, res, next) => {
       res.send("No quantity with these values.");
     } else {
       res.status(200).json(quantity);
+      console.info(quantity);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware

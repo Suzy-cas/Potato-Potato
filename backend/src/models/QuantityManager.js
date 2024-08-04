@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const AbstractManager = require("./AbstractManager");
 
 class QuantityManager extends AbstractManager {
@@ -10,11 +11,11 @@ class QuantityManager extends AbstractManager {
   // The C of CRUD - Create operation
 
   async create(quantity) {
-    const { value, unit } = quantity;
+    const { value, type_id } = quantity;
     // Execute the SQL INSERT query to add a new quantity to the "quantity" table
     const [result] = await this.database.query(
       `insert into ${this.table} (value, type_id) values (?, ?)`,
-      [value, unit]
+      [value, type_id]
     );
 
     // Return the ID of the newly inserted quantity
