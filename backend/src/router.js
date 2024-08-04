@@ -4,14 +4,14 @@ const express = require("express");
 const router = express.Router();
 
 // USER paths
-const authControllers = require("./controllers/authControllers");
+// const authControllers = require("./controllers/authControllers");
 const userControllers = require("./controllers/userControllers");
 const { validateUser } = require("./validators/validateUser");
-const { validateLogin } = require("./validators/validateLogin");
-const { hashPassword, verifyToken } = require("./services/auth");
+// const { validateLogin } = require("./validators/validateLogin");
+// const { hashPassword, verifyToken } = require("./services/auth");
 
-router.post("/register", validateUser, hashPassword, userControllers.add);
-router.post("/login", validateLogin, authControllers.login);
+// router.post("/register", validateUser, hashPassword, userControllers.add);
+// router.post("/login", validateLogin, authControllers.login);
 
 router.get("/users", userControllers.browse);
 router.get("/user/:id", userControllers.read);
@@ -49,7 +49,7 @@ const ingredientControllers = require("./controllers/ingredientControllers");
 
 router.get("/ingredients", ingredientControllers.browse);
 router.get("/ingredient/:name", ingredientControllers.readByName);
-router.post("/ingredients", ingredientControllers.add);
+router.post("/ingredient", ingredientControllers.add);
 
 // QUANTITY paths
 const quantityControllers = require("./controllers/quantityControllers");
@@ -65,20 +65,22 @@ router.post("/quantity/", quantityControllers.add);
 const ingredientQtRecipeControllers = require("./controllers/ingredientQtRecipeControllers");
 
 router.get(
+  "/ingredients-quantities-recipes",
+  ingredientQtRecipeControllers.browse
+);
+router.get(
   "/ingredient-quantity-recipe/:id",
   ingredientQtRecipeControllers.readByRecipe
 );
-router.post(
-  "/ingredient-quantity-recipe/:id",
-  ingredientQtRecipeControllers.add
-);
+
+router.post("/ingredient-quantity-recipe", ingredientQtRecipeControllers.add);
 router.put(
   "/ingredient-quantity-recipe/:id",
   ingredientQtRecipeControllers.edit
 );
 
 // AUTH WALL : Paths for authentificated users only
-router.use(verifyToken);
+// router.use(verifyToken);
 
 // Users - Paths for authentificated users only
 router.put("/user/:id", validateUser, userControllers.edit);
@@ -90,10 +92,5 @@ router.put("/recipes/:id", validateRecipe, recipeControllers.edit);
 router.delete("/recipes/:id", recipeControllers.destroy);
 
 // Ingredient-quatity-recipe - Paths for authentificated users only
-router.post("/ingredient-quantity-recipe", ingredientQtRecipeControllers.add);
-router.put(
-  "/ingredient-quantity-recipe/:id",
-  ingredientQtRecipeControllers.edit
-);
 
 module.exports = router;
