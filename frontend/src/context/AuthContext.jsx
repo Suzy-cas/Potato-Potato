@@ -1,7 +1,7 @@
 import { createContext, useMemo, useState, useEffect } from "react";
-import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import PropTypes from "prop-types";
+import instance from "../services/instance";
 
 const AuthContext = createContext();
 function AuthContextProvider({ children }) {
@@ -15,7 +15,7 @@ function AuthContextProvider({ children }) {
       const userId = decodeToken.user_id;
 
       try {
-        const { data } = await axios.get(
+        const { data } = await instance.get(
           `${import.meta.env.VITE_BACKEND_URL}/api/user/${userId}`
         );
         setUser(data);
