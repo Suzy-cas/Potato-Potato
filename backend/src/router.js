@@ -12,20 +12,17 @@ const { hashPassword, verifyToken } = require("./services/auth");
 
 router.post("/register", validateUser, hashPassword, userControllers.add);
 router.post("/login", validateLogin, authControllers.login);
-
-router.get("/users", userControllers.browse);
 router.get("/user/:id", userControllers.read);
+router.get("/users", userControllers.browse);
 
 // RECIPE paths
 const recipeControllers = require("./controllers/recipeControllers");
 const validateRecipe = require("./validators/validateRecipe");
 
 router.get("/recipes", recipeControllers.browse);
-router.get("/recipes/:id", recipeControllers.read);
+router.get("/recipe/:id", recipeControllers.read);
 router.get("/recipes-cookingtechs", recipeControllers.browseByCookingTechs);
 router.get("/recipes-varieties/:id", recipeControllers.readByRecipeIdVariety);
-
-router.post("/recipe", recipeControllers.add);
 
 // VARIETY paths
 const varietyControllers = require("./controllers/varietyControllers");
@@ -48,16 +45,32 @@ router.get("/types", typeControllers.browse);
 const ingredientControllers = require("./controllers/ingredientControllers");
 
 router.get("/ingredients", ingredientControllers.browse);
+router.get("/ingredient/:name", ingredientControllers.readByName);
 
-// INGREDIENT RECIPE paths
+// QUANTITY paths
+const quantityControllers = require("./controllers/quantityControllers");
+
+router.get("/quantity/", quantityControllers.browse);
+router.get(
+  "/quantity/:value/:typeId",
+  quantityControllers.readByValueAndTypeId
+);
+
+// INGREDIENT QUANTITY RECIPE paths
 const ingredientQtRecipeControllers = require("./controllers/ingredientQtRecipeControllers");
 
+router.get(
+  "/ingredients-quantities-recipes",
+  ingredientQtRecipeControllers.browse
+);
 router.get(
   "/ingredient-quantity-recipe/:id",
   ingredientQtRecipeControllers.readByRecipe
 );
 
 // AUTH WALL : Paths for authentificated users only
+
+// Middleware verifying if user is logged for routes security
 router.use(verifyToken);
 
 // Users - Paths for authentificated users only
@@ -65,15 +78,25 @@ router.put("/user/:id", validateUser, userControllers.edit);
 router.delete("/user/:id", userControllers.destroy);
 
 // Recipe - Paths for authentificated users only
-router.post("/recipes", validateRecipe, recipeControllers.add);
-router.put("/recipes/:id", validateRecipe, recipeControllers.edit);
-router.delete("/recipes/:id", recipeControllers.destroy);
+router.post("/recipe", recipeControllers.add);
+router.put("/recipe/:id", validateRecipe, recipeControllers.edit);
+router.delete("/recipe/:id", recipeControllers.destroy);
 
-// Ingredient-quatity-recipe - Paths for authentificated users only
+// Ingredient Quantity Recipe paths for authentificated users only
 router.post("/ingredient-quantity-recipe", ingredientQtRecipeControllers.add);
 router.put(
   "/ingredient-quantity-recipe/:id",
   ingredientQtRecipeControllers.edit
 );
+
+// Quantity paths for authentificated users only
+router.post("/quantity", quantityControllers.add);
+router.put("/quantity/:id", quantityControllers.edit);
+
+// Ingredient paths for authentificated users only
+router.post("/ingredient", ingredientControllers.add);
+router.put("/ingredient/:id", ingredientControllers.edit);
+
+// ROLE WALL
 
 module.exports = router;

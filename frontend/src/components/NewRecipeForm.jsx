@@ -13,9 +13,9 @@ function NewRecipeForm({
   handleSubmit,
 }) {
   const [types, setTypes] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [nativeIngredients, setNativeIngredients] = useState([]);
   const [cookingTechs, setCookingTechs] = useState([]);
-
   const editInfo = (e) => {
     const { name, value } = e.target;
     setRecipeInfo((prevRecipeInfo) => ({
@@ -64,25 +64,24 @@ function NewRecipeForm({
       return setArray([
         ...array,
         {
-          value: "",
+          value: 0,
           name: "",
           type_id: 1,
         },
       ]);
     }
-    return setArray([...array, ""]);
+    return setArray([...array, 0]);
   };
   const removeItemArray = (array, setArray, index, object = false) => {
     if (object === true) {
       return setArray(
         array
           .filter((item, i) => i !== index)
-          .map((ingredient, id) => {
+          .map((ingredient) => {
             return { ...ingredient };
           })
       );
     }
-
     return setArray(array.filter((item, i) => i !== index));
   };
 
@@ -98,7 +97,7 @@ function NewRecipeForm({
 
     setArray(newArray);
   };
-  // console.info(stepsArray);
+
   return (
     <section className="new-recipe">
       <form className="recipe-form">
@@ -167,6 +166,7 @@ function NewRecipeForm({
             {ingredients.map((ingredient, index) => (
               // eslint-disable-next-line react/no-array-index-key
 
+              // eslint-disable-next-line react/no-array-index-key
               <div key={index} className="ingredient-input">
                 <label className="quantity-label">
                   Quantité :
@@ -297,7 +297,7 @@ function NewRecipeForm({
                 <h4>Type de recette</h4>
                 <p>
                   {cookingTechs.find(
-                    (tech) => tech.id == recipeInfo.cooking_tech_id
+                    (tech) => tech.id === recipeInfo.cooking_tech_id
                   )?.name || ""}
                 </p>{" "}
                 <h4>Ingrédients</h4>
@@ -307,7 +307,7 @@ function NewRecipeForm({
                         {ingredient.value}{" "}
                         {types.find(
                           (type) =>
-                            type.id == ingredient.type_id ||
+                            type.id === ingredient.type_id ||
                             ingredient.type_id === "9001"
                         )?.name || ""}{" "}
                         {ingredient.name}

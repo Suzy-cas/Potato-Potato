@@ -34,6 +34,14 @@ class IngredientManager extends AbstractManager {
     return rows[0];
   }
 
+  async readByName(name) {
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where name = ?`,
+      [name]
+    );
+    return rows[0];
+  }
+
   async readAll() {
     // Execute the SQL SELECT query to retrieve all ingredients from the "ingredient" table
     const [rows] = await this.database.query(

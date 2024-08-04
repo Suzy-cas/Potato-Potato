@@ -45,11 +45,9 @@ const verifyToken = (req, res, next) => {
     if (type !== "Bearer") {
       throw new Error("Authorization header has not the 'Bearer' type");
     }
-
     // Vérifier la validité du token (son authenticité et sa date d'expiration)
     // En cas de succès, le payload est extrait et décodé
     req.auth = jwt.verify(token, process.env.APP_SECRET);
-
     next();
   } catch (err) {
     console.error(err);

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 import instance from "../../services/instance";
-
+import manageIngredients from "../../services/manageIngredients";
 import NewRecipeForm from "../../components/NewRecipeForm";
 
 function NewRecipe() {
@@ -36,15 +36,15 @@ function NewRecipe() {
     // must add more validations
 
     // First we check if there is at least one valid ingredient, knowing only valid ingredients will be saved in db.
-    // const ingredientsToPush = ingredients.filter((ingredient) =>
-    //   parseInt(ingredient.type_id, 10) !== 8
-    //     ? ingredient.value !== "" && ingredient.name !== ""
-    //     : ingredient.name !== ""
-    // );
+    const ingredientsToPush = ingredients.filter((ingredient) =>
+      parseInt(ingredient.type_id, 10) !== 8
+        ? ingredient.value !== "" && ingredient.name !== ""
+        : ingredient.name !== ""
+    );
 
-    // if (ingredientsToPush.length === 0) {
-    //   return;
-    // }
+    if (ingredientsToPush.length === 0) {
+      return;
+    }
 
     // Second we check if there is a picture, and if this picture is valid.
     // if (inputRef.current.files[0]) {
@@ -76,7 +76,7 @@ function NewRecipe() {
       // }
 
       // We call the function to register ingredients for that recipe, and navigate to that new recipe page
-      // await registerIngredient(ingredients, recipeId.data.id);
+      await manageIngredients(ingredients, recipeId);
 
       navigate(`/recettes/${recipeId}`);
     } catch {

@@ -34,6 +34,32 @@ const read = async (req, res, next) => {
   }
 };
 
+const readByValueAndTypeId = async (req, res, next) => {
+  try {
+    // Fetch a specific quantity from the database based on the provided ID
+
+    const quantityInfo = {
+      value: req.params.value.includes(":")
+        ? req.params.value.split(":").join("/")
+        : req.params.value,
+      type_id: req.params.typeId,
+    };
+
+    const quantity = await tables.quantity.readByValueAndTypeId(quantityInfo);
+    // If the quantity is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the quantity in JSON format
+    if (quantity == null) {
+      res.send("No quantity with these values.");
+    } else {
+      res.status(200).json(quantity);
+      console.info(quantity);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
 const edit = async (req, res, next) => {
@@ -89,6 +115,7 @@ const destroy = async (req, res, next) => {
 module.exports = {
   browse,
   read,
+  readByValueAndTypeId,
   edit,
   add,
   destroy,

@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
 import { jwtDecode } from "jwt-decode";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import instance from "../services/instance";
 
 function Login() {
   const { handleAuth } = useContext(AuthContext);
@@ -20,7 +20,7 @@ function Login() {
       const userId = decodeToken.user_id;
 
       try {
-        const { data } = await axios.get(
+        const { data } = await instance.get(
           `${import.meta.env.VITE_BACKEND_URL}/api/user/${userId}`
         );
 
@@ -30,6 +30,7 @@ function Login() {
         if (data.is_admin === 0) {
           return navigate("/mon-espace/profil");
         }
+        console.info(getToken);
       } catch (error) {
         console.warn("Une erreur est survenue!", error);
       }
@@ -52,7 +53,7 @@ function Login() {
     }
 
     try {
-      const res = await axios.post(
+      const res = await instance.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/login`,
         loginInfo
       );
