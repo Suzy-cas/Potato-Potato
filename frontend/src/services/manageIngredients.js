@@ -14,16 +14,12 @@ const manageIngredients = (ingredients, recipeId) => {
       quantity_id: 0,
     };
 
-    console.info(currentIngredient);
-    console.info(ingredient);
-
     if (ingredient) {
       try {
         // try to get the ingredient from table ingredient
         let ingredientExist = await instance.get(
           `api/ingredient/${ingredient.name}`
         );
-        console.info(ingredientExist);
 
         if (ingredientExist.data === "No ingredient with this name.") {
           await instance.post("api/ingredient", { name: ingredient.name });
@@ -37,33 +33,35 @@ const manageIngredients = (ingredients, recipeId) => {
         // if error, something
       }
     }
-    console.info(currentIngredient);
     if (ingredient) {
       try {
-        // now we try to get a quantity from the quantity table
         let quantityExist = await instance.get(
-          `api/quantity/${ingredient.value}/${ingredient.type_id}`
+          `api/quantity/${
+            ingredient.value.includes("/")
+              ? ingredient.value.split("/").join(":")
+              : ingredient.value
+          }/${ingredient.type_id}`
         );
 
         if (quantityExist.data === "No quantity with these values.") {
-          await instance.post("api/quantity", {
+          quantityExist = await instance.post("api/quantity", {
             value: ingredient.value,
             type_id: ingredient.type_id,
           });
+          // console.info("Post:", quantityExist);
 
           quantityExist = await instance.get(
-            `api/quantity/${
-              ingredient.value.includes("/")
-                ? ingredient.value.split("/").join(":")
-                : ingredient.value
-            }/${ingredient.type_id}`
+            `api/quantity/${ingredient.value}/${ingredient.type_id}`
           );
+          // console.info("refetch:", quantityExist);
         }
 
         currentIngredient.quantity_id = await quantityExist.data.id;
-        console.info(currentIngredient);
-      } catch {
-        // if error, something
+
+        // console.info("Current ingredient with quantity_id:", currentIngredient);
+      } catch (error) {
+        // Log error
+        console.error("Error fetching or creating quantity:", error);
       }
     }
     await instance.post("api/ingredient-quantity-recipe/", currentIngredient);
