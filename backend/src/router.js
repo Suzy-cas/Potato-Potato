@@ -6,7 +6,10 @@ const router = express.Router();
 // USER paths
 const authControllers = require("./controllers/authControllers");
 const userControllers = require("./controllers/userControllers");
-const { validateUser } = require("./validators/validateUser");
+const {
+  validateUser,
+  validateModifiedUser,
+} = require("./validators/validateUser");
 const { validateLogin } = require("./validators/validateLogin");
 const { hashPassword, verifyToken } = require("./services/auth");
 
@@ -74,7 +77,8 @@ router.get(
 router.use(verifyToken);
 
 // Users - Paths for authentificated users only
-router.put("/user/:id", validateUser, userControllers.edit);
+router.get("/users", userControllers.browse);
+router.put("/user/:id", validateModifiedUser, userControllers.edit);
 router.delete("/user/:id", userControllers.destroy);
 
 // Recipe - Paths for authentificated users only
