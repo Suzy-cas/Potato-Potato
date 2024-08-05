@@ -38,7 +38,7 @@ class UserManager extends AbstractManager {
   async readAllNoPassword() {
     // Execute the SQL SELECT query to retrieve all users from the "user" table
     const [rows] = await this.database.query(
-      `select username, email, is_admin from ${this.table}`
+      `select id, username, email, is_admin from ${this.table}`
     );
 
     // Return the array of users
