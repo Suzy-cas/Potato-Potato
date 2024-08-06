@@ -35,10 +35,21 @@ class UserManager extends AbstractManager {
     return rows[0];
   }
 
+  async readWithRecipeInfo(id) {
+    // Execute the SQL SELECT query to retrieve a specific user by its ID
+    const [rows] = await this.database.query(
+      `select user.id AS u_id, recipe.id AS r_id from ${this.table} INNER JOIN recipe ON user.id = recipe.user_id where user.id = ?`,
+      [id]
+    );
+
+    // Return the first row of the result, which represents the user
+    return rows;
+  }
+
   async readAllNoPassword() {
     // Execute the SQL SELECT query to retrieve all users from the "user" table
     const [rows] = await this.database.query(
-      `select username, email, is_admin from ${this.table}`
+      `select id, username, email, is_admin from ${this.table}`
     );
 
     // Return the array of users
@@ -78,6 +89,29 @@ class UserManager extends AbstractManager {
     );
 
     return result;
+  }
+
+  async deleteUserWithRecipeUpdate(userId, newUserId) {
+    const connection = await this.database.getConnection();
+    try {
+      await connection.beginTransaction();
+
+      // Update the user_id in the recipe table
+      await connection.query(
+        "UPDATE recipe SET user_id = ? WHERE user_id = ?",
+        [newUserId, userId]
+      );
+
+      // Delete the user from the user table
+      await connection.query("DELETE FROM user WHERE id = ?", [userId]);
+
+      await connection.commit();
+    } catch (err) {
+      await connection.rollback();
+      throw err;
+    } finally {
+      connection.release();
+    }
   }
 }
 

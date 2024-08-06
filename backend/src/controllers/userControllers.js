@@ -34,6 +34,24 @@ const read = async (req, res, next) => {
   }
 };
 
+const readWithRecipeInfo = async (req, res, next) => {
+  try {
+    // Fetch a specific user from the database based on the provided ID
+    const user = await tables.user.readWithRecipeInfo(req.params.id);
+
+    // If the user is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the user in JSON format
+    if (user == null) {
+      res.sendStatus(404);
+    } else {
+      res.status(200).json(user);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
 const edit = async (req, res, next) => {
@@ -85,11 +103,25 @@ const destroy = async (req, res, next) => {
   }
 };
 
+const destroyUserWithRecipeUpdate = async (req, res, next) => {
+  const userId = req.params.id;
+  const newUserId = 1; // The ID to assign to recipes after user deletion
+
+  try {
+    await tables.user.deleteUserWithRecipeUpdate(userId, newUserId);
+    res.sendStatus(200);
+  } catch (err) {
+    next(err);
+  }
+};
+
 // Ready to export the controller functions
 module.exports = {
   browse,
   read,
+  readWithRecipeInfo,
   edit,
   add,
   destroy,
+  destroyUserWithRecipeUpdate,
 };
