@@ -15,8 +15,9 @@ const { hashPassword, verifyToken } = require("./services/auth");
 
 router.post("/register", validateUser, hashPassword, userControllers.add);
 router.post("/login", validateLogin, authControllers.login);
-router.get("/user/:id", userControllers.read);
 router.get("/users", userControllers.browse);
+router.get("/users", userControllers.browse);
+router.get("/user/:id", userControllers.read);
 
 // RECIPE paths
 const recipeControllers = require("./controllers/recipeControllers");
@@ -77,9 +78,13 @@ router.get(
 router.use(verifyToken);
 
 // Users - Paths for authentificated users only
-router.get("/users", userControllers.browse);
+router.get("/user/recipes-infos/:id", userControllers.readWithRecipeInfo);
 router.put("/user/:id", validateModifiedUser, userControllers.edit);
 router.delete("/user/:id", userControllers.destroy);
+router.delete(
+  "/user/recipe-info/:id",
+  userControllers.destroyUserWithRecipeUpdate
+);
 
 // Recipe - Paths for authentificated users only
 router.post("/recipe", recipeControllers.add);

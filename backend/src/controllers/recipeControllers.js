@@ -97,6 +97,22 @@ const edit = async (req, res, next) => {
   }
 };
 
+const editUserId = async (req, res, next) => {
+  // Extract the recipe data from the request body
+  const recipe = req.body;
+
+  try {
+    // Insert the recipe into the database
+    await tables.recipe.updateUserId(recipe, req.params.id);
+
+    // Respond with HTTP 204 (No Content)
+    res.sendStatus(204);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
   // Extract the recipe data from the request body
@@ -138,6 +154,7 @@ module.exports = {
   readByRecipeIdVariety,
   findNewRecipeId,
   edit,
+  editUserId,
   add,
   destroy,
 };
