@@ -5,12 +5,14 @@
 }
 
 #root {
+  margin: 0;
   padding: 0;
   text-align: center;
+  overflow-x: hidden;
 }
 
 :root {
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
 }
 
@@ -21,7 +23,6 @@ body {
   max-height: 100vh;
   max-width: 100vw;
   font-family: $font-texts;
-  overflow-x: hidden;
 }
 
 .window .wrapper[data-v-e091cbd0] {
