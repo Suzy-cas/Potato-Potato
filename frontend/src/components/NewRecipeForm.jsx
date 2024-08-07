@@ -101,66 +101,70 @@ function NewRecipeForm({
   return (
     <section className="new-recipe">
       <form className="recipe-form">
-        <div className="recipe-infos">
-          {" "}
-          <h3>Informations générales</h3>
-          <label htmlFor="titre">
-            Titre
-            <input
-              type="text"
-              name="title"
-              value={recipeInfo.title}
-              onChange={editInfo}
-            />
-          </label>
-          <label htmlFor="diffidulty">
-            Niveau de difficulté
-            <select id="difficultyLevel" name="difficulty" onChange={editInfo}>
-              <option value="Facile">Facile</option>
-              <option value="Intermédiaire">Intermédiaire</option>
-              <option value="Difficile">Difficile</option>
-            </select>
-          </label>
-          <label htmlFor="prepTime">
-            Temps de préparation
-            <input
-              type="text"
-              name="prep_time"
-              placeholder="1h"
-              value={recipeInfo.prep_time}
-              onChange={editInfo}
-            />
-          </label>
-          <label htmlFor="cookingTime">
-            Temps de cuisson
-            <input
-              type="text"
-              name="cooking_time"
-              placeholder="1h"
-              value={recipeInfo.cooking_time}
-              onChange={editInfo}
-            />
-          </label>
-          <label htmlFor="cookingTech">
-            Type de recette
-            <select
-              id="ingredient"
-              name="cooking_tech_id"
-              value={recipeInfo.cooking_tech_id}
-              onChange={editInfo}
-            >
-              <option value="">Sélectionner un type</option>
-              {cookingTechs
-                .sort((a, b) => a.name.localeCompare(b.name))
-                .map((cookingTech) => (
-                  <option key={cookingTech.id} value={cookingTech.id}>
-                    {cookingTech.name}
-                  </option>
-                ))}
-            </select>
-          </label>
-        </div>
-        <div className="ingredient-steps-container">
+        <div className="recipe-info-ingredient">
+          <div className="recipe-infos">
+            {" "}
+            <h3>Informations générales</h3>
+            <label htmlFor="titre">
+              Titre
+              <input
+                type="text"
+                name="title"
+                value={recipeInfo.title}
+                onChange={editInfo}
+              />
+            </label>
+            <label htmlFor="diffidulty">
+              Niveau de difficulté
+              <select
+                id="difficultyLevel"
+                name="difficulty"
+                onChange={editInfo}
+              >
+                <option value="Facile">Facile</option>
+                <option value="Intermédiaire">Intermédiaire</option>
+                <option value="Difficile">Difficile</option>
+              </select>
+            </label>
+            <label htmlFor="prepTime">
+              Temps de préparation
+              <input
+                type="text"
+                name="prep_time"
+                placeholder="1h"
+                value={recipeInfo.prep_time}
+                onChange={editInfo}
+              />
+            </label>
+            <label htmlFor="cookingTime">
+              Temps de cuisson
+              <input
+                type="text"
+                name="cooking_time"
+                placeholder="1h"
+                value={recipeInfo.cooking_time}
+                onChange={editInfo}
+              />
+            </label>
+            <label htmlFor="cookingTech">
+              Type de recette
+              <select
+                id="ingredient"
+                name="cooking_tech_id"
+                value={recipeInfo.cooking_tech_id}
+                onChange={editInfo}
+              >
+                <option value="">Sélectionner un type</option>
+                {cookingTechs
+                  .sort((a, b) => a.name.localeCompare(b.name))
+                  .map((cookingTech) => (
+                    <option key={cookingTech.id} value={cookingTech.id}>
+                      {cookingTech.name}
+                    </option>
+                  ))}
+              </select>
+            </label>
+          </div>
           <form className="ingredient-container">
             <h3>Ingrédients</h3>
             {ingredients.map((ingredient, index) => (
@@ -239,47 +243,46 @@ function NewRecipeForm({
               </div>
             ))}
           </form>
-
-          <form className="recipe-step-container">
-            <h3>Etapes</h3>
-            {stepsArray.map((step, index) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <label key={index}>
-                <textarea
-                  type="text"
-                  value={step}
-                  name={`step${index}`}
-                  autoComplete="off"
-                  onChange={(e) =>
-                    editItemArray(stepsArray, setStepsArray, e, index)
-                  }
-                />
-                <div className="add-remove-div">
-                  {index !== 0 ? (
-                    <button
-                      type="button"
-                      className="add-remove-button"
-                      onClick={() =>
-                        removeItemArray(stepsArray, setStepsArray, index)
-                      }
-                    >
-                      -
-                    </button>
-                  ) : (
-                    ""
-                  )}
+        </div>
+        <form className="recipe-step-container">
+          <h3>Etapes</h3>
+          {stepsArray.map((step, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <label key={index}>
+              <textarea
+                type="text"
+                value={step}
+                name={`step${index}`}
+                autoComplete="off"
+                onChange={(e) =>
+                  editItemArray(stepsArray, setStepsArray, e, index)
+                }
+              />
+              <div className="add-remove-div">
+                {index !== 0 ? (
                   <button
                     type="button"
                     className="add-remove-button"
-                    onClick={() => addToArray(stepsArray, setStepsArray)}
+                    onClick={() =>
+                      removeItemArray(stepsArray, setStepsArray, index)
+                    }
                   >
-                    +
+                    -
                   </button>
-                </div>
-              </label>
-            ))}
-          </form>
-        </div>
+                ) : (
+                  ""
+                )}
+                <button
+                  type="button"
+                  className="add-remove-button"
+                  onClick={() => addToArray(stepsArray, setStepsArray)}
+                >
+                  +
+                </button>
+              </div>
+            </label>
+          ))}
+        </form>
       </form>
       <div className="new-recipe-display">
         <section className="card-container-preview">
