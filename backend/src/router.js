@@ -3,6 +3,42 @@ const express = require("express");
 
 const router = express.Router();
 
+const path = require("path");
+
+const multer = require("multer");
+
+const uploadAvatar = multer({
+  dest: "public/uploads/avatars",
+  fileFilter: (_req, file, cb) => {
+    const fileTypes = /jpeg|jpg|png/;
+    const mimetype = fileTypes.test(file.mimetype);
+    const extname = fileTypes.test(path.extname(file.originalname));
+    if (mimetype && extname) {
+      return cb(null, true);
+    }
+    cb(
+      `Error: File upload only supports the following filetypes - ${fileTypes}`
+    );
+    return "";
+  },
+});
+const uploadRecipeImage = multer({
+  dest: "public/uploads/recipes",
+  fileFilter: (_req, file, cb) => {
+    const fileTypes = /jpeg|jpg|png/;
+    const mimetype = fileTypes.test(file.mimetype);
+    const extname = fileTypes.test(path.extname(file.originalname));
+    if (mimetype && extname) {
+      return cb(null, true);
+    }
+    cb(
+      `Error: File upload only supports the following filetypes - ${fileTypes}`
+    );
+    return "";
+  },
+});
+const uploads = require("./services/upload");
+
 // USER paths
 const authControllers = require("./controllers/authControllers");
 const userControllers = require("./controllers/userControllers");
@@ -106,6 +142,18 @@ router.put("/quantity/:id", quantityControllers.edit);
 router.post("/ingredient", ingredientControllers.add);
 router.put("/ingredient/:id", ingredientControllers.edit);
 
+// Paths for upload users avatars and recipes pictures
+router.post(
+  "/uploads/recipes/:id",
+  uploadRecipeImage.single("recipePic"),
+  uploads.uploadRecipePictures
+);
+router.post(
+  "/uploads/avatars/:id",
+  uploadAvatar.single("avatar"),
+  uploads.uploadAvatars
+);
+router.put("/users/edit-avatar/:id", userControllers.editAvatar);
 // ROLE WALL
 
 module.exports = router;
