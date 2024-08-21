@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import instance from "../services/instance";
 import soupe from "../assets/img/soupe.jpg";
+import UploadPicture from "./UploadPicture";
 
 function NewRecipeForm({
   recipeInfo,
@@ -11,6 +12,8 @@ function NewRecipeForm({
   stepsArray,
   setStepsArray,
   handleSubmit,
+  inputRef,
+  setThumbnail,
 }) {
   const [types, setTypes] = useState([]);
   // eslint-disable-next-line no-unused-vars
@@ -97,7 +100,6 @@ function NewRecipeForm({
 
     setArray(newArray);
   };
-
   return (
     <section className="new-recipe">
       <form className="recipe-form">
@@ -298,6 +300,16 @@ function NewRecipeForm({
                 <h4>Temps de cuisson</h4>
                 <p>{recipeInfo.cooking_time}</p>
                 <h4>Type de recette</h4>
+                <p>{recipeInfo.cooking_tech_id}</p>
+                <p>
+                  {cookingTechs
+                    .sort((a, b) => a.name.localeCompare(b.name))
+                    .map((cookingTech) => (
+                      <option key={cookingTech.id} value={cookingTech.id}>
+                        {cookingTech.name}
+                      </option>
+                    ))}
+                </p>{" "}
                 <p>
                   {cookingTechs.find(
                     (tech) => tech.id === recipeInfo.cooking_tech_id
@@ -326,6 +338,7 @@ function NewRecipeForm({
               </div>
             </div>
           </div>
+          <UploadPicture inputRef={inputRef} setThumbnail={setThumbnail} />
         </section>
 
         <div>
