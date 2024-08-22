@@ -16,7 +16,7 @@ function NewRecipe() {
   const [thumbnail, setThumbnail] = useState(basicThumbnail);
   const [recipeInfo, setRecipeInfo] = useState({
     title: "Ta recette de pdt",
-    picture: { thumbnail },
+    picture: thumbnail,
     difficulty: "",
     prep_time: "",
     cooking_time: "",
@@ -28,7 +28,7 @@ function NewRecipe() {
   const [stepsArray, setStepsArray] = useState([""]);
 
   const navigate = useNavigate();
-  // console.info(recipeInfo);
+
   useEffect(() => {
     if (user.is_admin === 3 || user.is_admin === undefined) {
       navigate("/login");
@@ -59,7 +59,6 @@ function NewRecipe() {
         return;
       }
     }
-
     // We post the main informations of the recipe.
     try {
       // Enregistrer la recette dans la base de données
@@ -88,6 +87,7 @@ function NewRecipe() {
       console.warn("Une erreur est survenue!");
     }
   };
+  // console.info(recipeInfo);
 
   return (
     <NewRecipeForm
