@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import instance from "../services/instance";
 import soupe from "../assets/img/soupe.jpg";
-// import UploadPicture from "./UploadPicture";
 
 function NewRecipeForm({
   recipeInfo,
@@ -34,7 +33,6 @@ function NewRecipeForm({
       e.target.files[0].type === "image/png"
     ) {
       setThumbnail(URL.createObjectURL(e.target.files[0]));
-      // setRecipe({ ...recipe, is_thumbnail: true });
     }
   };
 
@@ -132,6 +130,7 @@ function NewRecipeForm({
               <select
                 id="difficultyLevel"
                 name="difficulty"
+                value="Facile"
                 onChange={editInfo}
               >
                 <option value="Facile">Facile</option>
@@ -167,7 +166,7 @@ function NewRecipeForm({
                 value={recipeInfo.cooking_tech_id}
                 onChange={editInfo}
               >
-                <option value="">Sélectionner un type</option>
+                <option value="9001">Sélectionner un type</option>
                 {cookingTechs
                   .sort((a, b) => a.name.localeCompare(b.name))
                   .map((cookingTech) => (

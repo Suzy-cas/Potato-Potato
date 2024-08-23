@@ -17,7 +17,7 @@ function NewRecipe() {
   const [recipeInfo, setRecipeInfo] = useState({
     title: "Ta recette de pdt",
     picture: thumbnail,
-    difficulty: "",
+    difficulty: "Facile",
     prep_time: "",
     cooking_time: "",
     steps: "",
@@ -91,7 +91,6 @@ function NewRecipe() {
       console.warn("Une erreur est survenue!");
     }
   };
-  // console.info(recipeInfo);
 
   return (
     <NewRecipeForm
