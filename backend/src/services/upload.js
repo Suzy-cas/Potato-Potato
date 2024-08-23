@@ -14,7 +14,7 @@ const uploadRecipePictures = (req, res) => {
   const { filename } = file;
   const targetPath = path.join(
     __dirname,
-    `../../public/uploads/recipes/${id}.png`
+    `../../public/uploads/recipes/${id}.jpg`
   );
 
   fs.rename(
