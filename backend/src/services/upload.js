@@ -3,7 +3,6 @@ const fs = require("fs");
 const path = require("path");
 
 const uploadRecipePictures = (req, res) => {
-  console.info("Fichier reçu :", req.file); // Log pour vérifier si le fichier est bien reçu
   const { file } = req;
   const { id } = req.params;
 
@@ -17,12 +16,6 @@ const uploadRecipePictures = (req, res) => {
     __dirname,
     `../../public/uploads/recipes/${id}.png`
   );
-
-  console.info(
-    "Chemin source :",
-    path.join(__dirname, `../../public/uploads/recipes/${filename}`)
-  );
-  console.info("Chemin cible :", targetPath);
 
   fs.rename(
     path.join(__dirname, `../../public/uploads/recipes/${filename}`),
