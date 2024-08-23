@@ -72,17 +72,21 @@ function NewRecipe() {
       console.info(recipeId);
       // If we have a picture, we create a new form for that recipe and upload it
       if (inputRef.current.files[0]) {
-        const formData = await new FormData();
-        await formData.append("recipePic", inputRef.current.files[0]);
-        await instance
-          .post(`/uploads/recipes/${recipeId.data.id}`, formData)
-          .catch((er) => console.info(er));
+        const formData = new FormData();
+        formData.append("recipePic", inputRef.current.files[0]);
+
+        try {
+          await instance.post(`/api/uploads/recipes/${recipeId}`, formData);
+        } catch (error) {
+          console.error("Erreur lors de l'upload de l'image :", error);
+        }
       }
 
       // We call the function to register ingredients for that recipe, and navigate to that new recipe page
       await manageIngredients(ingredients, recipeId);
 
-      navigate(`/recettes/${recipeId}`);
+      // navigate(`/recettes/${recipeId}`);
+      console.info("recette ajoutée");
     } catch {
       console.warn("Une erreur est survenue!");
     }

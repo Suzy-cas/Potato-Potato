@@ -13,7 +13,7 @@ function RecipeCard({
   recipesCookTechs,
   varietiesId,
 }) {
-  const recipePicture = `${import.meta.env.VITE_BACKEND_URL}/uploads/`;
+  const recipePicture = `${import.meta.env.VITE_BACKEND_URL}/uploads/recipes/`;
   // console.info(uniqueRecipes.id);
 
   return (

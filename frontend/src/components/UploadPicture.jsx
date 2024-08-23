@@ -1,19 +1,30 @@
 /* eslint-disable react/prop-types */
+/* eslint-disable react/prop-types */
+
 function UploadPicture({ inputRef, setThumbnail }) {
   const handleChangeThumbnail = (e) => {
+    const file = e.target.files[0];
+    console.info(file);
     if (
-      e.target.files[0].type === "image/jpeg" ||
-      e.target.files[0].type === "image/jpg" ||
-      e.target.files[0].type === "image/png"
+      file &&
+      (file.type === "image/jpeg" ||
+        file.type === "image/jpg" ||
+        file.type === "image/png")
     ) {
-      setThumbnail(URL.createObjectURL(e.target.files[0]));
+      setThumbnail(URL.createObjectURL(file));
+    } else {
+      console.warn(
+        "Le fichier sélectionné n'est pas valide. Veuillez choisir un fichier JPEG ou PNG."
+      );
     }
   };
+
   return (
-    <label className="FileUploadLabel">
+    <label>
       Photo
       <p />
       <input
+        className="primary-button"
         type="file"
         name="recipePicture"
         accept="image/png, image/jpeg"
@@ -23,4 +34,5 @@ function UploadPicture({ inputRef, setThumbnail }) {
     </label>
   );
 }
+
 export default UploadPicture;

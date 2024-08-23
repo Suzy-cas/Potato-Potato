@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import instance from "../services/instance";
 import soupe from "../assets/img/soupe.jpg";
-import UploadPicture from "./UploadPicture";
+// import UploadPicture from "./UploadPicture";
 
 function NewRecipeForm({
   recipeInfo,
@@ -26,6 +26,16 @@ function NewRecipeForm({
       ...prevRecipeInfo,
       [name]: value,
     }));
+  };
+  const handleChangeThumbnail = (e) => {
+    if (
+      e.target.files[0].type === "image/jpeg" ||
+      e.target.files[0].type === "image/jpg" ||
+      e.target.files[0].type === "image/png"
+    ) {
+      setThumbnail(URL.createObjectURL(e.target.files[0]));
+      // setRecipe({ ...recipe, is_thumbnail: true });
+    }
   };
 
   useEffect(() => {
@@ -284,7 +294,18 @@ function NewRecipeForm({
             </label>
           ))}
         </form>
-        <UploadPicture inputRef={inputRef} setThumbnail={setThumbnail} />
+        <label>
+          Photo
+          <p />
+          <input
+            className="primary-button"
+            type="file"
+            name="recipePicture"
+            accept="image/png, image/jpeg"
+            onChange={handleChangeThumbnail}
+            ref={inputRef}
+          />
+        </label>{" "}
       </form>
       <div className="new-recipe-display">
         <section className="card-container-preview">
