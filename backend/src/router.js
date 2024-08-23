@@ -7,22 +7,7 @@ const router = express.Router();
 
 const multer = require("multer");
 
-// const uploadAvatar = multer({
-//   dest: "public/uploads/avatars",
-//   fileFilter: (_req, file, cb) => {
-//     const fileTypes = /jpeg|jpg|png/;
-//     const mimetype = fileTypes.test(file.mimetype);
-//     const extname = fileTypes.test(path.extname(file.originalname));
-//     if (mimetype && extname) {
-//       return cb(null, true);
-//     }
-//     cb(
-//       `Error: File upload only supports the following filetypes - ${fileTypes}`
-//     );
-//     return "";
-//   },
-// });
-const uploadRecipeImage = multer({
+const uploadRecipePic = multer({
   dest: "public/uploads/recipes",
   fileFilter: (_req, file, cb) => {
     const fileTypes = /jpeg|jpg|png/;
@@ -145,7 +130,7 @@ router.put("/ingredient/:id", ingredientControllers.edit);
 // Paths for upload users avatars and recipes pictures
 router.post(
   "/uploads/recipes/:id",
-  uploadRecipeImage.single("recipePic"),
+  uploadRecipePic.single("recipePic"),
   uploads.uploadRecipePictures
 );
 // router.post(
