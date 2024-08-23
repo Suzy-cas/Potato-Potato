@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import instance from "../services/instance";
 import soupe from "../assets/img/soupe.jpg";
+// import UploadPicture from "./UploadPicture";
 
 function NewRecipeForm({
   recipeInfo,
@@ -11,17 +12,30 @@ function NewRecipeForm({
   stepsArray,
   setStepsArray,
   handleSubmit,
+  inputRef,
+  setThumbnail,
 }) {
   const [types, setTypes] = useState([]);
   // eslint-disable-next-line no-unused-vars
   const [nativeIngredients, setNativeIngredients] = useState([]);
   const [cookingTechs, setCookingTechs] = useState([]);
+
   const editInfo = (e) => {
     const { name, value } = e.target;
     setRecipeInfo((prevRecipeInfo) => ({
       ...prevRecipeInfo,
       [name]: value,
     }));
+  };
+  const handleChangeThumbnail = (e) => {
+    if (
+      e.target.files[0].type === "image/jpeg" ||
+      e.target.files[0].type === "image/jpg" ||
+      e.target.files[0].type === "image/png"
+    ) {
+      setThumbnail(URL.createObjectURL(e.target.files[0]));
+      // setRecipe({ ...recipe, is_thumbnail: true });
+    }
   };
 
   useEffect(() => {
@@ -39,7 +53,6 @@ function NewRecipeForm({
         console.error("Error fetching data:", error);
       });
   }, []);
-
   const editIngredient = (e, currentIndex) => {
     const { name, value } = e.target;
 
@@ -169,8 +182,6 @@ function NewRecipeForm({
             <h3>Ingrédients</h3>
             {ingredients.map((ingredient, index) => (
               // eslint-disable-next-line react/no-array-index-key
-
-              // eslint-disable-next-line react/no-array-index-key
               <div key={index} className="ingredient-input">
                 <label className="quantity-label">
                   Quantité :
@@ -283,6 +294,18 @@ function NewRecipeForm({
             </label>
           ))}
         </form>
+        <label>
+          Photo
+          <p />
+          <input
+            className="primary-button"
+            type="file"
+            name="recipePicture"
+            accept="image/png, image/jpeg"
+            onChange={handleChangeThumbnail}
+            ref={inputRef}
+          />
+        </label>{" "}
       </form>
       <div className="new-recipe-display">
         <section className="card-container-preview">
@@ -298,11 +321,11 @@ function NewRecipeForm({
                 <h4>Temps de cuisson</h4>
                 <p>{recipeInfo.cooking_time}</p>
                 <h4>Type de recette</h4>
-                <p>
-                  {cookingTechs.find(
-                    (tech) => tech.id === recipeInfo.cooking_tech_id
-                  )?.name || ""}
-                </p>{" "}
+                {cookingTechs
+                  .filter((el) => el.id === Number(recipeInfo.cooking_tech_id))
+                  .map((cookingTech) => (
+                    <p key={cookingTech.id}>{cookingTech.name}</p>
+                  ))}
                 <h4>Ingrédients</h4>
                 {ingredients !== undefined
                   ? ingredients.map((ingredient) => (
@@ -310,7 +333,7 @@ function NewRecipeForm({
                         {ingredient.value}{" "}
                         {types.find(
                           (type) =>
-                            type.id === ingredient.type_id ||
+                            type.id === Number(ingredient.type_id) ||
                             ingredient.type_id === "9001"
                         )?.name || ""}{" "}
                         {ingredient.name}

@@ -1,20 +1,23 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 import instance from "../../services/instance";
 import manageIngredients from "../../services/manageIngredients";
 import NewRecipeForm from "../../components/NewRecipeForm";
+import basicThumbnail from "../../assets/img/soupe.jpg";
 
 function NewRecipe() {
+  const inputRef = useRef();
   const { handleAuth, handleLogout, user } = useContext(AuthContext);
   const [ingredients, setIngredients] = useState([
     { name: "", value: "", type_id: 0 },
   ]);
+  const [thumbnail, setThumbnail] = useState(basicThumbnail);
   const [recipeInfo, setRecipeInfo] = useState({
     title: "Ta recette de pdt",
-    picture: "/public/assets/images",
-    difficulty: "Facile",
+    picture: thumbnail,
+    difficulty: "",
     prep_time: "",
     cooking_time: "",
     steps: "",
@@ -25,7 +28,7 @@ function NewRecipe() {
   const [stepsArray, setStepsArray] = useState([""]);
 
   const navigate = useNavigate();
-  // console.info(recipeInfo);
+
   useEffect(() => {
     if (user.is_admin === 3 || user.is_admin === undefined) {
       navigate("/login");
@@ -47,16 +50,15 @@ function NewRecipe() {
     }
 
     // Second we check if there is a picture, and if this picture is valid.
-    // if (inputRef.current.files[0]) {
-    //   if (
-    //     inputRef.current.files[0].type !== "image/jpeg" &&
-    //     inputRef.current.files[0].type !== "image/jpg" &&
-    //     inputRef.current.files[0].type !== "image/png"
-    //   ) {
-    //     return;
-    //   }
-    // }
-
+    if (inputRef.current.files[0]) {
+      if (
+        inputRef.current.files[0].type !== "image/jpeg" &&
+        inputRef.current.files[0].type !== "image/jpg" &&
+        inputRef.current.files[0].type !== "image/png"
+      ) {
+        return;
+      }
+    }
     // We post the main informations of the recipe.
     try {
       // Enregistrer la recette dans la base de données
@@ -69,20 +71,27 @@ function NewRecipe() {
       const recipeId = response.data.id;
       console.info(recipeId);
       // If we have a picture, we create a new form for that recipe and upload it
-      // if (inputRef.current.files[0]) {
-      //   const formData = await new FormData();
-      //   await formData.append("recipePic", inputRef.current.files[0]);
-      //   await instance.post(`/uploads/recipes/${recipeId.data.id}`, formData);
-      // }
+      if (inputRef.current.files[0]) {
+        const formData = new FormData();
+        formData.append("recipePic", inputRef.current.files[0]);
+
+        try {
+          await instance.post(`/api/uploads/recipes/${recipeId}`, formData);
+        } catch (error) {
+          console.error("Erreur lors de l'upload de l'image :", error);
+        }
+      }
 
       // We call the function to register ingredients for that recipe, and navigate to that new recipe page
       await manageIngredients(ingredients, recipeId);
 
-      navigate(`/recettes/${recipeId}`);
+      // navigate(`/recettes/${recipeId}`);
+      console.info("recette ajoutée");
     } catch {
       console.warn("Une erreur est survenue!");
     }
   };
+  // console.info(recipeInfo);
 
   return (
     <NewRecipeForm
@@ -93,6 +102,8 @@ function NewRecipe() {
       stepsArray={stepsArray}
       setStepsArray={setStepsArray}
       handleSubmit={handleSubmit}
+      inputRef={inputRef}
+      setThumbnail={setThumbnail}
     />
   );
 }

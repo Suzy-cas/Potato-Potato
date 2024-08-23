@@ -1,7 +1,28 @@
 /* eslint-disable camelcase */
 const express = require("express");
 
+const path = require("path");
+
 const router = express.Router();
+
+const multer = require("multer");
+
+const uploadRecipePic = multer({
+  dest: "public/uploads/recipes",
+  fileFilter: (_req, file, cb) => {
+    const fileTypes = /jpeg|jpg|png/;
+    const mimetype = fileTypes.test(file.mimetype);
+    const extname = fileTypes.test(path.extname(file.originalname));
+    if (mimetype && extname) {
+      return cb(null, true);
+    }
+    cb(
+      `Error: File upload only supports the following filetypes - ${fileTypes}`
+    );
+    return "";
+  },
+});
+const uploads = require("./services/upload");
 
 // USER paths
 const authControllers = require("./controllers/authControllers");
@@ -105,6 +126,19 @@ router.put("/quantity/:id", quantityControllers.edit);
 // Ingredient paths for authentificated users only
 router.post("/ingredient", ingredientControllers.add);
 router.put("/ingredient/:id", ingredientControllers.edit);
+
+// Paths for upload users avatars and recipes pictures
+router.post(
+  "/uploads/recipes/:id",
+  uploadRecipePic.single("recipePic"),
+  uploads.uploadRecipePictures
+);
+// router.post(
+//   "/uploads/avatars/:id",
+//   uploadAvatar.single("avatar"),
+//   uploads.uploadAvatars
+// );
+// router.put("/users/edit-avatar/:id", userControllers.editAvatar);
 
 // ROLE WALL
 
