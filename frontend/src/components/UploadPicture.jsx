@@ -21,8 +21,8 @@ function UploadPicture({ inputRef, setThumbnail }) {
 
   return (
     <label>
-      Photo
       <p />
+      photo
       <input
         className="primary-button"
         type="file"

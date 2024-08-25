@@ -91,7 +91,6 @@ function NewRecipe() {
       console.warn("Une erreur est survenue!");
     }
   };
-  // console.info(recipeInfo);
 
   return (
     <NewRecipeForm
@@ -104,6 +103,7 @@ function NewRecipe() {
       handleSubmit={handleSubmit}
       inputRef={inputRef}
       setThumbnail={setThumbnail}
+      thumbnail={thumbnail}
     />
   );
 }

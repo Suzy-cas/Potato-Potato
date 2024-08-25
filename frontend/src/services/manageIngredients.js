@@ -48,17 +48,17 @@ const manageIngredients = (ingredients, recipeId) => {
             value: ingredient.value,
             type_id: ingredient.type_id,
           });
-          // console.info("Post:", quantityExist);
+          console.info("Post:", quantityExist);
 
           quantityExist = await instance.get(
             `api/quantity/${ingredient.value}/${ingredient.type_id}`
           );
-          // console.info("refetch:", quantityExist);
+          console.info("refetch:", quantityExist);
         }
 
         currentIngredient.quantity_id = await quantityExist.data.id;
 
-        // console.info("Current ingredient with quantity_id:", currentIngredient);
+        console.info("Current ingredient with quantity_id:", currentIngredient);
       } catch (error) {
         // Log error
         console.error("Error fetching or creating quantity:", error);
