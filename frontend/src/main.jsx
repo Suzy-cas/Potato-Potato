@@ -19,6 +19,7 @@ import Profile from "./pages/User/Profile";
 import RecipeReview from "./pages/Admin/RecipeReview";
 import Register from "./pages/Register";
 import RecipeId from "./pages/RecipeId";
+import UserList from "./pages/Admin/UserList";
 
 const router = createBrowserRouter([
   {
@@ -50,8 +51,9 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { path: "nouvelle-recette", element: <NewRecipe /> },
-      { path: "recettes-review", element: <RecipeReview /> },
+      { path: "recettes-approbation", element: <RecipeReview /> },
       { path: "profil", element: <Profile /> },
+      { path: "utilisateurs", element: <UserList /> },
     ],
   },
 ]);

@@ -1,18 +1,42 @@
 /* eslint-disable camelcase */
 const express = require("express");
 
+const path = require("path");
+
 const router = express.Router();
+
+const multer = require("multer");
+
+const uploadRecipePic = multer({
+  dest: "public/uploads/recipes",
+  fileFilter: (_req, file, cb) => {
+    const fileTypes = /jpeg|jpg|png/;
+    const mimetype = fileTypes.test(file.mimetype);
+    const extname = fileTypes.test(path.extname(file.originalname));
+    if (mimetype && extname) {
+      return cb(null, true);
+    }
+    cb(
+      `Error: File upload only supports the following filetypes - ${fileTypes}`
+    );
+    return "";
+  },
+});
+const uploads = require("./services/upload");
 
 // USER paths
 const authControllers = require("./controllers/authControllers");
 const userControllers = require("./controllers/userControllers");
-const { validateUser } = require("./validators/validateUser");
+const {
+  validateUser,
+  validateModifiedUser,
+} = require("./validators/validateUser");
 const { validateLogin } = require("./validators/validateLogin");
 const { hashPassword, verifyToken } = require("./services/auth");
 
 router.post("/register", validateUser, hashPassword, userControllers.add);
 router.post("/login", validateLogin, authControllers.login);
-
+router.get("/users", userControllers.browse);
 router.get("/users", userControllers.browse);
 router.get("/user/:id", userControllers.read);
 
@@ -21,11 +45,9 @@ const recipeControllers = require("./controllers/recipeControllers");
 const validateRecipe = require("./validators/validateRecipe");
 
 router.get("/recipes", recipeControllers.browse);
-router.get("/recipes/:id", recipeControllers.read);
+router.get("/recipe/:id", recipeControllers.read);
 router.get("/recipes-cookingtechs", recipeControllers.browseByCookingTechs);
 router.get("/recipes-varieties/:id", recipeControllers.readByRecipeIdVariety);
-
-router.post("/recipe", recipeControllers.add);
 
 // VARIETY paths
 const varietyControllers = require("./controllers/varietyControllers");
@@ -48,32 +70,76 @@ router.get("/types", typeControllers.browse);
 const ingredientControllers = require("./controllers/ingredientControllers");
 
 router.get("/ingredients", ingredientControllers.browse);
+router.get("/ingredient/:name", ingredientControllers.readByName);
 
-// INGREDIENT RECIPE paths
+// QUANTITY paths
+const quantityControllers = require("./controllers/quantityControllers");
+
+router.get("/quantity/", quantityControllers.browse);
+router.get(
+  "/quantity/:value/:typeId",
+  quantityControllers.readByValueAndTypeId
+);
+
+// INGREDIENT QUANTITY RECIPE paths
 const ingredientQtRecipeControllers = require("./controllers/ingredientQtRecipeControllers");
 
+router.get(
+  "/ingredients-quantities-recipes",
+  ingredientQtRecipeControllers.browse
+);
 router.get(
   "/ingredient-quantity-recipe/:id",
   ingredientQtRecipeControllers.readByRecipe
 );
 
 // AUTH WALL : Paths for authentificated users only
+
+// Middleware verifying if user is logged for routes security
 router.use(verifyToken);
 
 // Users - Paths for authentificated users only
-router.put("/user/:id", validateUser, userControllers.edit);
+router.get("/user/recipes-infos/:id", userControllers.readWithRecipeInfo);
+router.put("/user/:id", validateModifiedUser, userControllers.edit);
 router.delete("/user/:id", userControllers.destroy);
+router.delete(
+  "/user/recipe-info/:id",
+  userControllers.destroyUserWithRecipeUpdate
+);
 
 // Recipe - Paths for authentificated users only
-router.post("/recipes", validateRecipe, recipeControllers.add);
-router.put("/recipes/:id", validateRecipe, recipeControllers.edit);
-router.delete("/recipes/:id", recipeControllers.destroy);
+router.post("/recipe", recipeControllers.add);
+router.put("/recipe/:id", validateRecipe, recipeControllers.edit);
+router.delete("/recipe/:id", recipeControllers.destroy);
 
-// Ingredient-quatity-recipe - Paths for authentificated users only
+// Ingredient Quantity Recipe paths for authentificated users only
 router.post("/ingredient-quantity-recipe", ingredientQtRecipeControllers.add);
 router.put(
   "/ingredient-quantity-recipe/:id",
   ingredientQtRecipeControllers.edit
 );
+
+// Quantity paths for authentificated users only
+router.post("/quantity", quantityControllers.add);
+router.put("/quantity/:id", quantityControllers.edit);
+
+// Ingredient paths for authentificated users only
+router.post("/ingredient", ingredientControllers.add);
+router.put("/ingredient/:id", ingredientControllers.edit);
+
+// Paths for upload users avatars and recipes pictures
+router.post(
+  "/uploads/recipes/:id",
+  uploadRecipePic.single("recipePic"),
+  uploads.uploadRecipePictures
+);
+// router.post(
+//   "/uploads/avatars/:id",
+//   uploadAvatar.single("avatar"),
+//   uploads.uploadAvatars
+// );
+// router.put("/users/edit-avatar/:id", userControllers.editAvatar);
+
+// ROLE WALL
 
 module.exports = router;

@@ -5,12 +5,12 @@ import { Link, Outlet } from "react-router-dom";
 function AdminMenu() {
   return (
     <div className="menu-container">
-      <h1>TAbleau de bord</h1>
+      <h1>Tableau de bord</h1>
+
       <nav>
         <ul>
-          <Link to="/">Accueil</Link>
           <Link to="utilisateurs">Utilisateurs</Link>
-          <Link to="recettes-review">Recettes</Link>
+          <Link to="recettes-approbation">Recettes</Link>
           <Link to="/deconnexion">Deconnexion</Link>
         </ul>
       </nav>

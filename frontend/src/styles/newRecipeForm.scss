@@ -1,7 +1,7 @@
 .new-recipe {
   display: flex;
   justify-content: center;
-  margin: 0vh 5vw 10vh;
+  margin: 0vh 1vw 10vh 3vw;
 
   .new-recipe-display {
     width: 50%;
@@ -10,87 +10,131 @@
   .recipe-form {
     display: flex;
     flex-direction: column;
+    justify-content: start;
     width: 100%;
     border: solid black 3px;
     padding: 4vh 2vw;
+
+    h3 {
+      display: flex;
+      align-items: start;
+    }
     label {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       margin: 0.5vh 0px;
+      font-weight: 800;
     }
     .recipe-infos {
+      width: 40%;
+    }
+    .ingredient-container {
+      width: 55%;
+    }
+    .ingredient-container,
+    .add-recipe-picture,
+    .recipe-infos,
+    .recipe-step-container {
       display: flex;
       flex-direction: column;
-      align-items: center;
-    }
-    .ingredient-steps-container {
-      display: flex;
-      flex-direction: row;
-      margin-top: 6vh;
+      border: solid black 1px;
+      padding: 2vh 2vw;
+      margin: 2vh;
 
-      .ingredient-container {
+      .ingredient-input {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 50%;
+        justify-content: center;
+        align-items: flex-end;
+        width: 100%;
 
-        .ingredient-input {
-          display: flex;
-          justify-content: center;
-          align-items: flex-end;
-          width: 90%;
-          input,
-          select,
-          option {
-            margin-bottom: 0;
-          }
-          .quantity-label {
-            input {
-              width: 80%;
-            }
-          }
-          label {
-            margin-right: 0.1vw;
-            margin-bottom: 0;
-            text-align: left;
-          }
-
+        .quantity-label {
           input {
-            margin-right: 0.5vw;
-            width: 100%;
+            width: 80%;
           }
+        }
+        label {
+          margin-right: 0.1vw;
+          margin-bottom: 0;
+          text-align: left;
+          width: 100%;
+          font-weight: 800;
+        }
 
-          .add-remove-div {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin-left: 0.5vw;
-            .add-remove-button {
-              margin: 0;
-              margin-right: 0.1vw;
-            }
+        input {
+          margin-right: 0.5vw;
+          width: 100%;
+        }
+
+        .add-remove-div {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          margin-left: 0.5vw;
+          .add-remove-button {
+            margin: 0;
+            margin-right: 0.1vw;
           }
         }
       }
 
+      option,
       input,
       select,
       textarea {
         width: 100%;
         padding: 0.5vh;
         margin-top: 0.3vh;
+        display: flex;
+        // color: $black;
+        border: solid 1px $dark-grey;
       }
-      textarea {
-        min-width: 2vw;
+      ::placeholder {
+        color: $dark-grey;
+        font-style: italic;
       }
     }
     .recipe-step-container {
-      width: 50%;
       .add-remove-button {
         margin-right: 0.5vh;
         margin-top: 0.3vh;
       }
+    }
+  }
+  .add-recipe-picture {
+    input {
+      background-color: white;
+    }
+  }
+}
+
+.recipe-info-ingredient {
+  display: flex;
+  justify-content: space-between;
+}
+.first-option {
+  color: red;
+}
+@media screen and (max-width: 400px) {
+  .new-recipe {
+    flex-direction: column;
+
+    .recipe-info-ingredient {
+      flex-direction: column;
+
+      .recipe-infos,
+      .ingredient-container {
+        width: 100%;
+        margin: 2vh 0;
+      }
+
+      .ingredient-input {
+        flex-direction: column;
+      }
+    }
+    .new-recipe-display {
+      width: 100%;
+      margin: 0;
     }
   }
 }

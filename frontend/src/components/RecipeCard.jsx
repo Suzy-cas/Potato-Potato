@@ -13,7 +13,7 @@ function RecipeCard({
   recipesCookTechs,
   varietiesId,
 }) {
-  const recipePicture = `${import.meta.env.VITE_BACKEND_URL}/uploads/`;
+  const recipePicture = `${import.meta.env.VITE_BACKEND_URL}/uploads/recipes/`;
   // console.info(uniqueRecipes.id);
 
   return (
@@ -27,7 +27,7 @@ function RecipeCard({
                 <h3>{val.title}</h3>
                 <img alt="" src={`${recipePicture}/${val.id}.jpg`} />
                 <div className="card-content">
-                  <div>
+                  <div className="recipe-infos">
                     <h4>Difficulté</h4>
                     <p>{val.difficulty}</p>
                     <h4>Temps de préparation</h4>
@@ -63,7 +63,7 @@ function RecipeCard({
             <h3>{recipeId.title}</h3>
             <img alt="" src={`${recipePicture}/${recipeId.id}.jpg`} />
             <div className="card-content">
-              <div>
+              <div className="recipe-infos">
                 <h4>Difficulté</h4>
                 <p>{recipeId.difficulty}</p>
                 <h4>Temps de préparation</h4>

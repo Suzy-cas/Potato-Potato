@@ -135,6 +135,17 @@ class RecipeManager extends AbstractManager {
     return result;
   }
 
+  async updateUserId(userId, newUserId) {
+    // Execute the SQL SELECT query to retrieve a specific user by its ID
+    const [rows] = await this.database.query(
+      "UPDATE recipe SET user_id = ? WHERE user_id = ?",
+      [newUserId, userId]
+    );
+
+    // Return the first row of the result, which represents the user
+    return rows;
+  }
+
   // The D of CRUD - Delete operation
   // TODO: Implement the delete operation to remove an recipe by its ID
   async delete(id) {
