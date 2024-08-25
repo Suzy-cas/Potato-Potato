@@ -17,7 +17,7 @@ function NewRecipe() {
   const [recipeInfo, setRecipeInfo] = useState({
     title: "Ta recette de pdt",
     picture: thumbnail,
-    difficulty: "Facile",
+    difficulty: "",
     prep_time: "",
     cooking_time: "",
     steps: "",
@@ -103,6 +103,7 @@ function NewRecipe() {
       handleSubmit={handleSubmit}
       inputRef={inputRef}
       setThumbnail={setThumbnail}
+      thumbnail={thumbnail}
     />
   );
 }

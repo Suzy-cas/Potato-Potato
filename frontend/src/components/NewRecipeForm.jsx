@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import instance from "../services/instance";
-import soupe from "../assets/img/soupe.jpg";
 
 function NewRecipeForm({
   recipeInfo,
@@ -13,6 +12,7 @@ function NewRecipeForm({
   handleSubmit,
   inputRef,
   setThumbnail,
+  thumbnail,
 }) {
   const [types, setTypes] = useState([]);
   // eslint-disable-next-line no-unused-vars
@@ -81,7 +81,7 @@ function NewRecipeForm({
         },
       ]);
     }
-    return setArray([...array, 0]);
+    return setArray([...array, ""]);
   };
   const removeItemArray = (array, setArray, index, object = false) => {
     if (object === true) {
@@ -121,7 +121,7 @@ function NewRecipeForm({
               <input
                 type="text"
                 name="title"
-                value={recipeInfo.title}
+                placeholder={recipeInfo.title}
                 onChange={editInfo}
               />
             </label>
@@ -130,9 +130,12 @@ function NewRecipeForm({
               <select
                 id="difficultyLevel"
                 name="difficulty"
-                value="Facile"
+                value={recipeInfo.difficulty}
                 onChange={editInfo}
               >
+                <option value="" className="first-option">
+                  Sélectionnez un niveau
+                </option>
                 <option value="Facile">Facile</option>
                 <option value="Intermédiaire">Intermédiaire</option>
                 <option value="Difficile">Difficile</option>
@@ -188,6 +191,7 @@ function NewRecipeForm({
                     type="number"
                     name="value"
                     autoComplete="off"
+                    placeholder="0"
                     value={ingredient.value}
                     onChange={(e) => editIngredient(e, index)}
                   />
@@ -200,6 +204,7 @@ function NewRecipeForm({
                     value={ingredient.type_id}
                     onChange={(e) => editIngredient(e, index)}
                   >
+                    <option value="">Sélectionnez l'unité</option>
                     {types.map((type) => (
                       <option key={type.id} value={type.id}>
                         {type.name}
@@ -212,6 +217,7 @@ function NewRecipeForm({
                   <input
                     type="text"
                     name="name"
+                    placeholder="Nom de l'ingrédient"
                     autoComplete="off"
                     value={ingredient.name}
                     onChange={(e) => editIngredient(e, index)}
@@ -264,6 +270,7 @@ function NewRecipeForm({
                 value={step}
                 name={`step${index}`}
                 autoComplete="off"
+                placeholder="Décrivez les étapes de la recette"
                 onChange={(e) =>
                   editItemArray(stepsArray, setStepsArray, e, index)
                 }
@@ -293,24 +300,31 @@ function NewRecipeForm({
             </label>
           ))}
         </form>
-        <label>
-          Photo
-          <p />
+        <div className="add-recipe-picture">
+          <h3>Ajouter une photo</h3>
           <input
-            className="primary-button"
             type="file"
             name="recipePicture"
             accept="image/png, image/jpeg"
             onChange={handleChangeThumbnail}
             ref={inputRef}
           />
-        </label>{" "}
+        </div>
+        <div>
+          <button
+            type="button"
+            className="secondary-button"
+            onClick={handleSubmit}
+          >
+            Proposer ma recette
+          </button>
+        </div>
       </form>
       <div className="new-recipe-display">
         <section className="card-container-preview">
           <div className="preview-card">
             <h3>{recipeInfo.title}</h3>
-            <img alt="" src={soupe} />
+            <img alt="" src={thumbnail} />
             <div className="card-content">
               <div>
                 <h4>Difficulté</h4>
@@ -349,16 +363,6 @@ function NewRecipeForm({
             </div>
           </div>
         </section>
-
-        <div>
-          <button
-            type="button"
-            className="secondary-button"
-            onClick={handleSubmit}
-          >
-            Proposer ma recette
-          </button>
-        </div>
       </div>
     </section>
   );

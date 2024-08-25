@@ -10,6 +10,7 @@
   .recipe-form {
     display: flex;
     flex-direction: column;
+    justify-content: start;
     width: 100%;
     border: solid black 3px;
     padding: 4vh 2vw;
@@ -23,34 +24,30 @@
       flex-direction: column;
       align-items: flex-start;
       margin: 0.5vh 0px;
+      font-weight: 800;
     }
     .recipe-infos {
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-      width: 45%;
-      border: solid black 1px;
-      padding: 2vh 2vw;
+      width: 40%;
     }
-
     .ingredient-container {
+      width: 55%;
+    }
+    .ingredient-container,
+    .add-recipe-picture,
+    .recipe-infos,
+    .recipe-step-container {
       display: flex;
       flex-direction: column;
-      align-items: start;
-      width: 45%;
       border: solid black 1px;
       padding: 2vh 2vw;
+      margin: 2vh;
 
       .ingredient-input {
         display: flex;
         justify-content: center;
         align-items: flex-end;
         width: 100%;
-        input,
-        select,
-        option {
-          margin-bottom: 0;
-        }
+
         .quantity-label {
           input {
             width: 80%;
@@ -61,6 +58,7 @@
           margin-bottom: 0;
           text-align: left;
           width: 100%;
+          font-weight: 800;
         }
 
         input {
@@ -80,6 +78,7 @@
         }
       }
 
+      option,
       input,
       select,
       textarea {
@@ -87,28 +86,35 @@
         padding: 0.5vh;
         margin-top: 0.3vh;
         display: flex;
+        // color: $black;
+        border: solid 1px $dark-grey;
+      }
+      ::placeholder {
+        color: $dark-grey;
+        font-style: italic;
       }
     }
     .recipe-step-container {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      border: solid black 1px;
-      padding: 2vh 2vw;
-      margin-top: 2vh;
       .add-remove-button {
         margin-right: 0.5vh;
         margin-top: 0.3vh;
       }
     }
   }
+  .add-recipe-picture {
+    input {
+      background-color: white;
+    }
+  }
 }
 
 .recipe-info-ingredient {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
-
+.first-option {
+  color: red;
+}
 @media screen and (max-width: 400px) {
   .new-recipe {
     flex-direction: column;
