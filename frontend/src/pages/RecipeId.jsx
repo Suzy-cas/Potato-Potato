@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import instance from "../services/instance";
 
-import RecipeCard from "../components/RecipeCard";
+import RecipeDisplay from "../components/RecipeDisplay";
 
 function RecipeId() {
   const [recipe, setRecipe] = useState([]);
@@ -11,6 +11,7 @@ function RecipeId() {
   const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
+  const recipePicture = `${import.meta.env.VITE_BACKEND_URL}/uploads/recipes/`;
 
   useEffect(() => {
     Promise.all([
@@ -39,10 +40,11 @@ function RecipeId() {
   return isLoading ? (
     "Loading"
   ) : (
-    <RecipeCard
+    <RecipeDisplay
       ingredients={ingredients}
       recipeId={recipe}
       varietiesId={varieties}
+      recipePicture={recipePicture}
     />
   );
 }
