@@ -1,5 +1,5 @@
 function RecipeReview() {
-  return <h1>New recipe</h1>;
+  return <h3>New recipe</h3>;
 }
 
 export default RecipeReview;
