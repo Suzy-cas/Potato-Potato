@@ -108,7 +108,7 @@ router.delete(
 );
 
 // Recipe - Paths for authentificated users only
-router.post("/recipe", recipeControllers.add);
+router.post("/recipe", validateRecipe, recipeControllers.add);
 router.put("/recipe/:id", validateRecipe, recipeControllers.edit);
 router.delete("/recipe/:id", recipeControllers.destroy);
 
