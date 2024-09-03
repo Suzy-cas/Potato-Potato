@@ -1,6 +1,15 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prop-types */
-function RecipeDisplay({ ingredients, recipeId, varietiesId, recipePicture }) {
+import ValidationButton from "./ValidationButton";
+
+function RecipeDisplay({
+  ingredients,
+  recipeId,
+  varietiesId,
+  recipePicture,
+  handleValidateRecipe,
+  isRecipeApproved,
+}) {
   return (
     <section className="card-container-id">
       <div className="recipe-cards-id" key={recipeId.recipe_id}>
@@ -17,7 +26,7 @@ function RecipeDisplay({ ingredients, recipeId, varietiesId, recipePicture }) {
             <h4>Ingrédients</h4>
             {ingredients.length !== 0
               ? ingredients.map((ingredient) => (
-                  <p>
+                  <p key={ingredient.id}>
                     {ingredient.ingredient} :{" "}
                     {ingredient.ingredient_quantity === 0
                       ? ""
@@ -40,12 +49,22 @@ function RecipeDisplay({ ingredients, recipeId, varietiesId, recipePicture }) {
             <div>
               <div className="pot-var-grid">
                 {varietiesId.map((variety) => (
-                  <p>{variety.potato_variety}</p>
+                  <p key={variety.index}>{variety.potato_variety}</p>
                 ))}
               </div>
             </div>
           </div>
         </div>
+        {isRecipeApproved !== 0 ? (
+          ""
+        ) : (
+          <ValidationButton
+            text="Valider la recette"
+            textValidation="valider cette recette"
+            handleClick={handleValidateRecipe}
+            hasPopUp
+          />
+        )}
       </div>
     </section>
   );

@@ -8,10 +8,14 @@ function RecipeId() {
   const [recipe, setRecipe] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [varieties, setVarieties] = useState([]);
+  const [isRecipeApproved, setRecipeIsApproved] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
   const recipePicture = `${import.meta.env.VITE_BACKEND_URL}/uploads/recipes/`;
+  const handleValidateRecipe = () => {
+    setRecipeIsApproved(1);
+  };
 
   useEffect(() => {
     Promise.all([
@@ -30,12 +34,13 @@ function RecipeId() {
           setIngredients(ingredientQuantityRecipeResponse.data);
           setVarieties(varietiesRecipeResponse.data);
           setIsLoading(false);
+          setRecipeIsApproved(recipe.is_approved);
         }
       )
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [recipe]);
 
   return isLoading ? (
     "Loading"
@@ -45,6 +50,8 @@ function RecipeId() {
       recipeId={recipe}
       varietiesId={varieties}
       recipePicture={recipePicture}
+      isRecipeApproved={isRecipeApproved}
+      handleValidateRecipe={handleValidateRecipe}
     />
   );
 }

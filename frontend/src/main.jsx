@@ -37,7 +37,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "mon-espace",
+    path: "utilisateur",
     element: <UserLayout />,
     errorElement: <Error />,
     children: [
