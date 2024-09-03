@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+
 import instance from "../services/instance";
 
 import RecipeDisplay from "../components/RecipeDisplay";
@@ -8,14 +10,11 @@ function RecipeId() {
   const [recipe, setRecipe] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [varieties, setVarieties] = useState([]);
-  const [isRecipeApproved, setRecipeIsApproved] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
+  const { user } = useContext(AuthContext);
   const { id } = useParams();
   const recipePicture = `${import.meta.env.VITE_BACKEND_URL}/uploads/recipes/`;
-  const handleValidateRecipe = () => {
-    setRecipeIsApproved(1);
-  };
 
   useEffect(() => {
     Promise.all([
@@ -34,13 +33,26 @@ function RecipeId() {
           setIngredients(ingredientQuantityRecipeResponse.data);
           setVarieties(varietiesRecipeResponse.data);
           setIsLoading(false);
-          setRecipeIsApproved(recipe.is_approved);
         }
       )
       .catch((err) => {
         console.error(err);
       });
   }, [recipe]);
+
+  const handleValidateRecipe = async () => {
+    try {
+      const updatedRecipe = {
+        ...recipe,
+        is_approved: 1,
+      };
+
+      setRecipe(updatedRecipe);
+      await instance.put(`api/recipe/${recipe.id}`, updatedRecipe);
+    } catch (err) {
+      console.error("Error updating recipe:", err);
+    }
+  };
 
   return isLoading ? (
     "Loading"
@@ -50,8 +62,9 @@ function RecipeId() {
       recipeId={recipe}
       varietiesId={varieties}
       recipePicture={recipePicture}
-      isRecipeApproved={isRecipeApproved}
       handleValidateRecipe={handleValidateRecipe}
+      recipe={recipe}
+      user={user}
     />
   );
 }

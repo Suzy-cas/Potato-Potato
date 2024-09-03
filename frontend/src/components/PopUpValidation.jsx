@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
+
 function PopUpValidation({ handleClick, setIsPopUp, textValidation }) {
   const handleClickPop = (e) => {
     setIsPopUp(false);
     handleClick(e);
   };
+
   return (
     <div className="PopUpValidation">
       <p className="PopUpText">
