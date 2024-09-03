@@ -76,7 +76,7 @@ function UserList() {
 
   return (
     <div>
-      <h2>Liste des utilisateurs</h2>
+      <h3>Liste des utilisateurs</h3>
       <div className="card-container">
         {users.map((user) => (
           <div key={user.id}>

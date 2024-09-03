@@ -46,7 +46,7 @@ function BurgerMenu() {
             <img src={registerPic} alt="" /> <h1>Inscription</h1>
           </Link>
         ) : (
-          <Link className="link" to="/mon-espace/profil">
+          <Link className="link" to={user === 0 ? "/utilisateur" : "/admin"}>
             {" "}
             <img src={profilePic} alt="" />
             <h1>Mon espace</h1>

@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+
 import instance from "../services/instance";
 
-import RecipeCard from "../components/RecipeCard";
+import RecipeDisplay from "../components/RecipeDisplay";
 
 function RecipeId() {
   const [recipe, setRecipe] = useState([]);
@@ -10,7 +12,9 @@ function RecipeId() {
   const [varieties, setVarieties] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const { user } = useContext(AuthContext);
   const { id } = useParams();
+  const recipePicture = `${import.meta.env.VITE_BACKEND_URL}/uploads/recipes/`;
 
   useEffect(() => {
     Promise.all([
@@ -34,15 +38,33 @@ function RecipeId() {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [recipe]);
+
+  const handleValidateRecipe = async () => {
+    try {
+      const updatedRecipe = {
+        ...recipe,
+        is_approved: 1,
+      };
+
+      setRecipe(updatedRecipe);
+      await instance.put(`api/recipe/${recipe.id}`, updatedRecipe);
+    } catch (err) {
+      console.error("Error updating recipe:", err);
+    }
+  };
 
   return isLoading ? (
     "Loading"
   ) : (
-    <RecipeCard
+    <RecipeDisplay
       ingredients={ingredients}
       recipeId={recipe}
       varietiesId={varieties}
+      recipePicture={recipePicture}
+      handleValidateRecipe={handleValidateRecipe}
+      recipe={recipe}
+      user={user}
     />
   );
 }
