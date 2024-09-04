@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import instance from "../services/instance";
+import instance from "../../services/instance";
 
 function NewRecipeForm({
   recipeInfo,

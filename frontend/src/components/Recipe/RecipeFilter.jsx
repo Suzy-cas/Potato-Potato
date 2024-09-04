@@ -58,14 +58,16 @@ function RecipeFilter({
       </section>
       {uniqueRecipes && (
         <section className="card-container">
-          {filteredRecipe.map((val) => (
-            <RecipeCard
-              key={val.id}
-              recipe={val}
-              recipePicture={recipePicture}
-              recipesCookTechs={recipesCookTechs}
-            />
-          ))}
+          {filteredRecipe
+            .filter((rec) => rec.is_approved === 1)
+            .map((val) => (
+              <RecipeCard
+                key={val.id}
+                recipe={val}
+                recipePicture={recipePicture}
+                recipesCookTechs={recipesCookTechs}
+              />
+            ))}
         </section>
       )}
     </>

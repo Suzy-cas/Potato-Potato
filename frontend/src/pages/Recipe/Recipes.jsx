@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import instance from "../services/instance";
-import RecipeFilter from "../components/RecipeFilter";
+import instance from "../../services/instance";
+import RecipeFilter from "../../components/Recipe/RecipeFilter";
 
 function Recipes() {
   const [recipesCookTechs, setRecipesCookTechs] = useState([]);
