@@ -28,7 +28,7 @@ function Login() {
           return navigate("/admin");
         }
         if (data.is_admin === 0) {
-          return navigate("/mon-espace/profil");
+          return navigate("/utilisateur/profil");
         }
         console.info(getToken);
       } catch (error) {
