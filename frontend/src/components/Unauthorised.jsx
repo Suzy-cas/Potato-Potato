@@ -9,7 +9,7 @@ function Unauthorised() {
         src={Potato}
         alt="Pomme de terre qui sourit"
       />
-      <h3>Désolé, vous n'avez pas accès à cette page</h3>
+      <h3>Désolé, vous devez vous connecter pour accéder à cette page</h3>
       <Link to="/connexion">
         <button type="button" className="primary-button">
           Se connecter

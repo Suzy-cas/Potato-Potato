@@ -7,11 +7,12 @@ import Unauthorised from "../Unauthorised";
 import Profile from "../../pages/User/Profile";
 
 function UserLayout() {
-  const { handleAuth, handleLogout, user } = useContext(AuthContext);
+  const { handleAuth, handleLogout, handleTimeOut, user } =
+    useContext(AuthContext);
   const [activePage, setActivePage] = useState("home");
   useEffect(() => {
     handleAuth();
-  }, [handleAuth, handleLogout]);
+  }, [handleAuth, handleLogout, handleTimeOut]);
 
   const handleChangePage = (page) => {
     setActivePage(page);

@@ -7,9 +7,10 @@ import BurgerMenu from "../BurgerMenu";
 import Unauthorised from "../Unauthorised";
 
 function AdminLayout() {
-  const { handleAuth, handleLogout, user } = useContext(AuthContext);
+  const { handleAuth, handleLogout, handleTimeOut, user } =
+    useContext(AuthContext);
 
-  useEffect(() => {}, [handleAuth, handleLogout]);
+  useEffect(() => {}, [handleAuth, handleLogout, handleTimeOut]);
 
   const handleReturnLog = () => {
     switch (user.is_admin) {
