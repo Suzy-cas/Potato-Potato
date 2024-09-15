@@ -59,7 +59,7 @@ function BurgerMenu() {
         <Link
           className="link"
           to={user.is_admin === 3 ? "/connexion" : "/deconnexion"}
-          onClick={handleShowBurger}
+          onClick={user.is_admin === 3 ? "/connexion" : "/deconnexion"}
         >
           <img src={user.is_admin === 3 ? profilePic : exitPic} alt="" />
           {user.is_admin === 3 ? <h1>Connexion</h1> : <h1>Deconnexion</h1>}
