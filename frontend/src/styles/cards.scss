@@ -10,7 +10,7 @@
     max-width: 90%;
     border: solid black 3px;
     padding: 10px 25px;
-    margin: 3vh 12vw;
+    margin: 3vh 12vw 10vh;
     background-color: white;
     .card-content {
       display: flex;
@@ -59,7 +59,8 @@
   }
   .card-container {
     width: 90%;
-    margin: 0 auto;
+    margin-inline: auto;
+    margin-bottom: 10vh;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     row-gap: 6vh;
@@ -89,7 +90,8 @@
 @media screen and (min-width: 1450px) {
   .card-container {
     width: 70%;
-    margin: 0 auto;
+    margin-inline: auto;
+    margin-bottom: 10vh;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;

@@ -28,33 +28,35 @@ function Variety() {
 
   return (
     <motion.section initial={{ x: -500 }} animate={{ x: 0 }}>
-      <section id="trouve-variete">
-        <div className="recettes">
-          <div className="div-img">
-            <img
-              className="img"
-              src="./src/assets/img/PW_recognito.png"
-              alt="unknown_potato"
-            />
-          </div>
-          <div className="form_recettes">
-            <h1>T&apos;as quoi comme variété ?</h1>
-            <form>
-              <input
-                type="text"
-                value={varietySearch}
-                placeholder="Charlotte, Agria,..."
-                onChange={handleVarietySearch}
+      <section className="variety">
+        <div id="trouve-variete">
+          <div className="recettes">
+            <div className="div-img">
+              <img
+                className="img"
+                src="./src/assets/img/PW_recognito.png"
+                alt="unknown_potato"
               />
-            </form>
+            </div>
+            <div className="form_recettes">
+              <h1>T&apos;as quoi comme variété ?</h1>
+              <form>
+                <input
+                  type="text"
+                  value={varietySearch}
+                  placeholder="Charlotte, Agria,..."
+                  onChange={handleVarietySearch}
+                />
+              </form>
+            </div>
           </div>
         </div>
-      </section>
 
-      <VarietyCard
-        varietySearch={varietySearch}
-        uniqueVarieties={uniqueVarieties}
-      />
+        <VarietyCard
+          varietySearch={varietySearch}
+          uniqueVarieties={uniqueVarieties}
+        />
+      </section>
     </motion.section>
   );
 }
