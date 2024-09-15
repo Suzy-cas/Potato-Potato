@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+
 import instance from "../../services/instance";
 import RecipeFilter from "../../components/Recipe/RecipeFilter";
 
@@ -37,14 +39,16 @@ function Recipes() {
   );
 
   return (
-    <RecipeFilter
-      uniqueRecipes={uniqueRecipes}
-      recipeSearch={recipeSearch}
-      recipesCookTechs={recipesCookTechs}
-      handleRecipeSearch={handleRecipeSearch}
-      uniqueCookingTechs={uniqueCookingTechs}
-      activeButton={activeButton}
-    />
+    <motion.section initial={{ x: -500 }} animate={{ x: 0 }}>
+      <RecipeFilter
+        uniqueRecipes={uniqueRecipes}
+        recipeSearch={recipeSearch}
+        recipesCookTechs={recipesCookTechs}
+        handleRecipeSearch={handleRecipeSearch}
+        uniqueCookingTechs={uniqueCookingTechs}
+        activeButton={activeButton}
+      />{" "}
+    </motion.section>
   );
 }
 

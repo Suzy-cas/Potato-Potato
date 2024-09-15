@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import instance from "../services/instance";
+import { motion } from "framer-motion";
 
+import instance from "../services/instance";
 import VarietyCard from "../components/VarietyCard";
 
 function Variety() {
@@ -26,7 +27,7 @@ function Variety() {
   };
 
   return (
-    <>
+    <motion.section initial={{ x: -500 }} animate={{ x: 0 }}>
       <section id="trouve-variete">
         <div className="recettes">
           <div className="div-img">
@@ -54,7 +55,7 @@ function Variety() {
         varietySearch={varietySearch}
         uniqueVarieties={uniqueVarieties}
       />
-    </>
+    </motion.section>
   );
 }
 
