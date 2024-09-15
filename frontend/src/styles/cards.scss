@@ -7,10 +7,11 @@
   .preview-card {
     display: flex;
     flex-direction: column;
+    align-items: center;
     max-width: 90%;
     border: solid black 3px;
     padding: 10px 25px;
-    margin: 3vh 12vw;
+    margin: 3vh 12vw 10vh;
     background-color: white;
     .card-content {
       display: flex;
@@ -45,6 +46,36 @@
     border: none;
   }
 }
+.new-recipe {
+  .card-container-preview {
+    .preview-card {
+      justify-content: start;
+      align-items: self-start;
+      img {
+        height: 250px;
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+.card-container-preview {
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin: 0.5vh;
+  }
+  .preview-card {
+    button:nth-last-of-type(2n) {
+      margin-top: 2vh;
+    }
+    button:nth-last-child(-n + 1) {
+      margin-bottom: 3vh;
+    }
+  }
+}
 
 @media screen and (min-width: 768px) and (max-width: 1450px) {
   .recipe-cards-id {
@@ -59,7 +90,8 @@
   }
   .card-container {
     width: 90%;
-    margin: 0 auto;
+    margin-inline: auto;
+    margin-bottom: 10vh;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     row-gap: 6vh;
@@ -73,14 +105,20 @@
   .card-container-preview {
     display: flex;
     justify-content: center;
-
     .preview-card {
-      margin: 0;
-      background-color: white;
-      width: 100%;
+      margin: 5vh 2vw 20vh;
+      width: 30%;
       img {
         height: 250px;
         max-width: 100%;
+      }
+    }
+  }
+  .new-recipe {
+    .card-container-preview {
+      width: 100%;
+      .preview-card {
+        width: 100%;
       }
     }
   }
@@ -89,7 +127,8 @@
 @media screen and (min-width: 1450px) {
   .card-container {
     width: 70%;
-    margin: 0 auto;
+    margin-inline: auto;
+    margin-bottom: 10vh;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
@@ -114,14 +153,22 @@
   .card-container-preview {
     display: flex;
     justify-content: center;
-
+    align-items: center;
     .preview-card {
-      margin: 0;
+      margin: 5vh 2vw 25vh;
+      width: 15%;
       background-color: white;
-      width: 100%;
       img {
         height: 400px;
         max-width: 100%;
+      }
+    }
+  }
+  .new-recipe {
+    .card-container-preview {
+      width: 100%;
+      .preview-card {
+        width: 100%;
       }
     }
   }

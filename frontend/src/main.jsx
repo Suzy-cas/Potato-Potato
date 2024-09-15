@@ -8,7 +8,7 @@ import "./main.scss";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
 import MainLayout from "./MainLayout";
-import Recipes from "./pages/Recipes";
+import Recipes from "./pages/Recipe/Recipes";
 import Variety from "./pages/Variety";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
@@ -18,7 +18,7 @@ import AdminLayout from "./components/Admin/AdminLayout";
 import Profile from "./pages/User/Profile";
 import RecipeReview from "./pages/Admin/RecipeReview";
 import Register from "./pages/Register";
-import RecipeId from "./pages/RecipeId";
+import RecipeId from "./pages/Recipe/RecipeId";
 import UserList from "./pages/Admin/UserList";
 
 const router = createBrowserRouter([

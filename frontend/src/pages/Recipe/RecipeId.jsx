@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 
-import instance from "../services/instance";
+import instance from "../../services/instance";
 
-import RecipeDisplay from "../components/RecipeDisplay";
+import RecipeDisplay from "../../components/Recipe/RecipeDisplay";
 
 function RecipeId() {
   const [recipe, setRecipe] = useState([]);

@@ -1,11 +1,9 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-// import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 function AdminMenu() {
   return (
     <div className="menu-container">
-      <h2>Tableau de bord</h2>
       <nav>
         <ul>
           <li>

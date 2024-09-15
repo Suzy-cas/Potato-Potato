@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import { Link, Outlet } from "react-router-dom";
+
 import profilePic from "../../assets/picto/Picto_profile.svg";
 import addPic from "../../assets/picto/Picto_add.svg";
 
 function UserMenu({ activePage, handleChangePage }) {
   return (
     <div className="menu-container">
-      <h2>Mon espace</h2>
       <nav>
         <ul>
           <li>

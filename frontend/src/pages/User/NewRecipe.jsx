@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 import instance from "../../services/instance";
 import manageIngredients from "../../services/manageIngredients";
-import NewRecipeForm from "../../components/NewRecipeForm";
+import NewRecipeForm from "../../components/Recipe/NewRecipeForm";
 import basicThumbnail from "../../assets/img/soupe.jpg";
 
 function NewRecipe() {

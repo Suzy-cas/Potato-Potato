@@ -29,9 +29,30 @@ function AuthContextProvider({ children }) {
     handleAuth();
   }, []);
 
+  //  localStorage.removeItem("token");
+  // setUser({ is_admin: 3 });
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     setUser({ is_admin: 3 });
+  };
+
+  const handleTimeOut = () => {
+    const getToken = localStorage.getItem("token");
+
+    if (getToken) {
+      const decodedToken = jwtDecode(getToken);
+
+      // Vérifie si le token a expiré
+      if (decodedToken.exp * 1000 < Date.now()) {
+        localStorage.removeItem("token");
+        setUser({ is_admin: 3 });
+        window.location
+          .reload()
+          .catch(() => console.warn("Une erreur est survenue!"));
+      }
+      console.info(getToken);
+    }
   };
   const userMemo = useMemo(
     () => ({
@@ -39,8 +60,9 @@ function AuthContextProvider({ children }) {
       setUser,
       handleAuth,
       handleLogout,
+      handleTimeOut,
     }),
-    [user, setUser, handleAuth, handleLogout]
+    [user, setUser, handleAuth, handleLogout, handleTimeOut]
   );
 
   return (

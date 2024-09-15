@@ -77,28 +77,26 @@ function UserList() {
   return (
     <div>
       <h3>Liste des utilisateurs</h3>
-      <div className="card-container">
+      <div className="card-container-preview">
         {users.map((user) => (
-          <div key={user.id}>
-            <div className="preview-card">
-              <h4>{user.username}</h4>
-              <p>{user.email}</p>
-              <p>{user.is_admin === 1 ? "Administrateur" : "Utilisateur"}</p>
-              <button
-                type="button"
-                className="secondary-button"
-                onClick={() => openModal(user)}
-              >
-                Modifier
-              </button>
-              <button
-                type="button"
-                className="secondary-button"
-                onClick={() => openModalDelete(user)}
-              >
-                Supprimer
-              </button>
-            </div>
+          <div key={user.id} className="preview-card">
+            <h4>{user.username}</h4>
+            <p>{user.is_admin === 1 ? "Administrateur" : "Utilisateur"}</p>
+            <p>{user.email}</p>
+            <button
+              type="button"
+              className="secondary-button"
+              onClick={() => openModal(user)}
+            >
+              Modifier
+            </button>
+            <button
+              type="button"
+              className="secondary-button"
+              onClick={() => openModalDelete(user)}
+            >
+              Supprimer
+            </button>
           </div>
         ))}
       </div>

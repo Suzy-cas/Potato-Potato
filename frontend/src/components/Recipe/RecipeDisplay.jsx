@@ -1,6 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prop-types */
-import ValidationButton from "./ValidationButton";
+import ValidationButton from "../ValidationButton";
 
 function RecipeDisplay({
   ingredients,

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import instance from "../../services/instance";
-import RecipeCard from "../../components/RecipeCard";
+import RecipeCard from "../../components/Recipe/RecipeCard";
 
 function RecipeReview() {
   const [recipeList, setRecipeList] = useState([]);

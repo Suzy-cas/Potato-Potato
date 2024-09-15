@@ -1,81 +1,82 @@
+.variety {
+  margin-bottom: 3vh;
+}
+
 #trouve-variete,
 #trouve-recettes {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  align-items: start;
+  justify-content: start;
   width: 100%;
-}
-.recettes {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50%;
-  width: 90%;
-  margin: 15vh auto;
 
-  .div-img {
+  .recettes {
     display: flex;
-    flex-direction: column;
     align-items: center;
-  }
-  .img {
-    display: flex;
-    width: calc(50vh - 0px);
-  }
+    justify-content: center;
+    height: 50%;
+    width: 90%;
+    margin: 10vh auto;
 
-  .form_recettes {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-
-    form {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-    h1 {
-      text-align: start;
-      margin-bottom: 10px;
-    }
-    input {
-      padding: 4px 8px;
-    }
-    .grid_recettes {
-      grid: 1fr, 1fr;
-    }
-  }
-
-  .return-menu-right {
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    height: 100%;
-    // margin-bottom: 5dvh;
-    width: 8vw;
-
-    a {
+    .div-img {
       display: flex;
       flex-direction: column;
-      text-decoration: none;
-      color: black;
+    }
+    .img {
+      width: calc(50vh - 0px);
     }
 
-    // .arrow-top {
-    //   display: flex;
-    //   width: 100%;
-    // }
+    .form_recettes {
+      display: flex;
+      flex-direction: column;
+
+      form {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      h1 {
+        text-align: start;
+        margin-bottom: 10px;
+      }
+      input {
+        padding: 4px 8px;
+      }
+    }
   }
 }
 
-@media screen and (max-width: 768px) {
-  .recettes {
-    flex-direction: column;
-    .img {
-      width: calc(40vh - 100px);
+@media screen and (min-width: 150px) and (max-width: 768px) {
+  #trouve-recettes {
+    .recettes {
+      flex-direction: column-reverse;
     }
-    .div-img {
-      width: 20%;
+  }
+  #trouve-variete {
+    .recettes {
+      flex-direction: column;
+    }
+  }
+  #trouve-variete,
+  #trouve-recettes {
+    .recettes {
+      align-items: start;
+      .img {
+        width: calc(30vh - 100px);
+      }
+      .div-img {
+        width: 20%;
+        align-items: flex-start;
+      }
+      .form_recettes {
+        justify-content: start;
+        form {
+          display: flex;
+          justify-content: space-evenly;
+          button {
+            margin-block: 0.5vh;
+          }
+        }
+      }
     }
   }
 }
@@ -90,17 +91,22 @@
       flex-direction: column-reverse;
       justify-content: start;
       align-items: center;
+      margin: 5vh auto;
       .img {
         width: calc(30vh - 10px);
       }
       .form_recettes {
         display: flex;
+        form {
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+        }
       }
       .div-img {
         display: flex;
         width: 80%;
         flex-direction: column;
-        align-items: self-start;
       }
     }
   }
@@ -109,16 +115,26 @@
   #trouve-variete,
   #trouve-recettes {
     flex-direction: row;
+    display: flex;
+    justify-content: flex-start;
     .recettes {
+      display: flex;
       flex-direction: row;
       height: 50vh;
-      .img {
-        width: calc(30vh - 10px);
-        margin-inline: 3vw;
+      margin: 5vh auto;
+      form {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
       }
       .div-img {
-        flex-direction: column;
-        align-items: flex-end;
+        display: flex;
+        justify-content: flex-start;
+        align-self: start;
+        .img {
+          width: calc(30vh - 10px);
+          margin-inline: 3vw;
+        }
       }
     }
   }

@@ -7,9 +7,9 @@ function Logout() {
   const navigate = useNavigate();
 
   return (
-    <section className="login-out">
+    <section className="log-out">
       <h2>Etes-vous sûr de vouloir vous déconnecter ?</h2>
-      <div>
+      <div className="deconnexion-buttons">
         <button
           type="button"
           className="primary-button"
@@ -19,6 +19,15 @@ function Logout() {
           }}
         >
           Me déconnecter
+        </button>
+        <button
+          type="button"
+          className="secondary-button"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Annuler
         </button>
       </div>
     </section>
