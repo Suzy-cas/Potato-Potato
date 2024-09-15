@@ -105,7 +105,7 @@ const destroy = async (req, res, next) => {
 
 const destroyUserWithRecipeUpdate = async (req, res, next) => {
   const userId = req.params.id;
-  const newUserId = 1; // The ID to assign to recipes after user deletion
+  const newUserId = 2; // The ID to assign to recipes after user deletion
 
   try {
     await tables.user.deleteUserWithRecipeUpdate(userId, newUserId);

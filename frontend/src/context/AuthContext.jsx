@@ -33,11 +33,8 @@ function AuthContextProvider({ children }) {
   // setUser({ is_admin: 3 });
 
   const handleLogout = () => {
-    const getToken = localStorage.getItem("token");
-
     localStorage.removeItem("token");
     setUser({ is_admin: 3 });
-    console.info(getToken);
   };
 
   const handleTimeOut = () => {
@@ -54,6 +51,7 @@ function AuthContextProvider({ children }) {
           .reload()
           .catch(() => console.warn("Une erreur est survenue!"));
       }
+      console.info(getToken);
     }
   };
   const userMemo = useMemo(
