@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import instance from "../services/instance";
 
@@ -164,6 +164,9 @@ export default function Register() {
         >
           S'inscrire
         </button>
+        <p>
+          Déjà inscrit ? <Link to="/connexion ">Se connecter </Link>
+        </p>
       </div>
     </section>
   );
