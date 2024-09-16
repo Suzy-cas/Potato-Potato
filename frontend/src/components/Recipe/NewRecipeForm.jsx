@@ -182,9 +182,21 @@ function NewRecipeForm({
           </div>
           <form className="ingredient-container">
             <h3>Ingrédients</h3>
+
             {ingredients.map((ingredient, index) => (
               // eslint-disable-next-line react/no-array-index-key
               <div key={index} className="ingredient-input">
+                <label>
+                  Nom de l'ingrédient:
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Nom de l'ingrédient"
+                    autoComplete="off"
+                    value={ingredient.name}
+                    onChange={(e) => editIngredient(e, index)}
+                  />
+                </label>
                 <label className="quantity-label">
                   Quantité :
                   <input
@@ -196,7 +208,6 @@ function NewRecipeForm({
                     onChange={(e) => editIngredient(e, index)}
                   />
                 </label>
-
                 <label>
                   Unité :
                   <select
@@ -211,17 +222,6 @@ function NewRecipeForm({
                       </option>
                     ))}
                   </select>
-                </label>
-                <label>
-                  Nom de l'ingrédient:
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Nom de l'ingrédient"
-                    autoComplete="off"
-                    value={ingredient.name}
-                    onChange={(e) => editIngredient(e, index)}
-                  />
                 </label>
 
                 <div className="add-remove-div">
@@ -341,17 +341,22 @@ function NewRecipeForm({
                   ))}
                 <h4>Ingrédients</h4>
                 {ingredients !== undefined
-                  ? ingredients.map((ingredient) => (
-                      <p>
-                        {ingredient.value}{" "}
-                        {types.find(
-                          (type) =>
-                            type.id === Number(ingredient.type_id) ||
-                            ingredient.type_id === "9001"
-                        )?.name || ""}{" "}
-                        {ingredient.name}
-                      </p>
-                    ))
+                  ? ingredients.map((ingredient) => {
+                      const typeToDisplay = types.find((type) => {
+                        if (type.id === 99001) {
+                          return false; // Ne rien afficher si type.id === 99001
+                        }
+                        return type.id === Number(ingredient.type_id);
+                      });
+
+                      return (
+                        <p>
+                          {ingredient.name} :{" "}
+                          {ingredient.value !== "0" ? ingredient.value : ""}{" "}
+                          {typeToDisplay?.name || ""}{" "}
+                        </p>
+                      );
+                    })
                   : null}
                 <h4>Préparation</h4>
                 <ul>
