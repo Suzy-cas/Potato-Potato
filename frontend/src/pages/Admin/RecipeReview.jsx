@@ -28,6 +28,7 @@ function RecipeReview() {
   return (
     <>
       <h3>Recettes en attente d'approbation</h3>
+      <br />
       <section className="card-container">
         {recipeToReview.map((val) => (
           <RecipeCard

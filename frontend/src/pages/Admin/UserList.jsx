@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import instance from "../../services/instance";
 import UserModal from "./UserModal";
+
+import { AuthContext } from "../../context/AuthContext";
 
 function UserList() {
   const [users, setUsers] = useState([]);
@@ -8,6 +10,7 @@ function UserList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenDelete, setIsModalOpenDelete] = useState(false);
   const [isDeleteMode, setIsDeleteMode] = useState(false);
+  const { connectedUser } = useContext(AuthContext);
 
   useEffect(() => {
     instance
@@ -58,7 +61,6 @@ function UserList() {
         console.error(err);
       });
   };
-  console.info(isDeleteMode);
 
   const handleDelete = (userToDelete) => {
     instance
@@ -80,7 +82,13 @@ function UserList() {
       <div className="card-container-preview">
         {users.map((user) => (
           <div key={user.id} className="preview-card">
-            <h4>{user.username}</h4>
+            {connectedUser.id === user.id ? (
+              <h4>Mon profil : {user.username}</h4>
+            ) : (
+              <h4>{user.username}</h4>
+            )}
+
+            <br />
             <p>{user.is_admin === 1 ? "Administrateur" : "Utilisateur"}</p>
             <p>{user.email}</p>
             <button

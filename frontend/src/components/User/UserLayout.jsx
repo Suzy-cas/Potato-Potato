@@ -7,7 +7,7 @@ import Unauthorised from "../Unauthorised";
 import Profile from "../../pages/User/Profile";
 
 function UserLayout() {
-  const { handleAuth, handleLogout, handleTimeOut, user } =
+  const { handleAuth, handleLogout, handleTimeOut, connectedUser } =
     useContext(AuthContext);
   const [activePage, setActivePage] = useState("home");
   useEffect(() => {
@@ -18,7 +18,7 @@ function UserLayout() {
     setActivePage(page);
   };
   const handleReturnLog = () => {
-    switch (user.is_admin) {
+    switch (connectedUser.is_admin) {
       case 0: {
         return (
           <>

@@ -8,7 +8,7 @@ import hide from "../assets/picto/hide_pwd.svg";
 import show from "../assets/picto/show_pwd.svg";
 
 export default function Register() {
-  const { user, handleAuth } = useContext(AuthContext);
+  const { connectedUser, handleAuth } = useContext(AuthContext);
 
   const [isShown, setIsShown] = useState(false);
   const [registerInfo, setRegisterInfo] = useState({
@@ -24,7 +24,7 @@ export default function Register() {
 
   useEffect(() => {
     handleAuth(() => {
-      if (user.id !== 3) {
+      if (connectedUser.id !== 3) {
         navigate("/");
       }
     }, 100);
