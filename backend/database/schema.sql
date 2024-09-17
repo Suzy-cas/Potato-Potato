@@ -47,7 +47,7 @@ CREATE TABLE potato_variety (
 
 CREATE TABLE ingredient (
   id int primary key not null AUTO_INCREMENT,
-  name VARCHAR(80) NOT NULL
+  name VARCHAR(150) NOT NULL
 ) AUTO_INCREMENT = 77216 ;
 
 

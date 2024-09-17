@@ -38,9 +38,6 @@ function RecipeFilter({
                       ? "primary-button active"
                       : "primary-button"
                   }
-                  disabled={
-                    cookingTech !== activeButton && activeButton !== null
-                  }
                 >
                   {cookingTech}
                 </button>

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import instance from "../services/instance";
 
@@ -8,7 +8,7 @@ import hide from "../assets/picto/hide_pwd.svg";
 import show from "../assets/picto/show_pwd.svg";
 
 export default function Register() {
-  const { user, handleAuth } = useContext(AuthContext);
+  const { connectedUser, handleAuth } = useContext(AuthContext);
 
   const [isShown, setIsShown] = useState(false);
   const [registerInfo, setRegisterInfo] = useState({
@@ -24,7 +24,7 @@ export default function Register() {
 
   useEffect(() => {
     handleAuth(() => {
-      if (user.id !== 3) {
+      if (connectedUser.id !== 3) {
         navigate("/");
       }
     }, 100);
@@ -164,6 +164,9 @@ export default function Register() {
         >
           S'inscrire
         </button>
+        <p>
+          Déjà inscrit ? <Link to="/connexion ">Se connecter </Link>
+        </p>
       </div>
     </section>
   );

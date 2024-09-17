@@ -9,9 +9,9 @@ function RecipeDisplay({
   recipePicture,
   handleValidateRecipe,
   recipe,
-  user,
+  connectedUser,
 }) {
-  // console.info(user.is_admin);
+  // console.info(connectedUser.is_admin);
   return (
     <section className="card-container-id">
       <div className="recipe-cards-id" key={recipeId.recipe_id}>
@@ -57,7 +57,7 @@ function RecipeDisplay({
             </div>
           </div>
         </div>
-        {recipe.is_approved === 0 && user.is_admin === 1 ? (
+        {recipe.is_approved === 0 && connectedUser.is_admin === 1 ? (
           <ValidationButton
             text="Valider la recette"
             textValidation="valider cette recette"

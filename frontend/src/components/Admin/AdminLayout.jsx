@@ -7,13 +7,13 @@ import BurgerMenu from "../BurgerMenu";
 import Unauthorised from "../Unauthorised";
 
 function AdminLayout() {
-  const { handleAuth, handleLogout, handleTimeOut, user } =
+  const { handleAuth, handleLogout, handleTimeOut, connectedUser } =
     useContext(AuthContext);
 
   useEffect(() => {}, [handleAuth, handleLogout, handleTimeOut]);
 
   const handleReturnLog = () => {
-    switch (user.is_admin) {
+    switch (connectedUser.is_admin) {
       case 1: {
         return (
           <>

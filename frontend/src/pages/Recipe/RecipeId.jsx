@@ -12,7 +12,7 @@ function RecipeId() {
   const [varieties, setVarieties] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const { user } = useContext(AuthContext);
+  const { connectedUser } = useContext(AuthContext);
   const { id } = useParams();
   const recipePicture = `${import.meta.env.VITE_BACKEND_URL}/uploads/recipes/`;
 
@@ -33,6 +33,7 @@ function RecipeId() {
           setIngredients(ingredientQuantityRecipeResponse.data);
           setVarieties(varietiesRecipeResponse.data);
           setIsLoading(false);
+          // console.info(ingredientQuantityRecipeResponse.data);
         }
       )
       .catch((err) => {
@@ -64,7 +65,7 @@ function RecipeId() {
       recipePicture={recipePicture}
       handleValidateRecipe={handleValidateRecipe}
       recipe={recipe}
-      user={user}
+      connectedUser={connectedUser}
     />
   );
 }

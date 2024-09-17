@@ -30,8 +30,8 @@ function Recipes() {
 
   const handleRecipeSearch = (e) => {
     const selectedTech = e.target.value;
-    setActiveButton(selectedTech === activeButton ? null : selectedTech);
-    updateRecipeSearch(selectedTech === activeButton ? [] : [selectedTech]);
+    setActiveButton(selectedTech);
+    updateRecipeSearch([selectedTech]);
   };
   const uniqueRecipes = recipesCookTechs.filter(
     (recipe, index, self) =>

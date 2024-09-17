@@ -11,13 +11,13 @@ import exitPic from "../assets/picto/Picto_exit_white.svg";
 
 function BurgerMenu() {
   const [showBurger, setShowBurger] = useState(true);
-  const { user } = useContext(AuthContext);
+  const { connectedUser } = useContext(AuthContext);
 
   const handleShowBurger = () => {
     setShowBurger(!showBurger);
   };
 
-  useEffect(() => {}, [user]);
+  useEffect(() => {}, [connectedUser]);
 
   return (
     <nav className="menu-burger">
@@ -41,14 +41,14 @@ function BurgerMenu() {
           <img src={recipePic} alt="" />
           <h1>Recettes</h1>
         </Link>
-        {user.is_admin === 3 ? (
+        {connectedUser.is_admin === 3 ? (
           <Link className="link" to="/inscription" onClick={handleShowBurger}>
             <img src={registerPic} alt="" /> <h1>Inscription</h1>
           </Link>
         ) : (
           <Link
             className="link"
-            to={user === 0 ? "/utilisateur" : "/admin"}
+            to={connectedUser === 0 ? "/utilisateur" : "/admin"}
             onClick={handleShowBurger}
           >
             {" "}
@@ -58,11 +58,18 @@ function BurgerMenu() {
         )}
         <Link
           className="link"
-          to={user.is_admin === 3 ? "/connexion" : "/deconnexion"}
-          onClick={user.is_admin === 3 ? "/connexion" : "/deconnexion"}
+          to={connectedUser.is_admin === 3 ? "/connexion" : "/deconnexion"}
+          onClick={connectedUser.is_admin === 3 ? "/connexion" : "/deconnexion"}
         >
-          <img src={user.is_admin === 3 ? profilePic : exitPic} alt="" />
-          {user.is_admin === 3 ? <h1>Connexion</h1> : <h1>Deconnexion</h1>}
+          <img
+            src={connectedUser.is_admin === 3 ? profilePic : exitPic}
+            alt=""
+          />
+          {connectedUser.is_admin === 3 ? (
+            <h1>Connexion</h1>
+          ) : (
+            <h1>Deconnexion</h1>
+          )}
         </Link>
       </ul>
     </nav>
