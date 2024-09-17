@@ -33,6 +33,7 @@ function RecipeId() {
           setIngredients(ingredientQuantityRecipeResponse.data);
           setVarieties(varietiesRecipeResponse.data);
           setIsLoading(false);
+          // console.info(ingredientQuantityRecipeResponse.data);
         }
       )
       .catch((err) => {
