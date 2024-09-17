@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -6,17 +7,19 @@ import BurgerMenu from "../BurgerMenu";
 import Unauthorised from "../Unauthorised";
 
 function AdminLayout() {
-  const { handleAuth, handleLogout, user } = useContext(AuthContext);
+  const { handleAuth, handleLogout, handleTimeOut, connectedUser } =
+    useContext(AuthContext);
 
-  useEffect(() => {}, [handleAuth, handleLogout]);
+  useEffect(() => {}, [handleAuth, handleLogout, handleTimeOut]);
 
   const handleReturnLog = () => {
-    switch (user.is_admin) {
+    switch (connectedUser.is_admin) {
       case 1: {
         return (
           <>
             <BurgerMenu />
             <AdminMenu />
+            <Outlet />
           </>
         );
       }

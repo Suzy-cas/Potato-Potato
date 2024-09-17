@@ -83,6 +83,7 @@ class RecipeManager extends AbstractManager {
         prep_time,
         cooking_time,
         steps,
+        is_approved,
         cooking_tech.name AS cooking_tech,
         potato_variety.name AS potato_variety
     FROM 

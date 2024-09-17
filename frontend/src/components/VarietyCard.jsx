@@ -32,7 +32,7 @@ function VarietyCard({ uniqueVarieties, varietySearch }) {
                 </p>
                 <h4>Type de chaire</h4>
                 <p>{val.flesh}</p>
-                <h4>Origin</h4>
+                <h4>Origine</h4>
                 <p>{val.origin}</p>
                 <h4>Adaptée pour cuisiner : </h4>
 

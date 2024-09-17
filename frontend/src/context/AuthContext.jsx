@@ -5,7 +5,7 @@ import instance from "../services/instance";
 
 const AuthContext = createContext();
 function AuthContextProvider({ children }) {
-  const [user, setUser] = useState({ is_admin: 3 });
+  const [connectedUser, setConnectedUser] = useState({ is_admin: 3 });
 
   const handleAuth = async () => {
     const getToken = localStorage.getItem("token");
@@ -18,7 +18,7 @@ function AuthContextProvider({ children }) {
         const { data } = await instance.get(
           `${import.meta.env.VITE_BACKEND_URL}/api/user/${userId}`
         );
-        setUser(data);
+        setConnectedUser(data);
       } catch (error) {
         console.warn("Une erreur est survenue!", error);
       }
@@ -27,20 +27,43 @@ function AuthContextProvider({ children }) {
 
   useEffect(() => {
     handleAuth();
+    console.info(connectedUser);
   }, []);
+
+  //  localStorage.removeItem("token");
+  // setUser({ is_admin: 3 });
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    setUser({ is_admin: 3 });
+    setConnectedUser({ is_admin: 3 });
+  };
+
+  const handleTimeOut = () => {
+    const getToken = localStorage.getItem("token");
+
+    if (getToken) {
+      const decodedToken = jwtDecode(getToken);
+
+      // Vérifie si le token a expiré
+      if (decodedToken.exp * 1000 < Date.now()) {
+        localStorage.removeItem("token");
+        setConnectedUser({ is_admin: 3 });
+        window.location
+          .reload()
+          .catch(() => console.warn("Une erreur est survenue!"));
+      }
+      console.info(getToken);
+    }
   };
   const userMemo = useMemo(
     () => ({
-      user,
-      setUser,
+      connectedUser,
+      setConnectedUser,
       handleAuth,
       handleLogout,
+      handleTimeOut,
     }),
-    [user, setUser, handleAuth, handleLogout]
+    [connectedUser, setConnectedUser, handleAuth, handleLogout, handleTimeOut]
   );
 
   return (

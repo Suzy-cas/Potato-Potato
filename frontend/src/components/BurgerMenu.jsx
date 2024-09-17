@@ -11,13 +11,13 @@ import exitPic from "../assets/picto/Picto_exit_white.svg";
 
 function BurgerMenu() {
   const [showBurger, setShowBurger] = useState(true);
-  const { user } = useContext(AuthContext);
+  const { connectedUser } = useContext(AuthContext);
 
   const handleShowBurger = () => {
     setShowBurger(!showBurger);
   };
 
-  useEffect(() => {}, [user]);
+  useEffect(() => {}, [connectedUser]);
 
   return (
     <nav className="menu-burger">
@@ -29,24 +29,28 @@ function BurgerMenu() {
         <span className="burger-bar" />
       </button>
       <ul className={`burger-ul${showBurger ? "hidden" : ""}`}>
-        <Link className="link" to="/">
+        <Link className="link" onClick={handleShowBurger} to="/">
           <img src={homePic} alt="" />
           <h1>Accueil</h1>
         </Link>
-        <Link className="link" to="/varietes">
+        <Link className="link" to="/varietes" onClick={handleShowBurger}>
           <img src={varietyPic} alt="" />
           <h1>Variétés</h1>
         </Link>
-        <Link className="link" to="/recettes">
+        <Link className="link" to="/recettes" onClick={handleShowBurger}>
           <img src={recipePic} alt="" />
           <h1>Recettes</h1>
         </Link>
-        {user.is_admin === 3 ? (
-          <Link className="link" to="/inscription">
+        {connectedUser.is_admin === 3 ? (
+          <Link className="link" to="/inscription" onClick={handleShowBurger}>
             <img src={registerPic} alt="" /> <h1>Inscription</h1>
           </Link>
         ) : (
-          <Link className="link" to="/mon-espace/profil">
+          <Link
+            className="link"
+            to={connectedUser === 0 ? "/utilisateur" : "/admin"}
+            onClick={handleShowBurger}
+          >
             {" "}
             <img src={profilePic} alt="" />
             <h1>Mon espace</h1>
@@ -54,10 +58,18 @@ function BurgerMenu() {
         )}
         <Link
           className="link"
-          to={user.is_admin === 3 ? "/connexion" : "/deconnexion"}
+          to={connectedUser.is_admin === 3 ? "/connexion" : "/deconnexion"}
+          onClick={connectedUser.is_admin === 3 ? "/connexion" : "/deconnexion"}
         >
-          <img src={user.is_admin === 3 ? profilePic : exitPic} alt="" />
-          {user.is_admin === 3 ? <h1>Connexion</h1> : <h1>Deconnexion</h1>}
+          <img
+            src={connectedUser.is_admin === 3 ? profilePic : exitPic}
+            alt=""
+          />
+          {connectedUser.is_admin === 3 ? (
+            <h1>Connexion</h1>
+          ) : (
+            <h1>Deconnexion</h1>
+          )}
         </Link>
       </ul>
     </nav>

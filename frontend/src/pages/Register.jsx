@@ -1,5 +1,6 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import instance from "../services/instance";
 
@@ -7,7 +8,7 @@ import hide from "../assets/picto/hide_pwd.svg";
 import show from "../assets/picto/show_pwd.svg";
 
 export default function Register() {
-  const { user, handleAuth } = useContext(AuthContext);
+  const { connectedUser, handleAuth } = useContext(AuthContext);
 
   const [isShown, setIsShown] = useState(false);
   const [registerInfo, setRegisterInfo] = useState({
@@ -23,7 +24,7 @@ export default function Register() {
 
   useEffect(() => {
     handleAuth(() => {
-      if (user.id !== 3) {
+      if (connectedUser.id !== 3) {
         navigate("/");
       }
     }, 100);
@@ -92,67 +93,65 @@ export default function Register() {
       });
   };
   return (
-    <section className="login-out-register">
+    <section className="register">
       <h2>Inscription</h2>
       <div className="content">
         <form>
-          <label>
-            Adresse email
-            <input
-              type="email"
-              name="email"
-              placeholder="example@yahoo.fr"
-              autoComplete="off"
-              value={registerInfo.email}
-              onChange={handleChangeRegister}
-            />
-          </label>
+          <label> Adresse email </label>
+          <input
+            type="email"
+            name="email"
+            placeholder="example@yahoo.fr"
+            autoComplete="off"
+            value={registerInfo.email}
+            onChange={handleChangeRegister}
+          />
+
           {emailCheck ? "" : <p>Désolé cet email est déjà utilisé</p>}
-          <label>
-            Nom d'utilisateur
-            <input
-              type="name"
-              name="username"
-              placeholder="nom d'utilisateur"
-              autoComplete="off"
-              value={registerInfo.username}
-              onChange={handleChangeRegister}
-            />
-          </label>
+          <label>Nom d'utilisateur </label>
+          <input
+            type="name"
+            name="username"
+            placeholder="nom d'utilisateur"
+            autoComplete="off"
+            value={registerInfo.username}
+            onChange={handleChangeRegister}
+          />
+
           {usernameCheck ? (
             ""
           ) : (
             <p>Désolé ce nom d'utilisateur est déjà utilisé</p>
           )}
-          <label>
-            Mot de passe
-            <input
-              type={isShown ? "text" : "password"}
-              name="password"
-              placeholder="mot de passe"
-              autoComplete="off"
-              value={registerInfo.password}
-              onChange={handleChangeRegister}
-            />
-          </label>
-          <label>
-            Confirmez le mot de passe
-            <input
-              type={isShown ? "text" : "password"}
-              name="confirmPassword"
-              placeholder="confirmez le mot de passe"
-              autoComplete="off"
-              value={registerInfo.confirmPassword}
-              onChange={handleChangeRegister}
-            />
-          </label>
+          <label>Mot de passe</label>
+          <input
+            type={isShown ? "text" : "password"}
+            name="password"
+            placeholder="mot de passe"
+            autoComplete="off"
+            value={registerInfo.password}
+            onChange={handleChangeRegister}
+          />
+
+          <label>Confirmez le mot de passe</label>
+          <input
+            type={isShown ? "text" : "password"}
+            name="confirmPassword"
+            placeholder="confirmez le mot de passe"
+            autoComplete="off"
+            value={registerInfo.confirmPassword}
+            onChange={handleChangeRegister}
+          />
+
           <p>
             <span onClick={() => setIsShown(!isShown)} aria-hidden="true">
               <img
                 src={isShown ? hide : show}
-                alt={isShown ? "hide password" : "show password"}
+                alt={
+                  isShown ? "Cacher le mot de passe" : "Voir le mot de passe"
+                }
               />
-              {isShown ? "Hide Password" : "Show Password"}
+              {isShown ? "Cacher le mot de passe" : "Voir le mot de passe"}
             </span>
           </p>
         </form>
@@ -165,6 +164,9 @@ export default function Register() {
         >
           S'inscrire
         </button>
+        <p>
+          Déjà inscrit ? <Link to="/connexion ">Se connecter </Link>
+        </p>
       </div>
     </section>
   );

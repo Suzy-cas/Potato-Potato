@@ -56,7 +56,7 @@ function UserModal({
                 </div>
                 <div>
                   <label>
-                    Admin
+                    Administrateur{" "}
                     <input
                       type="checkbox"
                       checked={isAdmin === 1}
@@ -64,26 +64,44 @@ function UserModal({
                     />
                   </label>
                 </div>
+                <div>
+                  <button className="primary-button" type="submit">
+                    Valider
+                  </button>
+                  <button
+                    className="secondary-button"
+                    type="button"
+                    onClick={closeModal}
+                  >
+                    Annuler
+                  </button>
+                </div>
               </>
             ) : (
-              <div>
-                <p>{username}</p>
-                <p>{email}</p>
-                <p>{isAdmin === 1 ? "Administrateur" : "Utilisateur"}</p>
-              </div>
+              <>
+                <div>
+                  <p>{username}</p>
+                  <p>{email}</p>
+                  <p>{isAdmin === 1 ? "Administrateur" : "Utilisateur"}</p>
+                </div>
+                <div>
+                  <button
+                    className="primary-button"
+                    type="submit"
+                    onClick={handleSubmit}
+                  >
+                    Supprimer
+                  </button>
+                  <button
+                    className="secondary-button"
+                    type="button"
+                    onClick={closeModal}
+                  >
+                    Annuler
+                  </button>
+                </div>
+              </>
             )}
-            <div>
-              <button className="primary-button" type="submit">
-                Supprimer
-              </button>
-              <button
-                className="secondary-button"
-                type="button"
-                onClick={closeModal}
-              >
-                Annuler
-              </button>
-            </div>
           </form>
         </div>
       </div>

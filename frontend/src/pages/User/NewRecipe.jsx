@@ -4,12 +4,12 @@ import { AuthContext } from "../../context/AuthContext";
 
 import instance from "../../services/instance";
 import manageIngredients from "../../services/manageIngredients";
-import NewRecipeForm from "../../components/NewRecipeForm";
-import basicThumbnail from "../../assets/img/soupe.jpg";
+import NewRecipeForm from "../../components/Recipe/NewRecipeForm";
+import basicThumbnail from "../../assets/img/placeholder_recipe.png";
 
 function NewRecipe() {
   const inputRef = useRef();
-  const { handleAuth, handleLogout, user } = useContext(AuthContext);
+  const { handleAuth, handleLogout, connectedUser } = useContext(AuthContext);
   const [ingredients, setIngredients] = useState([
     { name: "", value: "", type_id: 0 },
   ]);
@@ -21,7 +21,7 @@ function NewRecipe() {
     prep_time: "",
     cooking_time: "",
     steps: "",
-    user_id: user.id,
+    user_id: connectedUser.id,
     cooking_tech_id: 0,
     is_approved: 0,
   });
@@ -30,10 +30,10 @@ function NewRecipe() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user.is_admin === 3 || user.is_admin === undefined) {
+    if (connectedUser.is_admin === 3 || connectedUser.is_admin === undefined) {
       navigate("/login");
     }
-  }, [handleAuth, handleLogout, user]);
+  }, [handleAuth, handleLogout, connectedUser]);
 
   const handleSubmit = async () => {
     // must add more validations

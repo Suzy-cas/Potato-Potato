@@ -8,7 +8,7 @@ import "./main.scss";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
 import MainLayout from "./MainLayout";
-import Recipe from "./pages/Recipe";
+import Recipes from "./pages/Recipe/Recipes";
 import Variety from "./pages/Variety";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
@@ -18,7 +18,7 @@ import AdminLayout from "./components/Admin/AdminLayout";
 import Profile from "./pages/User/Profile";
 import RecipeReview from "./pages/Admin/RecipeReview";
 import Register from "./pages/Register";
-import RecipeId from "./pages/RecipeId";
+import RecipeId from "./pages/Recipe/RecipeId";
 import UserList from "./pages/Admin/UserList";
 
 const router = createBrowserRouter([
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/recettes", element: <Recipe /> },
+      { path: "/recettes", element: <Recipes /> },
       { path: "/recettes/:id", element: <RecipeId /> },
       { path: "/varietes", element: <Variety /> },
       { path: "/connexion", element: <Login /> },
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "mon-espace",
+    path: "utilisateur",
     element: <UserLayout />,
     errorElement: <Error />,
     children: [

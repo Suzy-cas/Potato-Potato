@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 
 import MainChoise from "../components/MainChoise";
 
 function Home() {
   const [potatoHeart, setPotatoHeart] = useState(false);
-
   return (
     <header>
       <motion.img
@@ -39,17 +37,14 @@ function Home() {
       />
       <h1>Bienvenue sur</h1>
       <h2>PoTAto PotaTO !?</h2>
-      <Link to="/#choix">
+      <a href="/#choix">
         <img
           className="arrow"
-          onMouseEnter={() => setPotatoHeart(true)}
-          onMouseLeave={() => setPotatoHeart(false)}
           src="./src/assets/img/arrow.svg"
-          href="#choix"
-          alt="arrow-to-go-to-menu"
+          alt="flêche pour descendre"
         />
-      </Link>
-      <section id="choix" className="main-choise">
+      </a>
+      <section id="choix">
         <MainChoise />
       </section>
     </header>

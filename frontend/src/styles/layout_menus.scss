@@ -6,6 +6,7 @@
   width: 100vw;
   z-index: 0;
   background-color: $light-grey;
+  padding-top: 15vh;
 
   h2 {
     margin-top: 12vh;
@@ -27,7 +28,8 @@
 
       a,
       li,
-      .link-profile {
+      .link-profile,
+      .utilisateurs {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -76,6 +78,8 @@
 }
 @media screen and (min-width: 1024px) {
   .menu-container {
+    padding-top: 5vh;
+
     nav {
       img {
         width: 7vw;
