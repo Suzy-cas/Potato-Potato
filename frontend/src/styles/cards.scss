@@ -20,9 +20,9 @@
     img {
       height: 170px;
       min-width: 100%;
+      max-width: 100%;
       object-fit: cover;
     }
-
     ul {
       list-style-type: none;
       padding-left: 1vw;
@@ -40,7 +40,6 @@
       column-gap: 1vh;
     }
   }
-
   .recipe-cards-id {
     margin: 15vh auto;
     border: none;

@@ -27,7 +27,6 @@ function AuthContextProvider({ children }) {
 
   useEffect(() => {
     handleAuth();
-    console.info(connectedUser);
   }, []);
 
   //  localStorage.removeItem("token");

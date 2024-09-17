@@ -23,7 +23,6 @@ function RecipeReview() {
   const recipePicture = `${import.meta.env.VITE_BACKEND_URL}/uploads/recipes/`;
 
   const recipeToReview = recipeList.filter((rec) => rec.is_approved === 0);
-  console.info(recipeToReview);
 
   return (
     <>
