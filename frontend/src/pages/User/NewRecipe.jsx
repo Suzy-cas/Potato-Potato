@@ -69,7 +69,6 @@ function NewRecipe() {
 
       // We get back the id from our newly created recipe, by checking everything to be equal.
       const recipeId = response.data.id;
-      console.info(recipeId);
       // If we have a picture, we create a new form for that recipe and upload it
       if (inputRef.current.files[0]) {
         const formData = new FormData();

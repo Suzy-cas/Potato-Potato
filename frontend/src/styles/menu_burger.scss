@@ -9,6 +9,7 @@
   .burger-ul {
     @include flexColumn;
     align-items: flex-start;
+    justify-self: center;
     list-style: none;
     height: 100%;
     width: 80%;
@@ -116,7 +117,10 @@
     }
     .burger-ul {
       width: 35%;
-      padding: 10vh 1rem 20vh;
+      padding: 3vh 1rem;
+      h1 {
+        font-size: calc(1.4rem + 1rem);
+      }
     }
   }
 }
@@ -128,7 +132,7 @@
     }
     .burger-ul {
       width: 25%;
-      padding: 10vh 1rem 20vh;
+      padding: 10vh 1rem 15vh;
     }
   }
 }

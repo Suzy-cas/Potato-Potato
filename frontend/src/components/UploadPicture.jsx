@@ -4,7 +4,6 @@
 function UploadPicture({ inputRef, setThumbnail }) {
   const handleChangeThumbnail = (e) => {
     const file = e.target.files[0];
-    console.info(file);
     if (
       file &&
       (file.type === "image/jpeg" ||
